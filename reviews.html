@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reviews - LUKU LEGIT</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body data-page="reviews">
+    <nav class="navbar">
+        <div class="nav-container">
+          <div class="nav-logo">
+            <img src="img/luku gold-01.png" alt="Luku Legit Logo" />
+            <span>LUKU LEGIT</span>
+          </div>
+          <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="shop.html">Shop</a></li>
+            <li><a href="order.html">Order</a></li>
+            <li><a href="reviews.html">Reviews</a></li>
+          </ul>
+        </div>
+      </nav>
+
+      <section class="hero">
+        <h1>Customer Reviews <span>Trusted Feedback</span></h1>
+        <p>
+          See what our satisfied customers are saying about our authentic
+          products.
+        </p>
+      </section>
+
+      <section class="products">
+        <h2>Customer Reviews</h2>
+        <div id="reviews-list" style="display: grid; gap: 2rem"></div>
+        <div
+          style="
+            margin-top: 2rem;
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+          "
+        >
+          <button
+            class="btn"
+            onclick="
+              document
+                .getElementById('review-form')
+                .scrollIntoView({ behavior: 'smooth' })
+            "
+          >
+            ✍️ Leave a Review
+          </button>
+          <button class="btn secondary" onclick="loadAllReviews()">
+            🔄 Refresh Reviews
+          </button>
+        </div>
+      </section>
+
+      <section id="leave" class="products">
+        <h2 id="review-form">Leave Your Review</h2>
+        <div
+          style="
+            max-width: 600px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 16px;
+            border: 2px solid var(--border);
+          "
+        >
+          <form id="review-submission" class="login-form">
+            <textarea
+              id="review-text"
+              placeholder="Share your experience with our products..."
+              required
+              rows="4"
+              style="
+                background: rgba(0, 0, 0, 0.3);
+                border: 1px solid var(--border);
+                border-radius: 8px;
+                padding: 1rem;
+                color: var(--text-main);
+              "
+            ></textarea>
+            <input
+              type="text"
+              id="reviewer-name"
+              placeholder="Your name"
+              required
+              style="
+                background: rgba(0, 0, 0, 0.3);
+                border: 1px solid var(--border);
+                border-radius: 8px;
+                padding: 0.75rem;
+                color: var(--text-main);
+              "
+            />
+            <div>
+              <label
+                style="font-weight: 600; margin-bottom: 1rem; display: block"
+                >Rating:
+                <span
+                  id="rating-display"
+                  style="color: var(--accent); font-weight: 900"
+                  >0</span
+                >★</label
+              >
+              <div
+                id="star-rating"
+                style="margin: 1rem 0; font-size: 2rem; cursor: pointer"
+              >
+                <span class="star" data-rating="1">★</span>
+                <span class="star" data-rating="2">★</span>
+                <span class="star" data-rating="3">★</span>
+                <span class="star" data-rating="4">★</span>
+                <span class="star" data-rating="5">★</span>
+              </div>
+              <input type="hidden" id="review-rating" value="0" />
+            </div>
+            <button
+              type="submit"
+              class="btn btn-primary"
+              style="width: 100%; margin-top: 1rem"
+            >
+              Submit Review
+            </button>
+          </form>
+        </div>
+      </section>
+
+      <footer>
+        <p>Keep it authentic. © 2026 Luku Legit.</p>
+      </footer>
+
+      <script src="js/script.js"></script>
+      <script>
+        window.addEventListener("DOMContentLoaded", function () {
+          loadAllReviews();
+
+          document.querySelectorAll(".star").forEach((star) => {
+            star.addEventListener("click", function () {
+              const rating = this.dataset.rating;
+              document.getElementById("review-rating").value = rating;
+              document.getElementById("rating-display").textContent = rating;
+              document.querySelectorAll(".star").forEach((s) => {
+                s.style.color =
+                  s.dataset.rating <= rating
+                    ? "var(--accent)"
+                    : "var(--text-dim)";
+              });
+            });
+          });
+
+          document
+            .getElementById("review-submission")
+            .addEventListener("submit", function (e) {
+              e.preventDefault();
+              const review = {
+                text: document.getElementById("review-text").value,
+                name: document.getElementById("reviewer-name").value,
+                rating: document.getElementById("review-rating").value,
+                timestamp: new Date().toISOString(),
+                approved: false,
+              };
+              const reviews = JSON.parse(
+                localStorage.getItem("reviews") || "[]",
+              );
+              reviews.push(review);
+              localStorage.setItem("reviews", JSON.stringify(reviews));
+              alert("Review submitted! Thank you.");
+              this.reset();
+              loadAllReviews();
+            });
+        });
+
+        function loadAllReviews() {
+          const reviews = JSON.parse(localStorage.getItem("reviews") || "[]");
+          const container = document.getElementById("reviews-list");
+          container.innerHTML = "";
+
+          if (!reviews.length) {
+            container.innerHTML =
+              "<p>No reviews yet. Be the first to review!</p>";
+            return;
+          }
+
+          reviews
+            .slice(-10)
+            .reverse()
+            .forEach((review) => {
+              const div = document.createElement("div");
+              div.className = "data-item";
+              div.innerHTML = `
+          <p><strong>${"★".repeat(review.rating)}${"☆".repeat(5 - review.rating)}</strong></p>
+          <p>"${review.text}" - ${review.name}</p>
+          <small>${review.approved ? "✓ Approved" : "Pending approval"}</small>
+        `;
+              container.appendChild(div);
+            });
+        }
+      </script>
+    </div>
+    `r`n
+  </body>
+</html>

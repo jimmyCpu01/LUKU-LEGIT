@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Order - LUKU LEGIT</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body data-page="order">
+    <nav class="navbar">
+        <div class="nav-container">
+          <div class="nav-logo">
+            <img src="img/luku gold-01.png" alt="Luku Legit Logo" />
+            <span>LUKU LEGIT</span>
+          </div>
+          <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="shop.html">Shop</a></li>
+            <li><a href="order.html">Order</a></li>
+            <li><a href="reviews.html">Reviews</a></li>
+          </ul>
+        </div>
+      </nav>
+
+      <section class="hero">
+        <h1>Place Your Order <span>Secure Checkout</span></h1>
+        <p>Select your shoes and proceed to checkout with ease.</p>
+      </section>
+
+      <section class="products">
+        <h2>Order Summary & Checkout</h2>
+        <div
+          style="
+            max-width: 700px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 2.5rem;
+            border-radius: 16px;
+            border: 2px solid var(--border);
+          "
+        >
+          <h3
+            style="
+              color: var(--accent);
+              margin-bottom: 1.5rem;
+              font-size: 1.3rem;
+            "
+          >
+            📦 Order Summary
+          </h3>
+          <div
+            id="order-summary"
+            style="
+              margin-bottom: 2rem;
+              padding: 1.5rem;
+              border: 2px solid var(--border);
+              border-radius: 12px;
+              background: rgba(57, 255, 20, 0.05);
+            "
+          ></div>
+
+          <h3
+            style="
+              color: var(--accent);
+              margin-bottom: 1.5rem;
+              font-size: 1.3rem;
+            "
+          >
+            📝 Your Details
+          </h3>
+          <form id="order-form" class="login-form">
+            <input
+              type="text"
+              id="shoe-model"
+              placeholder="Shoe Model"
+              readonly
+              style="
+                background: rgba(0, 0, 0, 0.3);
+                border: 1px solid var(--border);
+                border-radius: 8px;
+                padding: 0.75rem;
+                color: var(--text-dim);
+              "
+            />
+            <input
+              type="text"
+              id="size"
+              placeholder="👟 Size"
+              required
+              style="
+                background: rgba(0, 0, 0, 0.3);
+                border: 1px solid var(--border);
+                border-radius: 8px;
+                padding: 0.75rem;
+                color: var(--text-main);
+              "
+            />
+            <input
+              type="text"
+              id="name"
+              placeholder="👤 Your Name"
+              required
+              style="
+                background: rgba(0, 0, 0, 0.3);
+                border: 1px solid var(--border);
+                border-radius: 8px;
+                padding: 0.75rem;
+                color: var(--text-main);
+              "
+            />
+            <input
+              type="email"
+              id="email"
+              placeholder="📧 Your Email"
+              style="
+                background: rgba(0, 0, 0, 0.3);
+                border: 1px solid var(--border);
+                border-radius: 8px;
+                padding: 0.75rem;
+                color: var(--text-main);
+              "
+            />
+            <input
+              type="tel"
+              id="phone"
+              placeholder="📱 Phone Number"
+              required
+              style="
+                background: rgba(0, 0, 0, 0.3);
+                border: 1px solid var(--border);
+                border-radius: 8px;
+                padding: 0.75rem;
+                color: var(--text-main);
+              "
+            />
+            <input
+              type="text"
+              id="address"
+              placeholder="📍 Delivery Address"
+              required
+              style="
+                background: rgba(0, 0, 0, 0.3);
+                border: 1px solid var(--border);
+                border-radius: 8px;
+                padding: 0.75rem;
+                color: var(--text-main);
+              "
+            />
+            <label
+              for="payment-proof"
+              style="margin: 0.75rem 0 0.25rem 0; color: var(--text-dim); display: block; font-size: 0.95rem;"
+            >
+              Upload payment screenshot (JPG/PNG)
+            </label>
+            <input
+              type="file"
+              id="payment-proof"
+              accept="image/*"
+              required
+              style="
+                background: rgba(0, 0, 0, 0.3);
+                border: 1px solid var(--border);
+                border-radius: 8px;
+                padding: 0.75rem;
+                color: var(--text-main);
+                width: 100%;
+              "
+            />
+            <p
+              style="
+                margin: 1rem 0 0 0;
+                color: var(--text-dim);
+                font-size: 0.9rem;
+                line-height: 1.5;
+              "
+            >
+              Attach your payment screenshot and await admin approval before your order is confirmed.
+            </p>
+            <button
+              type="submit"
+              class="btn btn-primary"
+              style="width: 100%; margin-top: 1rem; font-size: 1.05rem"
+            >
+              ✅ Submit Order
+            </button>
+          </form>
+        </div>
+      </section>
+
+      <a href="https://wa.me/254700408174" class="cta-button"
+        >💬 Chat on WhatsApp</a
+      >
+
+      <footer>
+        <p>Keep it authentic. © 2026 Luku Legit.</p>
+      </footer>
+
+      <script src="js/script.js"></script>
+      <script>
+        window.addEventListener("DOMContentLoaded", function () {
+          const product = JSON.parse(
+            localStorage.getItem("selectedProduct") || "{}",
+          );
+          const summary = document.getElementById("order-summary");
+          const form = document.getElementById("order-form");
+
+          if (product.name) {
+            document.getElementById("shoe-model").value = product.name;
+            document.getElementById("size").value = product.size || "";
+            summary.innerHTML = `
+          <strong>Product:</strong> ${product.name}<br>
+          ${product.size ? `<strong>Size:</strong> ${product.size}<br>` : ""}
+          <strong>Condition:</strong> ${product.condition}<br>
+          <strong>Price:</strong> Ksh ${product.price}<br>
+          <hr>
+          <strong>Total Amount:</strong> Ksh ${product.price}
+        `;
+          }
+
+          form.addEventListener("submit", function (e) {
+            e.preventDefault();
+            const proofInput = document.getElementById("payment-proof");
+            const sizeValue = document.getElementById("size").value.trim();
+            if (!proofInput || !proofInput.files.length) {
+              alert("Please upload your payment screenshot before submitting.");
+              return;
+            }
+            const reader = new FileReader();
+            reader.onload = function () {
+              const proofImage = reader.result;
+              const orderData = {
+                product: product.name || document.getElementById("shoe-model").value || "Unknown",
+                size: sizeValue || "Not specified",
+                name: document.getElementById("name").value.trim(),
+                email: document.getElementById("email").value.trim(),
+                phone: document.getElementById("phone").value.trim(),
+                address: document.getElementById("address").value.trim(),
+                amount: product.price || 0,
+                status: "pending",
+                proofImage,
+                timestamp: new Date().toISOString(),
+              };
+              const payments = JSON.parse(localStorage.getItem("payments") || "[]");
+              payments.push(orderData);
+              localStorage.setItem("payments", JSON.stringify(payments));
+              localStorage.setItem(
+                "orders",
+                JSON.stringify([
+                  ...JSON.parse(localStorage.getItem("orders") || "[]"),
+                  {
+                    product: orderData.product,
+                    size: orderData.size,
+                    name: orderData.name,
+                    timestamp: orderData.timestamp,
+                  },
+                ]),
+              );
+              alert("Order submitted! Your payment proof was uploaded. Await admin approval.");
+              form.reset();
+              document.getElementById("shoe-model").value = orderData.product;
+              document.getElementById("size").value = orderData.size;
+            };
+            reader.readAsDataURL(proofInput.files[0]);
+          });
+        });
+      </script>
+    </div>
+    `r`n
+  </body>
+</html>

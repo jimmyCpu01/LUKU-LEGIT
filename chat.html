@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chat - LUKU LEGIT</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body data-page="chat">
+    <nav class="navbar">
+        <div class="nav-container">
+          <div class="nav-logo">
+            <img src="img/luku gold-01.png" alt="Luku Legit Logo" />
+            <span>LUKU LEGIT</span>
+          </div>
+          <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="shop.html">Shop</a></li>
+            <li><a href="order.html">Order</a></li>
+            <li><a href="reviews.html">Reviews</a></li>
+          </ul>
+        </div>
+      </nav>
+
+      <section class="hero">
+        <h1>Live Chat Support <span>We're Here to Help</span></h1>
+        <p>
+          Provide your details below to start chatting. Your information will be
+          sent to our admin for personalized assistance.
+        </p>
+      </section>
+
+      <section class="products">
+        <div
+          style="
+            max-width: 700px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 2.5rem;
+            border-radius: 16px;
+            border: 2px solid var(--border);
+          "
+        >
+          <div
+            id="chat-messages"
+            class="data-list"
+            style="
+              max-height: 400px;
+              overflow-y: auto;
+              margin-bottom: 2rem;
+              background: rgba(0, 0, 0, 0.3);
+              border-radius: 12px;
+              padding: 1rem;
+            "
+          ></div>
+
+          <form id="chat-form" class="login-form">
+            <input
+              type="text"
+              id="chat-name"
+              placeholder="👤 Your Name"
+              required
+              style="
+                background: rgba(0, 0, 0, 0.3);
+                border: 1px solid var(--border);
+                border-radius: 8px;
+                padding: 0.75rem;
+                color: var(--text-main);
+              "
+            />
+            <input
+              type="tel"
+              id="chat-tel"
+              placeholder="📱 Your Phone Number"
+              required
+              style="
+                background: rgba(0, 0, 0, 0.3);
+                border: 1px solid var(--border);
+                border-radius: 8px;
+                padding: 0.75rem;
+                color: var(--text-main);
+              "
+            />
+            <input
+              type="email"
+              id="chat-email"
+              placeholder="📧 Your Email"
+              required
+              style="
+                background: rgba(0, 0, 0, 0.3);
+                border: 1px solid var(--border);
+                border-radius: 8px;
+                padding: 0.75rem;
+                color: var(--text-main);
+              "
+            />
+            <textarea
+              id="chat-message"
+              placeholder="💬 Type your message here..."
+              required
+              rows="3"
+              style="
+                background: rgba(0, 0, 0, 0.3);
+                border: 1px solid var(--border);
+                border-radius: 8px;
+                padding: 0.75rem;
+                color: var(--text-main);
+              "
+            ></textarea>
+            <input
+              type="file"
+              id="chat-image"
+              accept="image/*"
+              style="
+                background: rgba(0, 0, 0, 0.3);
+                border: 1px solid var(--border);
+                border-radius: 8px;
+                padding: 0.75rem;
+                color: var(--text-main);
+                width: 100%;
+              "
+            />
+            <button type="submit" class="btn btn-primary" style="width: 100%">
+              Send Message
+            </button>
+          </form>
+        </div>
+      </section>
+
+      <footer>
+        <p>Keep it authentic. © 2026 Luku Legit.</p>
+      </footer>
+
+      <script src="js/script.js"></script>
+      <script>
+        window.addEventListener("DOMContentLoaded", function () {
+          loadMessages();
+
+          document
+            .getElementById("chat-form")
+            .addEventListener("submit", async function (e) {
+              e.preventDefault();
+              const name = document.getElementById("chat-name").value;
+              const tel = document.getElementById("chat-tel").value;
+              const email = document.getElementById("chat-email").value;
+              const content = document.getElementById("chat-message").value;
+              const imageFile = document.getElementById("chat-image").files[0];
+
+              let imageData = null;
+              if (imageFile) {
+                imageData = await readFileAsDataURL(imageFile);
+              }
+
+              const message = {
+                sender: name,
+                tel: tel,
+                email: email,
+                content: content,
+                image: imageData,
+                timestamp: new Date().toISOString(),
+                type: "user",
+              };
+              const messages = JSON.parse(
+                localStorage.getItem("chatMessages") || "[]",
+              );
+              messages.push(message);
+              localStorage.setItem("chatMessages", JSON.stringify(messages));
+              this.reset();
+              loadMessages();
+            });
+        });
+
+        function readFileAsDataURL(file) {
+          return new Promise((resolve, reject) => {
+            const reader = new FileReader();
+            reader.onload = () => resolve(reader.result);
+            reader.onerror = reject;
+            reader.readAsDataURL(file);
+          });
+        }
+
+        function loadMessages() {
+          const messages = JSON.parse(
+            localStorage.getItem("chatMessages") || "[]",
+          );
+          const container = document.getElementById("chat-messages");
+          container.innerHTML = "";
+
+          messages
+            .slice(-20)
+            .reverse()
+            .forEach((msg) => {
+              const div = document.createElement("div");
+              div.className = "data-item";
+              let html = `
+              <p><strong>${msg.sender}</strong></p>
+              <p>${msg.content}</p>
+            `;
+              if (msg.image) {
+                html += `<img src="${msg.image}" alt="Attached image" style="max-width: 200px; max-height: 200px; border-radius: 8px; margin-top: 0.5rem;">`;
+              }
+              html += `<small>${new Date(msg.timestamp).toLocaleString()}</small>`;
+              div.innerHTML = html;
+              container.appendChild(div);
+            });
+        }
+      </script>
+    </div>
+    `r`n
+  </body>
+</html>
