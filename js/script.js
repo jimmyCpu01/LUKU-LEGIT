@@ -557,8 +557,9 @@ window.addEventListener("DOMContentLoaded", function () {
 function initImageModal() {
   function getSizeOptions() {
     const page = document.body.dataset.page || "";
-    const start = page === "ladies" ? 36 : 19;
-    const end = page === "ladies" ? 45 : 35;
+    const isKidsPage = page === "kids";
+    const start = isKidsPage ? 19 : 36;
+    const end = isKidsPage ? 35 : 45;
     let options =
       '<option value="" selected disabled>Select your EUR size</option>';
     for (let size = start; size <= end; size += 1) {
@@ -584,6 +585,10 @@ function initImageModal() {
         <select id="sizeSelect">
           ${getSizeOptions()}
         </select>
+        <div class="size-help">
+          <p>Need help finding your perfect fit? Start a quick size chat before choosing.</p>
+          <button type="button" class="btn btn-secondary" id="sizeHelpBtn">Shoe Size Chat</button>
+        </div>
       </div>
     </div>
   `;
@@ -775,6 +780,13 @@ function initImageModal() {
     const whatsappUrl = `https://wa.me/254700408174?text=Hi, I would like to view your catalogue for ${decodeURIComponent(query)}.`;
     window.open(whatsappUrl, "_blank");
   };
+
+  const sizeHelpBtn = document.getElementById("sizeHelpBtn");
+  if (sizeHelpBtn) {
+    sizeHelpBtn.onclick = function () {
+      window.location.href = "chat.html#size-help";
+    };
+  }
 
   googleMoreBtn.onclick = function () {
     const query = googleMoreBtn.dataset.query || encodeURIComponent("shoes");
