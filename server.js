@@ -1,7 +1,31 @@
 const express = require("express");
+const fs = require("fs");
 const path = require("path");
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
+
+const chatDataFile = path.join(__dirname, "chat-messages.json");
+
+function readChatMessages() {
+  try {
+    if (!fs.existsSync(chatDataFile)) {
+      fs.writeFileSync(chatDataFile, "[]", "utf-8");
+    }
+    const data = fs.readFileSync(chatDataFile, "utf-8");
+    return JSON.parse(data || "[]");
+  } catch (error) {
+    console.error("Error reading chat messages:", error);
+    return [];
+  }
+}
+
+function writeChatMessages(messages) {
+  try {
+    fs.writeFileSync(chatDataFile, JSON.stringify(messages, null, 2), "utf-8");
+  } catch (error) {
+    console.error("Error writing chat messages:", error);
+  }
+}
 
 // Serve static files
 app.use(express.static(path.join(__dirname)));
@@ -42,6 +66,36 @@ app.get("/admin-login.html", (req, res) => {
 
 app.get("/chat.html", (req, res) => {
   res.sendFile(path.join(__dirname, "chat.html"));
+});
+
+app.post("/api/chat-message", (req, res) => {
+  const { sender, tel, email, content, image, timestamp, type } = req.body;
+  if (!sender || !content) {
+    return res
+      .status(400)
+      .json({
+        success: false,
+        message: "Name and message content are required.",
+      });
+  }
+
+  const messages = readChatMessages();
+  messages.push({
+    sender: sender.trim(),
+    tel: tel ? tel.trim() : "",
+    email: email ? email.trim() : "",
+    content: content.trim(),
+    image: image || null,
+    timestamp: timestamp || new Date().toISOString(),
+    type: type || "user",
+  });
+  writeChatMessages(messages);
+
+  res.json({ success: true, message: "Chat message saved.", data: messages });
+});
+
+app.get("/api/chat-messages", (req, res) => {
+  res.json({ success: true, data: readChatMessages() });
 });
 
 app.get("/contact.html", (req, res) => {

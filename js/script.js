@@ -229,7 +229,19 @@ function seedAdminData() {
   }
 }
 
-function loadOverviewStats() {
+async function fetchChatMessagesFromServer() {
+  try {
+    const response = await fetch("/api/chat-messages");
+    if (!response.ok) throw new Error("Network response was not ok");
+    const result = await response.json();
+    return result.data || [];
+  } catch (error) {
+    console.error("Unable to load chat messages from server:", error);
+    return JSON.parse(localStorage.getItem("chatMessages") || "[]");
+  }
+}
+
+async function loadOverviewStats() {
   seedAdminData();
   const payments = JSON.parse(localStorage.getItem("payments") || "[]");
   const interactions = JSON.parse(
@@ -237,7 +249,7 @@ function loadOverviewStats() {
   );
   const reviews = JSON.parse(localStorage.getItem("reviews") || "[]");
   const cart = JSON.parse(localStorage.getItem("cart") || "[]");
-  const chats = JSON.parse(localStorage.getItem("chatMessages") || "[]");
+  const chats = await fetchChatMessagesFromServer();
 
   const pendingPayments = payments.filter((p) => p.status === "pending").length;
   const completedPayments = payments.filter(
@@ -463,10 +475,10 @@ function saveAdminOperations() {
   alert("Admin operations saved.");
 }
 
-function loadChats() {
+async function loadChats() {
   const container = document.getElementById("chats-list");
   if (!container) return;
-  const chats = JSON.parse(localStorage.getItem("chatMessages") || "[]");
+  const chats = await fetchChatMessagesFromServer();
   container.innerHTML = "";
   if (!chats.length) {
     container.innerHTML =
