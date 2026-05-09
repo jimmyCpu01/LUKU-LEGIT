@@ -1260,6 +1260,147 @@ select:focus {
   }
 }
 
+/* Global responsive improvements */
+@media (max-width: 1024px) {
+  .navbar {
+    padding: 1.2rem 1rem;
+  }
+
+  .nav-container {
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .hero {
+    padding: 2.5rem 1.5rem;
+  }
+
+  .hero h1 {
+    font-size: 3rem;
+  }
+
+  .hero p {
+    font-size: 1.25rem;
+  }
+
+  .products {
+    margin: 3rem auto;
+    padding: 0 1rem;
+  }
+
+  .admin-content {
+    padding: 1.75rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .nav-links {
+    gap: 0.75rem;
+    overflow-x: auto;
+    justify-content: flex-start;
+    padding-bottom: 0.75rem;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .nav-links li {
+    white-space: nowrap;
+  }
+
+  .hero {
+    padding: 2rem 1rem;
+    border-radius: 18px;
+  }
+
+  .hero h1 {
+    font-size: 2rem;
+    letter-spacing: 1px;
+  }
+
+  .hero h1 span {
+    font-size: 1.6rem;
+  }
+
+  .hero p {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .product-grid,
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .products {
+    padding: 0 0.75rem;
+  }
+
+  .products > div,
+  .admin-panel,
+  .admin-container,
+  .admin-content {
+    padding: 1rem;
+  }
+
+  .data-item,
+  .tab-header,
+  .login-card,
+  .login-form,
+  .form-group,
+  .admin-tabs {
+    width: 100%;
+  }
+
+  .login-form input,
+  .login-form textarea,
+  .login-form select,
+  .login-form button,
+  .login-form input[type="file"] {
+    width: 100%;
+  }
+
+  .login-form {
+    gap: 1rem;
+  }
+
+  .tab-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+  }
+
+  .tab-btn {
+    padding: 0.55rem 0.85rem;
+    font-size: 0.85rem;
+    min-width: auto;
+  }
+
+  .admin-tabs {
+    gap: 0.5rem;
+  }
+
+  .admin-tabs::-webkit-scrollbar {
+    height: 6px;
+  }
+
+  .admin-tabs::-webkit-scrollbar-thumb {
+    background: rgba(212, 175, 55, 0.35);
+  }
+
+  .tab-content {
+    padding-top: 1rem;
+  }
+
+  .data-item {
+    padding: 1rem;
+  }
+
+  .admin-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+}
+
 /* Image Modal */
 .modal {
   display: none;
