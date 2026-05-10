@@ -438,18 +438,34 @@
       }
 
       function handleMpesa(type) {
-        const product = JSON.parse(
-          localStorage.getItem("selectedProduct") || "{}",
-        );
-        const amount = product.price || 0;
+        const cart = JSON.parse(localStorage.getItem("cart") || "[]");
+        const product = JSON.parse(localStorage.getItem("selectedProduct") || "{}");
+
+        let items = [];
+        let total = 0;
+
+        if (cart.length > 0) {
+          items = cart;
+          total = cart.reduce((sum, item) => sum + item.price, 0);
+        } else if (product.name) {
+          items = [product];
+          total = product.price || 0;
+        }
+
+        if (items.length === 0) {
+          alert("No items selected for payment.");
+          return;
+        }
+
+        let productNames = items.map(item => item.name).join(", ");
 
         let instructions = "";
         if (type === "send") {
           instructions = `
           <div style="text-align: left; line-height: 1.8; font-family: Arial, sans-serif;">
             <h3 style="color: #00897b; margin-bottom: 1rem;">📤 M-Pesa Send Money Instructions</h3>
-            <p style="margin-bottom: 1rem;"><strong>Product:</strong> ${product.name || "N/A"}</p>
-            <p style="margin-bottom: 1rem;"><strong>Amount to Send:</strong> Ksh ${amount}</p>
+            <p style="margin-bottom: 1rem;"><strong>Products:</strong> ${productNames}</p>
+            <p style="margin-bottom: 1rem;"><strong>Total Amount to Send:</strong> Ksh ${total}</p>
             <p style="margin-bottom: 1rem;"><strong>Recipient Number:</strong> 0700408174</p>
 
             <h4 style="color: #00897b; margin: 1.5rem 0 1rem 0;">Step-by-Step Guide:</h4>
@@ -457,7 +473,7 @@
               <li>Open your M-Pesa menu on your phone</li>
               <li>Select "Send Money"</li>
               <li>Enter recipient number: <strong>0700408174</strong></li>
-              <li>Enter amount: <strong>Ksh ${amount}</strong></li>
+              <li>Enter amount: <strong>Ksh ${total}</strong></li>
               <li>Enter your M-Pesa PIN</li>
               <li>Confirm the transaction</li>
             </ol>
@@ -469,8 +485,8 @@
           instructions = `
           <div style="text-align: left; line-height: 1.8; font-family: Arial, sans-serif;">
             <h3 style="color: #00897b; margin-bottom: 1rem;">🏪 M-Pesa Pay to Till Instructions</h3>
-            <p style="margin-bottom: 1rem;"><strong>Product:</strong> ${product.name || "N/A"}</p>
-            <p style="margin-bottom: 1rem;"><strong>Amount to Pay:</strong> Ksh ${amount}</p>
+            <p style="margin-bottom: 1rem;"><strong>Products:</strong> ${productNames}</p>
+            <p style="margin-bottom: 1rem;"><strong>Total Amount to Pay:</strong> Ksh ${total}</p>
             <p style="margin-bottom: 1rem;"><strong>Till Number:</strong> 6699212</p>
 
             <h4 style="color: #00897b; margin: 1.5rem 0 1rem 0;">Step-by-Step Guide:</h4>
@@ -479,7 +495,7 @@
               <li>Select "Lipa Na M-Pesa"</li>
               <li>Choose "Buy Goods & Services"</li>
               <li>Enter Till Number: <strong>6699212</strong></li>
-              <li>Enter amount: <strong>Ksh ${amount}</strong></li>
+              <li>Enter amount: <strong>Ksh ${total}</strong></li>
               <li>Input your M-Pesa PIN to validate</li>
               <li>Confirm the transaction</li>
             </ol>
