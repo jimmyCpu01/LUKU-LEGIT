@@ -377,27 +377,49 @@
     <script src="js/script.js"></script>
     <script>
       window.addEventListener("DOMContentLoaded", function () {
+        const cart = JSON.parse(localStorage.getItem("cart") || "[]");
         const product = JSON.parse(
           localStorage.getItem("selectedProduct") || "{}",
         );
-        if (product.name) {
-          let details = `<strong>Product:</strong> ${product.name}<br><strong>Price:</strong> Ksh ${product.price}`;
-          if (product.size) {
-            details += `<br><strong>Size:</strong> ${product.size}`;
-          }
-          if (product.condition) {
-            details += `<br><strong>Condition:</strong> ${product.condition}`;
-          }
-          document.getElementById("mpesa-product-details").innerHTML = details;
-          document.getElementById("paypal-product-details").innerHTML = details;
-          document.getElementById("paypal-amount").placeholder = Math.round(
-            product.price / 130,
-          );
+
+        let items = [];
+        let total = 0;
+
+        if (cart.length > 0) {
+          items = cart;
+          total = cart.reduce((sum, item) => sum + item.price, 0);
+        } else if (product.name) {
+          items = [product];
+          total = product.price || 0;
         }
-        notifyAdminPaymentPageVisit(product);
+
+        if (items.length === 0) {
+          document.getElementById("mpesa-product-details").innerHTML =
+            "<p>No items selected.</p>";
+          document.getElementById("paypal-product-details").innerHTML =
+            "<p>No items selected.</p>";
+          return;
+        }
+
+        let details = "";
+        items.forEach((item) => {
+          details += `<strong>${item.name}</strong>`;
+          if (item.size) details += ` - Size: ${item.size}`;
+          if (item.condition) details += ` - ${item.condition}`;
+          details += ` - Ksh ${item.price}<br>`;
+        });
+        details += `<strong>Total: Ksh ${total}</strong>`;
+
+        document.getElementById("mpesa-product-details").innerHTML = details;
+        document.getElementById("paypal-product-details").innerHTML = details;
+        document.getElementById("paypal-amount").placeholder = Math.round(
+          total / 130,
+        );
+
+        notifyAdminPaymentPageVisit(items, total);
       });
 
-      function notifyAdminPaymentPageVisit(product) {
+      function notifyAdminPaymentPageVisit(items, total) {
         const visits = JSON.parse(
           localStorage.getItem("paymentNotifications") || "[]",
         );

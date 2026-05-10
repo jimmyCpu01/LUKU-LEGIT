@@ -67,8 +67,14 @@ function recordUnauthorizedAccess(context, reason) {
 // ==================== E-COMMERCE FUNCTIONS ====================
 function buyNow(name, price, condition) {
   const product = { name, price, condition };
-  localStorage.setItem("selectedProduct", JSON.stringify(product));
-  window.location.href = "payment.html";
+  addToCart(product);
+  window.location.href = "cart.html";
+}
+
+function addToCart(product) {
+  const cart = JSON.parse(localStorage.getItem("cart") || "[]");
+  cart.push(product);
+  localStorage.setItem("cart", JSON.stringify(cart));
 }
 
 // ==================== ADMIN INITIALIZATION ====================
@@ -575,7 +581,7 @@ function initImageModal() {
       <div class="modal-content-grid">
         <img class="modal-image" id="modalImage">
         <div class="modal-buttons">
-          <button class="btn" id="buyNowBtn">Buy Now</button>
+          <button class="btn" id="addToCartBtn">Add to Cart</button>
           <button class="btn btn-secondary" id="orderNowBtn">Order Now</button>
           <button class="btn btn-primary" id="moreLikeBtn">More Like These</button>
         </div>
@@ -623,7 +629,7 @@ function initImageModal() {
   const modalImg = document.getElementById("modalImage");
   const closeBtn = document.getElementsByClassName("close")[0];
   const moreLikeClose = document.getElementById("moreLikeClose");
-  const buyNowBtn = document.getElementById("buyNowBtn");
+  const addToCartBtn = document.getElementById("addToCartBtn");
   const orderNowBtn = document.getElementById("orderNowBtn");
   const moreLikeBtn = document.getElementById("moreLikeBtn");
   const whatsappMoreBtn = document.getElementById("whatsappMoreBtn");
@@ -715,8 +721,15 @@ function initImageModal() {
         }
 
         // Store current image info for buttons
+        const card = this.closest(".shoe-card");
+        const priceText = card.querySelector(".price")?.textContent || "";
+        const price = parseInt(priceText.replace(/[^\d]/g, "")) || 0;
+        const condition = card.querySelector(".shoe-specs")?.textContent || "";
+
         modalImg.dataset.productName = this.alt || "Product";
         modalImg.dataset.productSrc = this.src;
+        modalImg.dataset.productPrice = price;
+        modalImg.dataset.productCondition = condition;
       });
     }
   });
@@ -734,21 +747,24 @@ function initImageModal() {
   };
 
   // Button actions
-  buyNowBtn.onclick = function () {
+  addToCartBtn.onclick = function () {
     const selectedSize = sizeSelect ? sizeSelect.value : "";
     if (!selectedSize) {
-      alert("Please select a size before buying.");
+      alert("Please select a size before adding to cart.");
       return;
     }
 
-    const selectedProduct = {
+    const product = {
       name: modalImg.dataset.productName,
       image: modalImg.dataset.productSrc,
-      price: "Contact for pricing",
+      price: parseInt(modalImg.dataset.productPrice) || 0,
       size: selectedSize,
+      condition: modalImg.dataset.productCondition,
     };
-    localStorage.setItem("selectedProduct", JSON.stringify(selectedProduct));
-    window.location.href = "payment.html";
+
+    addToCart(product);
+    alert("Added to cart!");
+    modal.style.display = "none";
   };
 
   orderNowBtn.onclick = function () {

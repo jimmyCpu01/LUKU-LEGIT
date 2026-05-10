@@ -69,16 +69,28 @@
           return;
         }
 
+        let total = 0;
         cart.forEach((item, idx) => {
+          total += item.price;
           const div = document.createElement("div");
           div.className = "data-item";
           div.innerHTML = `
           <p><strong>${item.name}</strong></p>
+          <p>Size: ${item.size}</p>
+          <p>Condition: ${item.condition}</p>
           <p>Price: Ksh ${item.price}</p>
           <button class="btn btn-small" onclick="removeFromCart(${idx})">Remove</button>
         `;
           container.appendChild(div);
         });
+
+        // Add total
+        const totalDiv = document.createElement("div");
+        totalDiv.className = "data-item";
+        totalDiv.style.fontWeight = "bold";
+        totalDiv.style.fontSize = "1.2em";
+        totalDiv.innerHTML = `<p>Total: Ksh ${total}</p>`;
+        container.appendChild(totalDiv);
       });
 
       function removeFromCart(idx) {
