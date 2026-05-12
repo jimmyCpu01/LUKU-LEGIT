@@ -740,12 +740,15 @@ footer {
 /* Hero Section */
 .hero {
   text-align: center;
-  padding: 3rem 2rem;
+  padding: 5rem 2rem;
   background: linear-gradient(
     135deg,
-    rgba(26, 26, 26, 0.9) 0%,
-    rgba(0, 0, 0, 0.8) 100%
+    rgba(26, 26, 26, 0.88) 0%,
+    rgba(0, 0, 0, 0.82) 100%
   );
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
   margin: 2rem auto;
   border-radius: 20px;
   border: 2px solid var(--accent);
@@ -755,6 +758,9 @@ footer {
   box-shadow: var(--luxury-shadow);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
+  perspective: 1200px;
+  transform-style: preserve-3d;
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .hero::before {
@@ -774,7 +780,7 @@ footer {
 
 .hero h1 {
   font-size: 4rem;
-  margin-bottom: 1.5rem;
+  margin: 0 auto 1.5rem;
   color: var(--text-main);
   font-weight: 900;
   letter-spacing: 3px;
@@ -782,6 +788,17 @@ footer {
   z-index: 1;
   animation: fadeInDown 1s ease-out;
   text-shadow: 0 0 30px rgba(255, 215, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  transform: translateZ(50px) rotateX(0deg);
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.hero:hover h1 {
+  transform: translateZ(80px) rotateX(8deg);
 }
 
 .hero h1 span {
@@ -792,19 +809,29 @@ footer {
   letter-spacing: 4px;
   margin-top: 1rem;
   text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+  transform: translateZ(30px);
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.hero:hover h1 span {
+  transform: translateZ(60px) rotateY(-5deg);
 }
 
 .hero p {
   font-size: 1.4rem;
-  margin-bottom: 3rem;
+  margin: 0 auto 3rem;
   color: var(--text-dim);
   position: relative;
   z-index: 1;
   font-weight: 500;
   max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
   line-height: 1.7;
+  transform: translateZ(40px);
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.hero:hover p {
+  transform: translateZ(70px) rotateX(-3deg);
 }
 
 .hero .btn {
@@ -813,54 +840,206 @@ footer {
   font-size: 1.2rem;
   padding: 1.2rem 3rem;
   box-shadow: 0 10px 40px rgba(212, 175, 55, 0.3);
+  transform: translateZ(50px);
+  transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  cursor: pointer;
+}
+
+.hero .btn:hover {
+  transform: translateZ(80px) rotateY(8deg) translateY(-5px);
+  box-shadow: 0 20px 60px rgba(212, 175, 55, 0.5);
 }
 
 body[data-page="index"] .hero {
-  background: linear-gradient(135deg, rgba(255, 215, 0, 0.16), rgba(8, 12, 30, 0.96));
+  background-image: url("../img/index-bg.jpg");
+  background-color: rgba(8, 12, 30, 0.88);
+  filter: brightness(0.95);
+}
+
+body[data-page="index"] .hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.16), rgba(8, 12, 30, 0.88));
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  z-index: -1;
 }
 
 body[data-page="shop"] .hero {
-  background: linear-gradient(135deg, rgba(37, 214, 255, 0.18), rgba(3, 13, 36, 0.95));
+  background-image: url("../img/shop-bg.jpg");
+  background-color: rgba(3, 13, 36, 0.88);
+  filter: brightness(0.92);
+}
+
+body[data-page="shop"] .hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(37, 214, 255, 0.18), rgba(3, 13, 36, 0.88));
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  z-index: -1;
 }
 
 body[data-page="kids"] .hero {
-  background: linear-gradient(135deg, rgba(194, 124, 255, 0.2), rgba(15, 16, 50, 0.92));
+  background-image: url("../img/kids-bg.jpg");
+  background-color: rgba(15, 16, 50, 0.88);
+  filter: brightness(0.90);
+}
+
+body[data-page="kids"] .hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(194, 124, 255, 0.2), rgba(15, 16, 50, 0.88));
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  z-index: -1;
 }
 
 body[data-page="ladies"] .hero {
-  background: linear-gradient(135deg, rgba(255, 112, 231, 0.18), rgba(21, 18, 40, 0.92));
+  background-image: url("../img/ladies-bg.jpg");
+  background-color: rgba(21, 18, 40, 0.88);
+  filter: brightness(0.91);
+}
+
+body[data-page="ladies"] .hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255, 112, 231, 0.18), rgba(21, 18, 40, 0.88));
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  z-index: -1;
 }
 
 body[data-page="cart"] .hero {
-  background: linear-gradient(135deg, rgba(255, 215, 0, 0.18), rgba(0, 17, 25, 0.93));
+  background-image: url("../img/cart-bg.jpg");
+  background-color: rgba(0, 17, 25, 0.88);
+  filter: brightness(0.93);
+}
+
+body[data-page="cart"] .hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.18), rgba(0, 17, 25, 0.88));
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  z-index: -1;
 }
 
 body[data-page="payment"] .hero {
-  background: linear-gradient(135deg, rgba(255, 215, 0, 0.2), rgba(18, 35, 74, 0.95));
+  background-image: url("../img/payment-bg.jpg");
+  background-color: rgba(18, 35, 74, 0.88);
+  filter: brightness(0.94);
+}
+
+body[data-page="payment"] .hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.2), rgba(18, 35, 74, 0.88));
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  z-index: -1;
 }
 
 body[data-page="order"] .hero {
-  background: linear-gradient(135deg, rgba(212, 175, 55, 0.2), rgba(6, 12, 33, 0.94));
+  background-image: url("../img/order-bg.jpg");
+  background-color: rgba(6, 12, 33, 0.88);
+  filter: brightness(0.92);
+}
+
+body[data-page="order"] .hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.2), rgba(6, 12, 33, 0.88));
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  z-index: -1;
 }
 
 body[data-page="contact"] .hero {
-  background: linear-gradient(135deg, rgba(37, 214, 255, 0.18), rgba(7, 10, 30, 0.94));
+  background-image: url("../img/contact-bg.jpg");
+  background-color: rgba(7, 10, 30, 0.88);
+  filter: brightness(0.91);
+}
+
+body[data-page="contact"] .hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(37, 214, 255, 0.18), rgba(7, 10, 30, 0.88));
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  z-index: -1;
 }
 
 body[data-page="chat"] .hero {
-  background: linear-gradient(135deg, rgba(145, 232, 255, 0.16), rgba(6, 15, 35, 0.95));
+  background-image: url("../img/chat-bg.jpg");
+  background-color: rgba(6, 15, 35, 0.88);
+  filter: brightness(0.90);
+}
+
+body[data-page="chat"] .hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(145, 232, 255, 0.16), rgba(6, 15, 35, 0.88));
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  z-index: -1;
 }
 
 body[data-page="reviews"] .hero {
-  background: linear-gradient(135deg, rgba(255, 215, 0, 0.15), rgba(25, 12, 30, 0.93));
+  background-image: url("../img/reviews-bg.jpg");
+  background-color: rgba(25, 12, 30, 0.88);
+  filter: brightness(0.92);
+}
+
+body[data-page="reviews"] .hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.15), rgba(25, 12, 30, 0.88));
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  z-index: -1;
 }
 
 body[data-page="admin"] .hero {
-  background: linear-gradient(135deg, rgba(255, 215, 0, 0.16), rgba(16, 8, 24, 0.96));
+  background-image: url("../img/admin-bg.jpg");
+  background-color: rgba(16, 8, 24, 0.88);
+  filter: brightness(0.93);
+}
+
+body[data-page="admin"] .hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.16), rgba(16, 8, 24, 0.88));
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  z-index: -1;
 }
 
 body[data-page="admin-login"] .hero {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.18), rgba(12, 12, 25, 0.94));
+  background-image: url("../img/admin-login-bg.jpg");
+  background-color: rgba(12, 12, 25, 0.88);
+  filter: brightness(0.89);
+}
+
+body[data-page="admin-login"] .hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.18), rgba(12, 12, 25, 0.88));
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  z-index: -1;
 }
 
 .hero::before {
@@ -880,13 +1059,24 @@ body[data-page="admin-login"] .hero {
 
 .hero h1 {
   font-size: 3.5rem;
-  margin-bottom: 1rem;
+  margin: 0 auto 1rem;
   color: var(--text-main);
   font-weight: 900;
   letter-spacing: 2px;
   position: relative;
   z-index: 1;
   animation: fadeInUp 0.8s ease-out;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  transform: translateZ(50px) rotateX(0deg);
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.hero:hover h1 {
+  transform: translateZ(80px) rotateX(8deg);
 }
 
 .hero h1 span {
@@ -896,15 +1086,27 @@ body[data-page="admin-login"] .hero {
   text-transform: uppercase;
   letter-spacing: 3px;
   margin-top: 0.5rem;
+  transform: translateZ(30px);
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.hero:hover h1 span {
+  transform: translateZ(60px) rotateY(-5deg);
 }
 
 .hero p {
   font-size: 1.3rem;
-  margin-bottom: 2rem;
+  margin: 0 auto 2rem;
   color: var(--text-dim);
   position: relative;
   z-index: 1;
   font-weight: 500;
+  transform: translateZ(40px);
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.hero:hover p {
+  transform: translateZ(70px) rotateX(-3deg);
 }
 
 .hero .btn {
@@ -912,6 +1114,14 @@ body[data-page="admin-login"] .hero {
   z-index: 1;
   font-size: 1.05rem;
   padding: 1rem 2.5rem;
+  transform: translateZ(50px);
+  transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  cursor: pointer;
+}
+
+.hero:hover .btn {
+  transform: translateZ(80px) rotateY(8deg) translateY(-5px);
+  box-shadow: 0 20px 60px rgba(212, 175, 55, 0.5);
 }
 
 /* Products Section */
