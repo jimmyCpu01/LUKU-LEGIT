@@ -288,6 +288,7 @@ body[data-page="admin-login"] {
 
 .hero {
   padding: 5.5rem 2rem 4rem;
+  text-align: center;
 }
 
 .hero::before,
@@ -812,6 +813,54 @@ footer {
   font-size: 1.2rem;
   padding: 1.2rem 3rem;
   box-shadow: 0 10px 40px rgba(212, 175, 55, 0.3);
+}
+
+body[data-page="index"] .hero {
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.16), rgba(8, 12, 30, 0.96));
+}
+
+body[data-page="shop"] .hero {
+  background: linear-gradient(135deg, rgba(37, 214, 255, 0.18), rgba(3, 13, 36, 0.95));
+}
+
+body[data-page="kids"] .hero {
+  background: linear-gradient(135deg, rgba(194, 124, 255, 0.2), rgba(15, 16, 50, 0.92));
+}
+
+body[data-page="ladies"] .hero {
+  background: linear-gradient(135deg, rgba(255, 112, 231, 0.18), rgba(21, 18, 40, 0.92));
+}
+
+body[data-page="cart"] .hero {
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.18), rgba(0, 17, 25, 0.93));
+}
+
+body[data-page="payment"] .hero {
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.2), rgba(18, 35, 74, 0.95));
+}
+
+body[data-page="order"] .hero {
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.2), rgba(6, 12, 33, 0.94));
+}
+
+body[data-page="contact"] .hero {
+  background: linear-gradient(135deg, rgba(37, 214, 255, 0.18), rgba(7, 10, 30, 0.94));
+}
+
+body[data-page="chat"] .hero {
+  background: linear-gradient(135deg, rgba(145, 232, 255, 0.16), rgba(6, 15, 35, 0.95));
+}
+
+body[data-page="reviews"] .hero {
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.15), rgba(25, 12, 30, 0.93));
+}
+
+body[data-page="admin"] .hero {
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.16), rgba(16, 8, 24, 0.96));
+}
+
+body[data-page="admin-login"] .hero {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.18), rgba(12, 12, 25, 0.94));
 }
 
 .hero::before {
