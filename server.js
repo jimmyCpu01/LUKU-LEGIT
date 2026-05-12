@@ -71,12 +71,10 @@ app.get("/chat.html", (req, res) => {
 app.post("/api/chat-message", (req, res) => {
   const { sender, tel, email, content, image, timestamp, type } = req.body;
   if (!sender || !content) {
-    return res
-      .status(400)
-      .json({
-        success: false,
-        message: "Name and message content are required.",
-      });
+    return res.status(400).json({
+      success: false,
+      message: "Name and message content are required.",
+    });
   }
 
   const messages = readChatMessages();
@@ -126,6 +124,6 @@ app.use((req, res) => {
 
 // Start server
 app.listen(PORT, () => {
-  console.log(`🚀 Server running at http://localhost:${PORT}`);
+  console.log(`Server running at http://localhost:${PORT}`);
   console.log(`📁 Serving files from: ${__dirname}`);
 });

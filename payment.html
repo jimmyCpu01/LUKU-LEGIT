@@ -46,18 +46,13 @@
         "
       >
         <div
-          style="
-            background: var(--card-bg);
-            padding: 2rem;
-            border-radius: 16px;
-            border: 2px solid var(--border);
-            transition: var(--transition);
-          "
+          class="panel-card"
+          style="padding: 2rem; transition: var(--transition)"
           onmouseover="this.style.borderColor = 'var(--accent)'"
           onmouseout="this.style.borderColor = 'var(--border)'"
         >
           <h3 style="color: var(--accent); margin-bottom: 1rem">
-            💸 Pay with M-Pesa
+            Pay with M-Pesa
           </h3>
           <div
             id="mpesa-product-details"
@@ -77,11 +72,6 @@
               font-weight: 700;
               font-size: 1.05rem;
               padding: 1.1rem;
-              background: linear-gradient(
-                135deg,
-                rgba(57, 255, 20, 0.8),
-                rgba(57, 255, 20, 0.6)
-              );
               border: 2px solid var(--accent);
               box-shadow: 0 6px 20px rgba(57, 255, 20, 0.25);
               transition: all 0.3s ease;
@@ -96,7 +86,7 @@
             "
             onclick="handleMpesa('send')"
           >
-            📤 Send Money
+            Send Money
           </button>
           <button
             class="btn"
@@ -106,11 +96,6 @@
               font-weight: 700;
               font-size: 1.05rem;
               padding: 1.1rem;
-              background: linear-gradient(
-                135deg,
-                rgba(57, 255, 20, 0.6),
-                rgba(57, 255, 20, 0.4)
-              );
               border: 2px solid rgba(57, 255, 20, 0.7);
               box-shadow: 0 6px 20px rgba(57, 255, 20, 0.15);
               transition: all 0.3s ease;
@@ -125,7 +110,7 @@
             "
             onclick="handleMpesa('till')"
           >
-            🏪 Pay to Till 6699212
+            Pay to Till 6699212
           </button>
           <p
             style="
@@ -141,18 +126,13 @@
         </div>
 
         <div
-          style="
-            background: var(--card-bg);
-            padding: 2rem;
-            border-radius: 16px;
-            border: 2px solid var(--border);
-            transition: var(--transition);
-          "
+          class="panel-card"
+          style="padding: 2rem; transition: var(--transition)"
           onmouseover="this.style.borderColor = 'var(--accent)'"
           onmouseout="this.style.borderColor = 'var(--border)'"
         >
           <h3 style="color: var(--accent); margin-bottom: 1rem">
-            🌐 Pay with PayPal
+            Pay with PayPal
           </h3>
           <div
             id="paypal-product-details"
@@ -169,7 +149,7 @@
             style="width: 100%; margin-bottom: 1rem"
             onclick="checkRate()"
           >
-            🔍 Check USD Rate
+            Check USD Rate
           </button>
           <input
             type="number"
@@ -186,10 +166,10 @@
             "
           />
           <a
-            href="https://www.paypal.com"
+            href="https://www.paypal.com/ncp/payment/WGMVTTAF6NLAE"
             class="btn"
             style="text-decoration: none; display: block; text-align: center"
-            >💳 Pay with PayPal</a
+            >Pay with PayPal</a
           >
           <p
             style="
@@ -199,23 +179,17 @@
               line-height: 1.6;
             "
           >
-            <strong>⚠️ Note:</strong> Rates change daily. Check current USD rate
-            to pay the correct amount.
+            <strong>Note:</strong> Rates change daily. Check current USD rate to
+            pay the correct amount.
           </p>
         </div>
 
         <div
+          class="panel-card"
           style="
-            background: linear-gradient(
-              135deg,
-              rgba(57, 255, 20, 0.05),
-              rgba(57, 255, 20, 0.02)
-            );
             padding: 2rem;
-            border-radius: 16px;
             border: 2px solid var(--accent);
             transition: var(--transition);
-            box-shadow: 0 8px 20px rgba(57, 255, 20, 0.1);
           "
           onmouseover="
             this.style.boxShadow = '0 12px 30px rgba(57, 255, 20, 0.2)'
@@ -231,7 +205,7 @@
               font-size: 1.3rem;
             "
           >
-            🏦 Bank Transfer
+            Bank Transfer
           </h3>
           <p
             style="
@@ -247,7 +221,7 @@
             style="width: 100%; margin-bottom: 1.5rem; font-weight: 700"
             onclick="copyPaybillDetails()"
           >
-            📋 Copy Bank Details
+            Copy Bank Details
           </button>
           <div
             style="
@@ -339,8 +313,8 @@
               line-height: 1.6;
             "
           >
-            💡 <strong>Tip:</strong> After payment, proceed to the Order Form
-            and upload your payment proof for verification.
+            <strong>Tip:</strong> After payment, proceed to the Order Form and
+            upload your payment proof for verification.
           </p>
         </div>
       </div>
@@ -365,7 +339,7 @@
           href="order.html"
           class="btn"
           style="padding: 1rem 2.5rem; font-size: 1.05rem"
-          >➜ Proceed to Order Form</a
+          >Proceed to Order Form</a
         >
       </div>
     </section>
@@ -439,7 +413,9 @@
 
       function handleMpesa(type) {
         const cart = JSON.parse(localStorage.getItem("cart") || "[]");
-        const product = JSON.parse(localStorage.getItem("selectedProduct") || "{}");
+        const product = JSON.parse(
+          localStorage.getItem("selectedProduct") || "{}",
+        );
 
         let items = [];
         let total = 0;
@@ -457,7 +433,7 @@
           return;
         }
 
-        let productNames = items.map(item => item.name).join(", ");
+        let productNames = items.map((item) => item.name).join(", ");
 
         let instructions = "";
         if (type === "send") {
@@ -478,13 +454,13 @@
               <li>Confirm the transaction</li>
             </ol>
 
-            <p style="margin-top: 1.5rem; color: #ff6b6b;"><strong>✅ Final Step:</strong> Take a screenshot of the confirmation and proceed to the Order Page.</p>
+            <p style="margin-top: 1.5rem; color: #ff6b6b;"><strong>Final Step:</strong> Take a screenshot of the confirmation and proceed to the Order Page.</p>
           </div>
         `;
         } else if (type === "till") {
           instructions = `
           <div style="text-align: left; line-height: 1.8; font-family: Arial, sans-serif;">
-            <h3 style="color: #00897b; margin-bottom: 1rem;">🏪 M-Pesa Pay to Till Instructions</h3>
+            <h3 style="color: #00897b; margin-bottom: 1rem;">M-Pesa Pay to Till Instructions</h3>
             <p style="margin-bottom: 1rem;"><strong>Products:</strong> ${productNames}</p>
             <p style="margin-bottom: 1rem;"><strong>Total Amount to Pay:</strong> Ksh ${total}</p>
             <p style="margin-bottom: 1rem;"><strong>Till Number:</strong> 6699212</p>
@@ -500,7 +476,7 @@
               <li>Confirm the transaction</li>
             </ol>
 
-            <p style="margin-top: 1.5rem; color: #ff6b6b;"><strong>✅ Final Step:</strong> Take a screenshot of the confirmation and proceed to the Order Page.</p>
+            <p style="margin-top: 1.5rem; color: #ff6b6b;"><strong>Final Step:</strong> Take a screenshot of the confirmation and proceed to the Order Page.</p>
           </div>
         `;
         }
@@ -593,7 +569,7 @@
         const bankDetails = "Paybill: 400200\nAccount: 01109146916001";
         navigator.clipboard.writeText(bankDetails);
         alert(
-          "✅ Bank details copied successfully!\n\nPaybill: 400200\nAccount: 01109146916001\n\nProceed to your banking app to complete the transfer. After payment, upload your proof in the Order Form.",
+          "Bank details copied successfully!\n\nPaybill: 400200\nAccount: 01109146916001\n\nProceed to your banking app to complete the transfer. After payment, upload your proof in the Order Form.",
         );
       }
     </script>

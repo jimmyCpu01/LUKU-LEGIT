@@ -498,8 +498,8 @@ async function loadChats() {
       const div = document.createElement("div");
       div.className = "data-item";
       let html = `<p><strong>${chat.sender}</strong></p>`;
-      if (chat.tel) html += `<p>📱 ${chat.tel}</p>`;
-      if (chat.email) html += `<p>📧 ${chat.email}</p>`;
+      if (chat.tel) html += `<p><strong>Phone:</strong> ${chat.tel}</p>`;
+      if (chat.email) html += `<p><strong>Email:</strong> ${chat.email}</p>`;
       html += `<p>${chat.content}</p>`;
       if (chat.image) {
         html += `<img src="${chat.image}" alt="Attached image" style="max-width: 200px; max-height: 200px; border-radius: 8px; margin-top: 0.5rem;">`;
@@ -557,7 +557,27 @@ window.addEventListener("DOMContentLoaded", function () {
   initAdminLoginPage();
   initPageAdminButton();
   initImageModal();
+  initInteractive3DEffects();
 });
+
+function initInteractive3DEffects() {
+  const cards = document.querySelectorAll(
+    ".shoe-card, .panel-card, .contact-card, .data-item, .recommendation-item",
+  );
+  cards.forEach((card) => {
+    card.addEventListener("pointermove", function (event) {
+      const rect = card.getBoundingClientRect();
+      const x = event.clientX - rect.left - rect.width / 2;
+      const y = event.clientY - rect.top - rect.height / 2;
+      const rotateX = (y / rect.height) * 10;
+      const rotateY = (x / rect.width) * -10;
+      card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(0)`;
+    });
+    card.addEventListener("pointerleave", function () {
+      card.style.transform = "";
+    });
+  });
+}
 
 // ==================== IMAGE MODAL FUNCTIONALITY ====================
 function initImageModal() {
