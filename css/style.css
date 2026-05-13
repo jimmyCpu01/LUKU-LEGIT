@@ -273,11 +273,10 @@ body[data-page="admin-login"] {
 .modal-size,
 .recommendation-item,
 #order-summary {
-  background: rgba(255, 255, 255, 0.05) !important;
+  background: #1a1a1a !important;
   border: 1px solid rgba(255, 255, 255, 0.12) !important;
   border-radius: 28px !important;
   box-shadow: 0 45px 120px rgba(0, 0, 0, 0.45) !important;
-  backdrop-filter: blur(18px);
   transition:
     transform 0.35s ease,
     box-shadow 0.35s ease,
@@ -761,7 +760,7 @@ body[data-page="index"] .hero::before {
   position: absolute;
   inset: 0;
   background: url("../img/index-bg.jpg") center/cover no-repeat;
-  filter: blur(15px);
+  filter: blur(8px);
   z-index: -2;
 }
 
@@ -783,7 +782,7 @@ body[data-page="shop"] .hero::before {
   position: absolute;
   inset: 0;
   background: url("../img/shop-bg.jpg") center/cover no-repeat;
-  filter: blur(15px);
+  filter: blur(8px);
   z-index: -2;
 }
 
@@ -805,7 +804,7 @@ body[data-page="kids"] .hero::before {
   position: absolute;
   inset: 0;
   background: url("../img/kids-bg.jpg") center/cover no-repeat;
-  filter: blur(15px);
+  filter: blur(8px);
   z-index: -2;
 }
 
@@ -827,7 +826,7 @@ body[data-page="ladies"] .hero::before {
   position: absolute;
   inset: 0;
   background: url("../img/ladies-bg.jpg") center/cover no-repeat;
-  filter: blur(15px);
+  filter: blur(8px);
   z-index: -2;
 }
 
@@ -849,7 +848,7 @@ body[data-page="cart"] .hero::before {
   position: absolute;
   inset: 0;
   background: url("../img/cart-bg.jpg") center/cover no-repeat;
-  filter: blur(15px);
+  filter: blur(8px);
   z-index: -2;
 }
 
@@ -871,7 +870,7 @@ body[data-page="payment"] .hero::before {
   position: absolute;
   inset: 0;
   background: url("../img/payment-bg.jpg") center/cover no-repeat;
-  filter: blur(15px);
+  filter: blur(8px);
   z-index: -2;
 }
 
@@ -893,7 +892,7 @@ body[data-page="order"] .hero::before {
   position: absolute;
   inset: 0;
   background: url("../img/order-bg.jpg") center/cover no-repeat;
-  filter: blur(15px);
+  filter: blur(8px);
   z-index: -2;
 }
 
@@ -915,7 +914,7 @@ body[data-page="contact"] .hero::before {
   position: absolute;
   inset: 0;
   background: url("../img/contact-bg.jpg") center/cover no-repeat;
-  filter: blur(15px);
+  filter: blur(8px);
   z-index: -2;
 }
 
@@ -937,7 +936,7 @@ body[data-page="chat"] .hero::before {
   position: absolute;
   inset: 0;
   background: url("../img/chat-bg.jpg") center/cover no-repeat;
-  filter: blur(15px);
+  filter: blur(8px);
   z-index: -2;
 }
 
@@ -959,7 +958,7 @@ body[data-page="reviews"] .hero::before {
   position: absolute;
   inset: 0;
   background: url("../img/reviews-bg.jpg") center/cover no-repeat;
-  filter: blur(15px);
+  filter: blur(8px);
   z-index: -2;
 }
 
