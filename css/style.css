@@ -763,7 +763,7 @@ body[data-page="index"] .hero::before {
   position: absolute;
   inset: 0;
   background: url("../img/index-bg.jpg") center/cover no-repeat;
-  filter: blur(6px);
+  filter: blur(5px);
   z-index: -2;
   animation: heroPan 12s ease-in-out infinite;
 }
@@ -786,7 +786,7 @@ body[data-page="shop"] .hero::before {
   position: absolute;
   inset: 0;
   background: url("../img/shop-bg.jpg") center/cover no-repeat;
-  filter: blur(6px);
+  filter: blur(5px);
   z-index: -2;
   animation: heroZoom 14s ease-in-out infinite;
 }
@@ -809,7 +809,7 @@ body[data-page="kids"] .hero::before {
   position: absolute;
   inset: 0;
   background: url("../img/kids-bg.jpg") center/cover no-repeat;
-  filter: blur(6px);
+  filter: blur(5px);
   z-index: -2;
   animation: heroSlide 10s ease-in-out infinite;
 }
@@ -832,7 +832,7 @@ body[data-page="ladies"] .hero::before {
   position: absolute;
   inset: 0;
   background: url("../img/ladies-bg.jpg") center/cover no-repeat;
-  filter: blur(6px);
+  filter: blur(5px);
   z-index: -2;
   animation: heroPan 12s ease-in-out infinite;
 }
@@ -855,7 +855,7 @@ body[data-page="cart"] .hero::before {
   position: absolute;
   inset: 0;
   background: url("../img/cart-bg.jpg") center/cover no-repeat;
-  filter: blur(6px);
+  filter: blur(5px);
   z-index: -2;
   animation: heroZoom 14s ease-in-out infinite;
 }
@@ -878,7 +878,7 @@ body[data-page="payment"] .hero::before {
   position: absolute;
   inset: 0;
   background: url("../img/payment-bg.jpg") center/cover no-repeat;
-  filter: blur(8px);
+  filter: blur(5px);
   z-index: -2;
   animation: heroSlide 10s ease-in-out infinite;
 }
@@ -901,7 +901,7 @@ body[data-page="order"] .hero::before {
   position: absolute;
   inset: 0;
   background: url("../img/order-bg.jpg") center/cover no-repeat;
-  filter: blur(8px);
+  filter: blur(5px);
   z-index: -2;
   animation: heroPan 12s ease-in-out infinite;
 }
@@ -924,7 +924,7 @@ body[data-page="contact"] .hero::before {
   position: absolute;
   inset: 0;
   background: url("../img/contact-bg.jpg") center/cover no-repeat;
-  filter: blur(8px);
+  filter: blur(5px);
   z-index: -2;
   animation: heroZoom 14s ease-in-out infinite;
 }
@@ -947,7 +947,7 @@ body[data-page="chat"] .hero::before {
   position: absolute;
   inset: 0;
   background: url("../img/chat-bg.jpg") center/cover no-repeat;
-  filter: blur(8px);
+  filter: blur(5px);
   z-index: -2;
   animation: heroSlide 10s ease-in-out infinite;
 }
@@ -970,7 +970,7 @@ body[data-page="reviews"] .hero::before {
   position: absolute;
   inset: 0;
   background: url("../img/reviews-bg.jpg") center/cover no-repeat;
-  filter: blur(8px);
+  filter: blur(5px);
   z-index: -2;
   animation: heroPan 12s ease-in-out infinite;
 }
@@ -2367,4 +2367,328 @@ select:focus {
   .recommendation-list {
     grid-template-columns: 1fr;
   }
+}
+
+/* ==================== 3D EFFECTS & INTERACTIVITY ==================== */
+
+/* 3D Perspective Container */
+.products,
+.hero,
+body {
+  perspective: 1200px;
+}
+
+/* Enhanced 3D Card Effects */
+.shoe-card {
+  transform-style: preserve-3d;
+  transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+}
+
+.shoe-card:hover {
+  transform: rotateX(8deg) rotateY(12deg) rotateZ(0deg) translateZ(30px) translateY(-20px);
+}
+
+.shoe-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 30% 30%, rgba(255, 215, 0, 0.1), transparent);
+  border-radius: 20px;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+  pointer-events: none;
+}
+
+.shoe-card:hover::after {
+  opacity: 1;
+}
+
+/* 3D Button Effects */
+.btn {
+  transform: translateZ(0);
+  transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+  position: relative;
+}
+
+.btn::before {
+  transform: translateZ(-20px);
+}
+
+.btn:hover {
+  transform: translateZ(20px) translateY(-4px);
+  box-shadow: 0 30px 60px rgba(212, 175, 55, 0.4),
+              0 0 40px rgba(255, 215, 0, 0.2);
+}
+
+.btn:active {
+  transform: translateZ(5px);
+}
+
+/* 3D Navigation Links */
+.nav-links a,
+.nav-links button {
+  transform-style: preserve-3d;
+  transform: translateZ(0);
+  perspective: 1000px;
+}
+
+.nav-links a:hover,
+.nav-links button:hover {
+  transform: translateZ(15px) rotateY(-5deg);
+  perspective: 1000px;
+}
+
+/* 3D Text Effects */
+.hero h1 {
+  transform-style: preserve-3d;
+  transform: translateZ(0);
+  letter-spacing: 3px;
+}
+
+.hero h1:hover {
+  transform: translateZ(30px) rotateX(5deg);
+}
+
+/* Parallax Scroll Effect */
+@keyframes parallaxShift {
+  0% {
+    transform: translateZ(-50px) rotateX(-3deg);
+  }
+  50% {
+    transform: translateZ(0px) rotateX(0deg);
+  }
+  100% {
+    transform: translateZ(-50px) rotateX(-3deg);
+  }
+}
+
+.hero::before {
+  animation: parallaxShift 8s ease-in-out infinite;
+}
+
+/* 3D Depth Animation */
+@keyframes depth3D {
+  0% {
+    transform: translateZ(-20px) scale(0.98);
+  }
+  50% {
+    transform: translateZ(20px) scale(1.02);
+  }
+  100% {
+    transform: translateZ(-20px) scale(0.98);
+  }
+}
+
+.shoe-card {
+  animation: depth3D 6s ease-in-out infinite;
+}
+
+/* Interactive Hover Lift */
+.product-grid .shoe-card:hover {
+  animation: none;
+  transform: rotateX(10deg) rotateY(15deg) rotateZ(2deg) translateZ(40px) translateY(-30px);
+}
+
+/* 3D Panel Cards */
+.panel-card,
+.contact-card,
+.data-item,
+.recommendation-item {
+  transform-style: preserve-3d;
+  transform: rotateX(0) rotateY(0);
+  transition: all 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.panel-card:hover,
+.contact-card:hover,
+.data-item:hover,
+.recommendation-item:hover {
+  transform: rotateX(8deg) rotateY(10deg) translateZ(25px) translateY(-15px);
+}
+
+/* Mouse Tracking Classes (for JS) */
+.mouse-track {
+  transform-style: preserve-3d;
+}
+
+.mouse-track:hover {
+  will-change: transform;
+}
+
+/* Glow Effect on Hover */
+.glow-on-hover {
+  position: relative;
+  overflow: hidden;
+}
+
+.glow-on-hover::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255, 215, 0, 0.3), transparent 70%);
+  opacity: 0;
+  transition: opacity 0.6s ease;
+  pointer-events: none;
+}
+
+.glow-on-hover:hover::before {
+  opacity: 1;
+  animation: glowPulse 2s ease-in-out infinite;
+}
+
+/* Glow Animation */
+@keyframes glowPulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+}
+
+/* Interactive Tilt Effect Container */
+.tilt-container {
+  perspective: 1000px;
+  transform-style: preserve-3d;
+}
+
+.tilt-container:hover > * {
+  transform: rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg)) translateZ(20px);
+  transition: transform 0.3s ease-out;
+}
+
+/* Enhanced Shadow on Hover */
+.shadow-lift {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  transition: box-shadow 0.4s ease;
+}
+
+.shadow-lift:hover {
+  box-shadow: 0 30px 80px rgba(212, 175, 55, 0.3),
+              0 0 50px rgba(255, 215, 0, 0.15),
+              inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+/* Shimmer Effect */
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+.shimmer-effect {
+  background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.2), transparent);
+  background-size: 1000px 100%;
+  animation: shimmer 3s infinite;
+}
+
+.shoe-card:hover .shimmer-effect {
+  animation: shimmer 2s infinite;
+}
+
+/* Floating Animation */
+@keyframes float3D {
+  0%, 100% {
+    transform: translateY(0px) translateZ(0px);
+  }
+  33% {
+    transform: translateY(-10px) translateZ(10px);
+  }
+  66% {
+    transform: translateY(-5px) translateZ(-5px);
+  }
+}
+
+.float-3d {
+  animation: float3D 4s ease-in-out infinite;
+}
+
+/* Click Ripple Effect */
+.ripple {
+  position: relative;
+  overflow: hidden;
+}
+
+.ripple::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 5px;
+  height: 5px;
+  background: rgba(255, 215, 0, 0.5);
+  border-radius: 100%;
+  transform: scale(1) translate(-50%, -50%);
+  transform-origin: center;
+  opacity: 1;
+  pointer-events: none;
+}
+
+/* Stagger Animation for Multiple Items */
+@keyframes staggerIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px) rotateX(-20deg);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) rotateX(0deg);
+  }
+}
+
+.product-grid .shoe-card {
+  animation: staggerIn 0.6s ease-out;
+}
+
+.product-grid .shoe-card:nth-child(2) {
+  animation-delay: 0.1s;
+}
+
+.product-grid .shoe-card:nth-child(3) {
+  animation-delay: 0.2s;
+}
+
+.product-grid .shoe-card:nth-child(4) {
+  animation-delay: 0.3s;
+}
+
+.product-grid .shoe-card:nth-child(n+5) {
+  animation-delay: 0.4s;
+}
+
+/* Active/Pressed State */
+.btn:active::before {
+  left: 0;
+  opacity: 1;
+  width: 100%;
+}
+
+/* Focus States for Accessibility */
+.btn:focus,
+.nav-links a:focus,
+.nav-links button:focus {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+  transform: translateZ(15px);
+}
+
+/* Smooth 3D Transitions */
+* {
+  --transition-3d: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1),
+                    box-shadow 0.5s ease,
+                    border-color 0.5s ease,
+                    background 0.5s ease;
+}
+
+.interactive-element {
+  transition: var(--transition-3d);
 }

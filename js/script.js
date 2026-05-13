@@ -765,6 +765,276 @@ function initImageModal() {
       modal.style.display = "none";
     }
   };
+}
+
+// ==================== 3D INTERACTIVE EFFECTS ==================== //
+
+// Mouse Tracking for 3D Tilt Effect
+class TiltEffect {
+  constructor(element, options = {}) {
+    this.element = element;
+    this.options = {
+      maxTilt: options.maxTilt || 20,
+      scale: options.scale || 1.05,
+      speed: options.speed || 0.3,
+    };
+    this.active = false;
+
+    this.onMouseEnter = this.onMouseEnter.bind(this);
+    this.onMouseMove = this.onMouseMove.bind(this);
+    this.onMouseLeave = this.onMouseLeave.bind(this);
+
+    this.init();
+  }
+
+  init() {
+    this.element.addEventListener("mouseenter", this.onMouseEnter);
+    this.element.addEventListener("mousemove", this.onMouseMove);
+    this.element.addEventListener("mouseleave", this.onMouseLeave);
+  }
+
+  onMouseEnter() {
+    this.active = true;
+  }
+
+  onMouseMove(e) {
+    if (!this.active) return;
+
+    const rect = this.element.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+
+    const rotateX = ((y - centerY) / centerY) * this.options.maxTilt;
+    const rotateY = ((centerX - x) / centerX) * this.options.maxTilt;
+
+    this.element.style.transform = `
+      perspective(1000px)
+      rotateX(${rotateX}deg)
+      rotateY(${rotateY}deg)
+      scale(${this.options.scale})
+      translateZ(30px)
+    `;
+  }
+
+  onMouseLeave() {
+    this.active = false;
+    this.element.style.transform = "perspective(1000px) rotateX(0) rotateY(0) scale(1) translateZ(0)";
+  }
+
+  destroy() {
+    this.element.removeEventListener("mouseenter", this.onMouseEnter);
+    this.element.removeEventListener("mousemove", this.onMouseMove);
+    this.element.removeEventListener("mouseleave", this.onMouseLeave);
+  }
+}
+
+// Initialize Tilt Effects on Product Cards
+function initTiltEffects() {
+  const cards = document.querySelectorAll(".shoe-card, .panel-card, .contact-card");
+  cards.forEach((card) => {
+    new TiltEffect(card, {
+      maxTilt: 15,
+      scale: 1.08,
+    });
+  });
+}
+
+// Parallax Scroll Effect
+class ParallaxEffect {
+  constructor(options = {}) {
+    this.options = {
+      speed: options.speed || 0.5,
+      selector: options.selector || ".hero::before",
+    };
+    this.init();
+  }
+
+  init() {
+    window.addEventListener("scroll", this.onScroll.bind(this), { passive: true });
+  }
+
+  onScroll() {
+    const scrolled = window.pageYOffset;
+    const elements = document.querySelectorAll("[data-parallax]");
+
+    elements.forEach((element) => {
+      const speed = element.dataset.parallax || this.options.speed;
+      element.style.transform = `translateY(${scrolled * speed}px) rotateX(${scrolled * 0.01}deg)`;
+    });
+  }
+}
+
+// Initialize Parallax
+function initParallax() {
+  new ParallaxEffect({ speed: 0.3 });
+}
+
+// Interactive Ripple Effect on Click
+function addRippleEffect() {
+  const buttons = document.querySelectorAll(".btn, .nav-links a, .nav-links button");
+
+  buttons.forEach((button) => {
+    button.addEventListener("click", function (e) {
+      const x = e.clientX - this.getBoundingClientRect().left;
+      const y = e.clientY - this.getBoundingClientRect().top;
+
+      const ripple = document.createElement("span");
+      ripple.style.left = x + "px";
+      ripple.style.top = y + "px";
+      ripple.style.position = "absolute";
+      ripple.style.width = "20px";
+      ripple.style.height = "20px";
+      ripple.style.background = "rgba(255, 255, 255, 0.6)";
+      ripple.style.borderRadius = "50%";
+      ripple.style.transform = "translate(-50%, -50%)";
+      ripple.style.pointerEvents = "none";
+      ripple.style.animation = "ripple-animation 0.6s ease-out";
+
+      this.style.position = "relative";
+      this.style.overflow = "hidden";
+      this.appendChild(ripple);
+
+      setTimeout(() => ripple.remove(), 600);
+    });
+  });
+
+  // Add ripple animation keyframes
+  if (!document.getElementById("ripple-style")) {
+    const style = document.createElement("style");
+    style.id = "ripple-style";
+    style.textContent = `
+      @keyframes ripple-animation {
+        to {
+          transform: translate(-50%, -50%) scale(4);
+          opacity: 0;
+        }
+      }
+    `;
+    document.head.appendChild(style);
+  }
+}
+
+// Smooth Scroll with 3D Enhancement
+function initSmoothScroll() {
+  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+    anchor.addEventListener("click", function (e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute("href"));
+      if (target) {
+        target.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+
+        // Add 3D pulse effect
+        target.style.animation = "pulse 0.6s ease-out";
+      }
+    });
+  });
+}
+
+// Dynamic CSS Custom Properties for Mouse Position
+function initMouseTrackingVars() {
+  document.addEventListener("mousemove", (e) => {
+    const x = (e.clientX / window.innerWidth) * 100;
+    const y = (e.clientY / window.innerHeight) * 100;
+
+    document.documentElement.style.setProperty("--mouse-x", `${x}%`);
+    document.documentElement.style.setProperty("--mouse-y", `${y}%`);
+  });
+}
+
+// Intersection Observer for Staggered Animations
+function initIntersectionAnimations() {
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.style.animation = "staggerIn 0.6s ease-out forwards";
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.1 }
+  );
+
+  document.querySelectorAll(".shoe-card, .panel-card").forEach((card) => {
+    observer.observe(card);
+  });
+}
+
+// Add Glow Effect on Interactive Elements
+function initGlowEffects() {
+  const glowElements = document.querySelectorAll(".btn, .nav-links a, .shoe-card, .panel-card");
+
+  glowElements.forEach((element) => {
+    element.classList.add("glow-on-hover");
+
+    element.addEventListener("mouseenter", function () {
+      this.style.boxShadow = `
+        0 0 30px rgba(255, 215, 0, 0.4),
+        0 0 60px rgba(212, 175, 55, 0.2),
+        inset 0 0 20px rgba(255, 215, 0, 0.1)
+      `;
+    });
+
+    element.addEventListener("mouseleave", function () {
+      this.style.boxShadow = "";
+    });
+  });
+}
+
+// Performance Optimization: Debounce Function
+function debounce(func, wait) {
+  let timeout;
+  return function executedFunction(...args) {
+    const later = () => {
+      clearTimeout(timeout);
+      func(...args);
+    };
+    clearTimeout(timeout);
+    timeout = setTimeout(later, wait);
+  };
+}
+
+// Initialize All Interactive Effects on Page Load
+function initializeAllInteractiveEffects() {
+  // Wait for DOM to be fully loaded
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", () => {
+      initTiltEffects();
+      initParallax();
+      addRippleEffect();
+      initSmoothScroll();
+      initMouseTrackingVars();
+      initIntersectionAnimations();
+      initGlowEffects();
+    });
+  } else {
+    // DOM is already loaded
+    initTiltEffects();
+    initParallax();
+    addRippleEffect();
+    initSmoothScroll();
+    initMouseTrackingVars();
+    initIntersectionAnimations();
+    initGlowEffects();
+  }
+}
+
+// Call initialization
+initializeAllInteractiveEffects();
+
+// Add support for touch devices (Mobile 3D effects)
+if (window.matchMedia("(pointer: coarse)").matches) {
+  // Touch device - use alternative animations
+  document.querySelectorAll(".shoe-card, .panel-card").forEach((card) => {
+    card.style.transform = "scale(1) translateZ(0)";
+  });
+}
 
   // Button actions
   addToCartBtn.onclick = function () {
