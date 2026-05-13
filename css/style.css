@@ -52,7 +52,7 @@ body::before {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  filter: blur(8px) brightness(0.55);
+  filter: blur(10px) brightness(0.55);
   opacity: 0.95;
   z-index: -2;
 }
@@ -67,51 +67,51 @@ body::after {
 
 /* Page-specific background images */
 body[data-page="index"] {
-  background-image: url("../img/index-bg.jpg");
+  background-image: url("../img/flats.avif");
 }
 
 body[data-page="shop"] {
-  background-image: url("../img/shop-bg.jpg");
+  background-image: url("../img/samba.avif");
 }
 
 body[data-page="ladies"] {
-  background-image: url("../img/ladies-bg.jpg");
+  background-image: url("../img/flats.avif");
 }
 
 body[data-page="kids"] {
-  background-image: url("../img/kids-bg.jpg");
+  background-image: url("../img/samba.avif");
 }
 
 body[data-page="payment"] {
-  background-image: url("../img/payment-bg.jpg");
+  background-image: url("../img/timber.avif");
 }
 
 body[data-page="order"] {
-  background-image: url("../img/order-bg.jpg");
+  background-image: url("../img/timber.avif");
 }
 
 body[data-page="reviews"] {
-  background-image: url("../img/reviews-bg.jpg");
+  background-image: url("../img/timber.avif");
 }
 
 body[data-page="chat"] {
-  background-image: url("../img/chat-bg.jpg");
+  background-image: url("../img/timber.avif");
 }
 
 body[data-page="contact"] {
-  background-image: url("../img/contact-bg.jpg");
+  background-image: url("../img/timber.avif");
 }
 
 body[data-page="cart"] {
-  background-image: url("../img/cart-bg.jpg");
+  background-image: url("../img/timber.avif");
 }
 
 body[data-page="admin"] {
-  background-image: url("../img/admin-bg.jpg");
+  background-image: url("../img/timber.avif");
 }
 
 body[data-page="admin-login"] {
-  background-image: url("../img/admin-login-bg.jpg");
+  background-image: url("../img/timber.avif");
 }
 
 /* Navigation */
@@ -851,7 +851,6 @@ footer {
 }
 
 body[data-page="index"] .hero {
-  background-image: url("../img/index-bg.jpg");
   background-color: rgba(8, 12, 30, 0.88);
   filter: brightness(0.95);
 }
@@ -860,14 +859,17 @@ body[data-page="index"] .hero::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, rgba(255, 215, 0, 0.16), rgba(8, 12, 30, 0.88));
+  background: linear-gradient(
+    135deg,
+    rgba(255, 215, 0, 0.16),
+    rgba(8, 12, 30, 0.88)
+  );
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
   z-index: -1;
 }
 
 body[data-page="shop"] .hero {
-  background-image: url("../img/shop-bg.jpg");
   background-color: rgba(3, 13, 36, 0.88);
   filter: brightness(0.92);
 }
@@ -876,30 +878,36 @@ body[data-page="shop"] .hero::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, rgba(37, 214, 255, 0.18), rgba(3, 13, 36, 0.88));
+  background: linear-gradient(
+    135deg,
+    rgba(37, 214, 255, 0.18),
+    rgba(3, 13, 36, 0.88)
+  );
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
   z-index: -1;
 }
 
 body[data-page="kids"] .hero {
-  background-image: url("../img/kids-bg.jpg");
   background-color: rgba(15, 16, 50, 0.88);
-  filter: brightness(0.90);
+  filter: brightness(0.9);
 }
 
 body[data-page="kids"] .hero::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, rgba(194, 124, 255, 0.2), rgba(15, 16, 50, 0.88));
+  background: linear-gradient(
+    135deg,
+    rgba(194, 124, 255, 0.2),
+    rgba(15, 16, 50, 0.88)
+  );
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
   z-index: -1;
 }
 
 body[data-page="ladies"] .hero {
-  background-image: url("../img/ladies-bg.jpg");
   background-color: rgba(21, 18, 40, 0.88);
   filter: brightness(0.91);
 }
@@ -908,14 +916,17 @@ body[data-page="ladies"] .hero::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, rgba(255, 112, 231, 0.18), rgba(21, 18, 40, 0.88));
+  background: linear-gradient(
+    135deg,
+    rgba(255, 112, 231, 0.18),
+    rgba(21, 18, 40, 0.88)
+  );
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
   z-index: -1;
 }
 
 body[data-page="cart"] .hero {
-  background-image: url("../img/cart-bg.jpg");
   background-color: rgba(0, 17, 25, 0.88);
   filter: brightness(0.93);
 }
@@ -924,14 +935,17 @@ body[data-page="cart"] .hero::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, rgba(255, 215, 0, 0.18), rgba(0, 17, 25, 0.88));
+  background: linear-gradient(
+    135deg,
+    rgba(255, 215, 0, 0.18),
+    rgba(0, 17, 25, 0.88)
+  );
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
   z-index: -1;
 }
 
 body[data-page="payment"] .hero {
-  background-image: url("../img/payment-bg.jpg");
   background-color: rgba(18, 35, 74, 0.88);
   filter: brightness(0.94);
 }
@@ -940,14 +954,17 @@ body[data-page="payment"] .hero::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, rgba(255, 215, 0, 0.2), rgba(18, 35, 74, 0.88));
+  background: linear-gradient(
+    135deg,
+    rgba(255, 215, 0, 0.2),
+    rgba(18, 35, 74, 0.88)
+  );
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
   z-index: -1;
 }
 
 body[data-page="order"] .hero {
-  background-image: url("../img/order-bg.jpg");
   background-color: rgba(6, 12, 33, 0.88);
   filter: brightness(0.92);
 }
@@ -956,14 +973,17 @@ body[data-page="order"] .hero::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, rgba(212, 175, 55, 0.2), rgba(6, 12, 33, 0.88));
+  background: linear-gradient(
+    135deg,
+    rgba(212, 175, 55, 0.2),
+    rgba(6, 12, 33, 0.88)
+  );
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
   z-index: -1;
 }
 
 body[data-page="contact"] .hero {
-  background-image: url("../img/contact-bg.jpg");
   background-color: rgba(7, 10, 30, 0.88);
   filter: brightness(0.91);
 }
@@ -972,30 +992,36 @@ body[data-page="contact"] .hero::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, rgba(37, 214, 255, 0.18), rgba(7, 10, 30, 0.88));
+  background: linear-gradient(
+    135deg,
+    rgba(37, 214, 255, 0.18),
+    rgba(7, 10, 30, 0.88)
+  );
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
   z-index: -1;
 }
 
 body[data-page="chat"] .hero {
-  background-image: url("../img/chat-bg.jpg");
   background-color: rgba(6, 15, 35, 0.88);
-  filter: brightness(0.90);
+  filter: brightness(0.9);
 }
 
 body[data-page="chat"] .hero::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, rgba(145, 232, 255, 0.16), rgba(6, 15, 35, 0.88));
+  background: linear-gradient(
+    135deg,
+    rgba(145, 232, 255, 0.16),
+    rgba(6, 15, 35, 0.88)
+  );
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
   z-index: -1;
 }
 
 body[data-page="reviews"] .hero {
-  background-image: url("../img/reviews-bg.jpg");
   background-color: rgba(25, 12, 30, 0.88);
   filter: brightness(0.92);
 }
@@ -1004,14 +1030,17 @@ body[data-page="reviews"] .hero::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, rgba(255, 215, 0, 0.15), rgba(25, 12, 30, 0.88));
+  background: linear-gradient(
+    135deg,
+    rgba(255, 215, 0, 0.15),
+    rgba(25, 12, 30, 0.88)
+  );
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
   z-index: -1;
 }
 
 body[data-page="admin"] .hero {
-  background-image: url("../img/admin-bg.jpg");
   background-color: rgba(16, 8, 24, 0.88);
   filter: brightness(0.93);
 }
@@ -1020,14 +1049,17 @@ body[data-page="admin"] .hero::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, rgba(255, 215, 0, 0.16), rgba(16, 8, 24, 0.88));
+  background: linear-gradient(
+    135deg,
+    rgba(255, 215, 0, 0.16),
+    rgba(16, 8, 24, 0.88)
+  );
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
   z-index: -1;
 }
 
 body[data-page="admin-login"] .hero {
-  background-image: url("../img/admin-login-bg.jpg");
   background-color: rgba(12, 12, 25, 0.88);
   filter: brightness(0.89);
 }
@@ -1036,7 +1068,11 @@ body[data-page="admin-login"] .hero::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.18), rgba(12, 12, 25, 0.88));
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.18),
+    rgba(12, 12, 25, 0.88)
+  );
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
   z-index: -1;
