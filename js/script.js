@@ -67,8 +67,8 @@ function recordUnauthorizedAccess(context, reason) {
 // ==================== E-COMMERCE FUNCTIONS ====================
 function buyNow(name, price, condition) {
   const product = { name, price, condition };
-  addToCart(product);
-  window.location.href = "cart.html";
+  localStorage.setItem("selectedProduct", JSON.stringify(product));
+  window.location.href = "payment.html";
 }
 
 function orderNow(name, price, condition, size = "") {
