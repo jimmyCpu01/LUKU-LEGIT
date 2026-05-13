@@ -44,10 +44,6 @@ body {
   position: relative;
 }
 
-
-
-
-
 /* Navigation */
 .navbar {
   background: linear-gradient(
@@ -224,36 +220,6 @@ body[data-page="admin-login"] {
   padding: 5.5rem 2rem 4rem;
   text-align: center;
   position: relative;
-}
-
-.hero::before,
-.hero::after {
-  content: "";
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(80px);
-  opacity: 0.6;
-  pointer-events: none;
-}
-
-.hero::before {
-  width: 360px;
-  height: 360px;
-  top: -90px;
-  left: -90px;
-  background: radial-gradient(circle, rgba(255, 215, 0, 0.32), transparent 55%);
-}
-
-.hero::after {
-  width: 420px;
-  height: 420px;
-  bottom: -110px;
-  right: -110px;
-  background: radial-gradient(
-    circle,
-    rgba(37, 214, 255, 0.14),
-    transparent 55%
-  );
 }
 
 .hero h1 {
@@ -785,21 +751,18 @@ footer {
   box-shadow: 0 20px 60px rgba(212, 175, 55, 0.5);
 }
 
-.hero-bg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  filter: blur(35px);
-  opacity: 0.6;
-  z-index: -1;
-}
-
 body[data-page="index"] .hero {
   background: linear-gradient(135deg, rgba(0, 0, 0, 0.28), rgba(0, 0, 0, 0.16));
   filter: brightness(1);
+}
+
+body[data-page="index"] .hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("../img/index-bg.jpg") center/cover no-repeat;
+  filter: blur(15px);
+  z-index: -2;
 }
 
 body[data-page="index"] .hero::after {
@@ -815,6 +778,15 @@ body[data-page="shop"] .hero {
   filter: brightness(1);
 }
 
+body[data-page="shop"] .hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("../img/shop-bg.jpg") center/cover no-repeat;
+  filter: blur(15px);
+  z-index: -2;
+}
+
 body[data-page="shop"] .hero::after {
   content: "";
   position: absolute;
@@ -826,6 +798,15 @@ body[data-page="shop"] .hero::after {
 body[data-page="kids"] .hero {
   background: linear-gradient(135deg, rgba(0, 0, 0, 0.28), rgba(0, 0, 0, 0.16));
   filter: brightness(1);
+}
+
+body[data-page="kids"] .hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("../img/kids-bg.jpg") center/cover no-repeat;
+  filter: blur(15px);
+  z-index: -2;
 }
 
 body[data-page="kids"] .hero::after {
@@ -841,6 +822,15 @@ body[data-page="ladies"] .hero {
   filter: brightness(1);
 }
 
+body[data-page="ladies"] .hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("../img/ladies-bg.jpg") center/cover no-repeat;
+  filter: blur(15px);
+  z-index: -2;
+}
+
 body[data-page="ladies"] .hero::after {
   content: "";
   position: absolute;
@@ -852,6 +842,15 @@ body[data-page="ladies"] .hero::after {
 body[data-page="cart"] .hero {
   background: linear-gradient(135deg, rgba(0, 0, 0, 0.28), rgba(0, 0, 0, 0.16));
   filter: brightness(1);
+}
+
+body[data-page="cart"] .hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("../img/cart-bg.jpg") center/cover no-repeat;
+  filter: blur(15px);
+  z-index: -2;
 }
 
 body[data-page="cart"] .hero::after {
@@ -867,6 +866,15 @@ body[data-page="payment"] .hero {
   filter: brightness(1);
 }
 
+body[data-page="payment"] .hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("../img/payment-bg.jpg") center/cover no-repeat;
+  filter: blur(15px);
+  z-index: -2;
+}
+
 body[data-page="payment"] .hero::after {
   content: "";
   position: absolute;
@@ -878,6 +886,15 @@ body[data-page="payment"] .hero::after {
 body[data-page="order"] .hero {
   background: linear-gradient(135deg, rgba(0, 0, 0, 0.28), rgba(0, 0, 0, 0.16));
   filter: brightness(1);
+}
+
+body[data-page="order"] .hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("../img/order-bg.jpg") center/cover no-repeat;
+  filter: blur(15px);
+  z-index: -2;
 }
 
 body[data-page="order"] .hero::after {
@@ -893,6 +910,15 @@ body[data-page="contact"] .hero {
   filter: brightness(1);
 }
 
+body[data-page="contact"] .hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("../img/contact-bg.jpg") center/cover no-repeat;
+  filter: blur(15px);
+  z-index: -2;
+}
+
 body[data-page="contact"] .hero::after {
   content: "";
   position: absolute;
@@ -906,6 +932,15 @@ body[data-page="chat"] .hero {
   filter: brightness(1);
 }
 
+body[data-page="chat"] .hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("../img/chat-bg.jpg") center/cover no-repeat;
+  filter: blur(15px);
+  z-index: -2;
+}
+
 body[data-page="chat"] .hero::after {
   content: "";
   position: absolute;
@@ -917,6 +952,15 @@ body[data-page="chat"] .hero::after {
 body[data-page="reviews"] .hero {
   background: linear-gradient(135deg, rgba(0, 0, 0, 0.28), rgba(0, 0, 0, 0.16));
   filter: brightness(1);
+}
+
+body[data-page="reviews"] .hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("../img/reviews-bg.jpg") center/cover no-repeat;
+  filter: blur(15px);
+  z-index: -2;
 }
 
 body[data-page="reviews"] .hero::after {
