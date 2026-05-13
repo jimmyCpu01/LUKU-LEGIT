@@ -2382,18 +2382,23 @@ body {
 .shoe-card {
   transform-style: preserve-3d;
   transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
-  transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 .shoe-card:hover {
-  transform: rotateX(8deg) rotateY(12deg) rotateZ(0deg) translateZ(30px) translateY(-20px);
+  transform: rotateX(8deg) rotateY(12deg) rotateZ(0deg) translateZ(30px)
+    translateY(-20px);
 }
 
 .shoe-card::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at 30% 30%, rgba(255, 215, 0, 0.1), transparent);
+  background: radial-gradient(
+    circle at 30% 30%,
+    rgba(255, 215, 0, 0.1),
+    transparent
+  );
   border-radius: 20px;
   opacity: 0;
   transition: opacity 0.6s ease;
@@ -2417,8 +2422,9 @@ body {
 
 .btn:hover {
   transform: translateZ(20px) translateY(-4px);
-  box-shadow: 0 30px 60px rgba(212, 175, 55, 0.4),
-              0 0 40px rgba(255, 215, 0, 0.2);
+  box-shadow:
+    0 30px 60px rgba(212, 175, 55, 0.4),
+    0 0 40px rgba(255, 215, 0, 0.2);
 }
 
 .btn:active {
@@ -2487,7 +2493,8 @@ body {
 /* Interactive Hover Lift */
 .product-grid .shoe-card:hover {
   animation: none;
-  transform: rotateX(10deg) rotateY(15deg) rotateZ(2deg) translateZ(40px) translateY(-30px);
+  transform: rotateX(10deg) rotateY(15deg) rotateZ(2deg) translateZ(40px)
+    translateY(-30px);
 }
 
 /* 3D Panel Cards */
@@ -2542,7 +2549,8 @@ body {
 
 /* Glow Animation */
 @keyframes glowPulse {
-  0%, 100% {
+  0%,
+  100% {
     transform: scale(1);
     opacity: 0.5;
   }
@@ -2559,7 +2567,8 @@ body {
 }
 
 .tilt-container:hover > * {
-  transform: rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg)) translateZ(20px);
+  transform: rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg))
+    translateZ(20px);
   transition: transform 0.3s ease-out;
 }
 
@@ -2570,9 +2579,10 @@ body {
 }
 
 .shadow-lift:hover {
-  box-shadow: 0 30px 80px rgba(212, 175, 55, 0.3),
-              0 0 50px rgba(255, 215, 0, 0.15),
-              inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  box-shadow:
+    0 30px 80px rgba(212, 175, 55, 0.3),
+    0 0 50px rgba(255, 215, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
 /* Shimmer Effect */
@@ -2586,7 +2596,12 @@ body {
 }
 
 .shimmer-effect {
-  background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.2), transparent);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 215, 0, 0.2),
+    transparent
+  );
   background-size: 1000px 100%;
   animation: shimmer 3s infinite;
 }
@@ -2597,7 +2612,8 @@ body {
 
 /* Floating Animation */
 @keyframes float3D {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(0px) translateZ(0px);
   }
   33% {
@@ -2661,7 +2677,7 @@ body {
   animation-delay: 0.3s;
 }
 
-.product-grid .shoe-card:nth-child(n+5) {
+.product-grid .shoe-card:nth-child(n + 5) {
   animation-delay: 0.4s;
 }
 
@@ -2683,10 +2699,9 @@ body {
 
 /* Smooth 3D Transitions */
 * {
-  --transition-3d: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1),
-                    box-shadow 0.5s ease,
-                    border-color 0.5s ease,
-                    background 0.5s ease;
+  --transition-3d:
+    transform 0.5s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.5s ease,
+    border-color 0.5s ease, background 0.5s ease;
 }
 
 .interactive-element {

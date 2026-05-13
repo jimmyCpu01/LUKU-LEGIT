@@ -52,7 +52,7 @@
           <p class="shoe-specs">Condition: 9/10</p>
           <p class="price">Ksh 3,500</p>
           <div class="card-buttons">
-            <a href="order.html" class="btn">Order Now</a>
+            <button class="btn" onclick="orderNow('Ladies Footwear', 3500, '9/10')">Order Now</button>
             <a href="ladies.html" class="btn secondary">Browse All</a>
           </div>
         </div>
@@ -67,7 +67,7 @@
           <p class="shoe-specs">Condition: 9/10</p>
           <p class="price">Ksh 1,800</p>
           <div class="card-buttons">
-            <a href="order.html" class="btn">Order Now</a>
+            <button class="btn" onclick="orderNow('Kids Sneakers', 1800, '9/10')">Order Now</button>
             <a href="kids.html" class="btn secondary">Browse All</a>
           </div>
         </div>
@@ -82,9 +82,10 @@
           <p class="shoe-specs">Condition: 9/10</p>
           <h3>Chaco Open Shoes </h3> <p>Premium Comfort</p>
           <p class="price">Ksh 4,500</p>
-          <button class="btn" onclick="buyNow('Chaco open shoe', 4500, '9/10')">
-            Buy Now
-          </button>
+          <div class="card-buttons">
+            <button class="btn" onclick="orderNow('Chaco Open Shoes', 4500, '9/10')">Order Now</button>
+            <button class="btn secondary" onclick="buyNow('Chaco open shoe', 4500, '9/10')">Buy Now</button>
+          </div>
         </div>
 
         <div class="shoe-card">
@@ -92,12 +93,10 @@
           <p class="shoe-specs">Condition: 8.5/10</p>
           <h3>Clarks Wallabees OG</h3> <p>Timeless Classic</p>
           <p class="price">Ksh 8,200</p>
-          <button
-            class="btn"
-            onclick="buyNow('Clarks wallabees', 8200, '8.5/10')"
-          >
-            Buy Now
-          </button>
+          <div class="card-buttons">
+            <button class="btn" onclick="orderNow('Clarks Wallabees OG', 8200, '8.5/10')">Order Now</button>
+            <button class="btn secondary" onclick="buyNow('Clarks wallabees', 8200, '8.5/10')">Buy Now</button>
+          </div>
         </div>
 
         <div class="shoe-card">

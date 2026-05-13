@@ -200,17 +200,28 @@
           );
           const summary = document.getElementById("order-summary");
           const form = document.getElementById("order-form");
+          const shoeModelInput = document.getElementById("shoe-model");
 
           if (product.name) {
-            document.getElementById("shoe-model").value = product.name;
+            // Auto-fill from selected product
+            shoeModelInput.value = product.name;
             document.getElementById("size").value = product.size || "";
             summary.innerHTML = `
           <strong>Product:</strong> ${product.name}<br>
           ${product.size ? `<strong>Size:</strong> ${product.size}<br>` : ""}
-          <strong>Condition:</strong> ${product.condition}<br>
-          <strong>Price:</strong> Ksh ${product.price}<br>
+          <strong>Condition:</strong> ${product.condition || 'Not specified'}<br>
+          <strong>Price:</strong> Ksh ${product.price || 'Contact for pricing'}<br>
           <hr>
-          <strong>Total Amount:</strong> Ksh ${product.price}
+          <strong>Total Amount:</strong> Ksh ${product.price || 'Contact for pricing'}
+        `;
+          } else {
+            // Allow manual entry
+            shoeModelInput.readOnly = false;
+            shoeModelInput.placeholder = "Enter shoe model or describe your desired shoes";
+            summary.innerHTML = `
+          <strong>Custom Order</strong><br>
+          Please fill in the details below for your custom shoe order.<br>
+          <em>Price will be confirmed after submission.</em>
         `;
           }
 
@@ -218,15 +229,23 @@
             e.preventDefault();
             const proofInput = document.getElementById("payment-proof");
             const sizeValue = document.getElementById("size").value.trim();
+            const shoeModelValue = document.getElementById("shoe-model").value.trim();
+
             if (!proofInput || !proofInput.files.length) {
               alert("Please upload your payment screenshot before submitting.");
               return;
             }
+
+            if (!shoeModelValue) {
+              alert("Please specify the shoe model or description.");
+              return;
+            }
+
             const reader = new FileReader();
             reader.onload = function () {
               const proofImage = reader.result;
               const orderData = {
-                product: product.name || document.getElementById("shoe-model").value || "Unknown",
+                product: shoeModelValue,
                 size: sizeValue || "Not specified",
                 name: document.getElementById("name").value.trim(),
                 email: document.getElementById("email").value.trim(),
@@ -236,6 +255,7 @@
                 status: "pending",
                 proofImage,
                 timestamp: new Date().toISOString(),
+                isCustomOrder: !product.name
               };
               const payments = JSON.parse(localStorage.getItem("payments") || "[]");
               payments.push(orderData);

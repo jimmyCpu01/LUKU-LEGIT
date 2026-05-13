@@ -71,6 +71,17 @@ function buyNow(name, price, condition) {
   window.location.href = "cart.html";
 }
 
+function orderNow(name, price, condition, size = "") {
+  const product = {
+    name: name,
+    price: price,
+    condition: condition,
+    size: size
+  };
+  localStorage.setItem("selectedProduct", JSON.stringify(product));
+  window.location.href = "order.html";
+}
+
 function addToCart(product) {
   const cart = JSON.parse(localStorage.getItem("cart") || "[]");
   cart.push(product);
@@ -95,6 +106,7 @@ function initPageAdminButton() {
   const adminBtn = document.getElementById("admin-access-btn");
   if (adminBtn) {
     adminBtn.addEventListener("click", promptAdminAccess);
+    adminBtn.style.cursor = "pointer";
   }
 }
 
@@ -745,8 +757,9 @@ function initImageModal() {
         const priceText = card.querySelector(".price")?.textContent || "";
         const price = parseInt(priceText.replace(/[^\d]/g, "")) || 0;
         const condition = card.querySelector(".shoe-specs")?.textContent || "";
+        const name = this.alt || card.querySelector("h3")?.textContent || "Product";
 
-        modalImg.dataset.productName = this.alt || "Product";
+        modalImg.dataset.productName = name;
         modalImg.dataset.productSrc = this.src;
         modalImg.dataset.productPrice = price;
         modalImg.dataset.productCondition = condition;
@@ -1028,84 +1041,18 @@ function initializeAllInteractiveEffects() {
 // Call initialization
 initializeAllInteractiveEffects();
 
+// Initialize page-specific functions
+document.addEventListener("DOMContentLoaded", function() {
+  initPageAdminButton();
+  initAdminLoginPage();
+  initAdminPage();
+  initModal();
+});
+
 // Add support for touch devices (Mobile 3D effects)
 if (window.matchMedia("(pointer: coarse)").matches) {
   // Touch device - use alternative animations
   document.querySelectorAll(".shoe-card, .panel-card").forEach((card) => {
     card.style.transform = "scale(1) translateZ(0)";
   });
-}
-
-  // Button actions
-  addToCartBtn.onclick = function () {
-    const selectedSize = sizeSelect ? sizeSelect.value : "";
-    if (!selectedSize) {
-      alert("Please select a size before adding to cart.");
-      return;
-    }
-
-    const product = {
-      name: modalImg.dataset.productName,
-      image: modalImg.dataset.productSrc,
-      price: parseInt(modalImg.dataset.productPrice) || 0,
-      size: selectedSize,
-      condition: modalImg.dataset.productCondition,
-    };
-
-    addToCart(product);
-    alert("Added to cart!");
-    modal.style.display = "none";
-  };
-
-  orderNowBtn.onclick = function () {
-    const selectedSize = sizeSelect ? sizeSelect.value : "";
-    if (!selectedSize) {
-      alert("Please select a size before ordering.");
-      return;
-    }
-
-    const selectedProduct = {
-      name: modalImg.dataset.productName,
-      image: modalImg.dataset.productSrc,
-      price: "Contact for pricing",
-      size: selectedSize,
-    };
-    localStorage.setItem("selectedProduct", JSON.stringify(selectedProduct));
-    window.location.href = "order.html";
-  };
-
-  moreLikeBtn.onclick = function () {
-    const productName = modalImg.dataset.productName || "this style";
-    updateMoreLikeDialog(productName);
-    modal.style.display = "none";
-    moreLikeModal.style.display = "flex";
-  };
-
-  whatsappMoreBtn.onclick = function () {
-    const query = whatsappMoreBtn.dataset.query || encodeURIComponent("shoes");
-    const whatsappUrl = `https://wa.me/254700408174?text=Hi, I would like to view your catalogue for ${decodeURIComponent(query)}.`;
-    window.open(whatsappUrl, "_blank");
-  };
-
-  const sizeHelpBtn = document.getElementById("sizeHelpBtn");
-  if (sizeHelpBtn) {
-    sizeHelpBtn.onclick = function () {
-      window.location.href = "chat.html#size-help";
-    };
-  }
-
-  googleMoreBtn.onclick = function () {
-    const query = googleMoreBtn.dataset.query || encodeURIComponent("shoes");
-    const googleUrl = `https://www.google.com/search?q=${query}&tbm=isch`;
-    window.open(googleUrl, "_blank");
-  };
-
-  backToProductBtn.onclick = function () {
-    moreLikeModal.style.display = "none";
-    modal.style.display = "block";
-  };
-
-  moreLikeClose.onclick = function () {
-    moreLikeModal.style.display = "none";
-  };
 }
