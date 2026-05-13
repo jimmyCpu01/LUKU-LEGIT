@@ -61,7 +61,7 @@ body::after {
   content: "";
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.32);
+  background: rgba(0, 0, 0, 0.18);
   z-index: -1;
 }
 
@@ -743,20 +743,20 @@ footer {
   padding: 5rem 2rem;
   background: linear-gradient(
     135deg,
-    rgba(26, 26, 26, 0.65) 0%,
-    rgba(0, 0, 0, 0.55) 100%
+    rgba(0, 0, 0, 0.32) 0%,
+    rgba(0, 0, 0, 0.18) 100%
   );
   background-size: cover;
   background-position: center;
   margin: 2rem auto;
   border-radius: 20px;
-  border: 2px solid rgba(212, 175, 55, 0.45);
+  border: 2px solid rgba(212, 175, 55, 0.35);
   position: relative;
   overflow: hidden;
   max-width: 1200px;
   box-shadow: var(--luxury-shadow);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
   perspective: 1200px;
   transform-style: preserve-3d;
   transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
@@ -850,230 +850,218 @@ footer {
 }
 
 body[data-page="index"] .hero {
-  background-color: rgba(8, 12, 30, 0.88);
-  filter: brightness(0.95);
+  background: linear-gradient(
+      135deg,
+      rgba(0, 0, 0, 0.28),
+      rgba(0, 0, 0, 0.16)
+    ),
+    url("../img/index-bg.jpg") center/cover fixed no-repeat;
+  filter: brightness(1);
 }
 
 body[data-page="index"] .hero::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    135deg,
-    rgba(255, 215, 0, 0.16),
-    rgba(8, 12, 30, 0.88)
-  );
-  backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
+  background: rgba(0, 0, 0, 0.18);
   z-index: -1;
 }
 
 body[data-page="shop"] .hero {
-  background-color: rgba(3, 13, 36, 0.88);
-  filter: brightness(0.92);
+  background: linear-gradient(
+      135deg,
+      rgba(0, 0, 0, 0.28),
+      rgba(0, 0, 0, 0.16)
+    ),
+    url("../img/shop-bg.jpg") center/cover fixed no-repeat;
+  filter: brightness(1);
 }
 
 body[data-page="shop"] .hero::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    135deg,
-    rgba(37, 214, 255, 0.18),
-    rgba(3, 13, 36, 0.88)
-  );
-  backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
+  background: rgba(0, 0, 0, 0.18);
   z-index: -1;
 }
 
 body[data-page="kids"] .hero {
-  background-color: rgba(15, 16, 50, 0.88);
-  filter: brightness(0.9);
+  background: linear-gradient(
+      135deg,
+      rgba(0, 0, 0, 0.28),
+      rgba(0, 0, 0, 0.16)
+    ),
+    url("../img/kids-bg.jpg") center/cover fixed no-repeat;
+  filter: brightness(1);
 }
 
 body[data-page="kids"] .hero::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    135deg,
-    rgba(194, 124, 255, 0.2),
-    rgba(15, 16, 50, 0.88)
-  );
-  backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
+  background: rgba(0, 0, 0, 0.18);
   z-index: -1;
 }
 
 body[data-page="ladies"] .hero {
-  background-color: rgba(21, 18, 40, 0.88);
-  filter: brightness(0.91);
+  background: linear-gradient(
+      135deg,
+      rgba(0, 0, 0, 0.28),
+      rgba(0, 0, 0, 0.16)
+    ),
+    url("../img/ladies-bg.jpg") center/cover fixed no-repeat;
+  filter: brightness(1);
 }
 
 body[data-page="ladies"] .hero::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    135deg,
-    rgba(255, 112, 231, 0.18),
-    rgba(21, 18, 40, 0.88)
-  );
-  backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
+  background: rgba(0, 0, 0, 0.18);
   z-index: -1;
 }
 
 body[data-page="cart"] .hero {
-  background-color: rgba(0, 17, 25, 0.88);
-  filter: brightness(0.93);
+  background: linear-gradient(
+      135deg,
+      rgba(0, 0, 0, 0.28),
+      rgba(0, 0, 0, 0.16)
+    ),
+    url("../img/cart-bg.jpg") center/cover fixed no-repeat;
+  filter: brightness(1);
 }
 
 body[data-page="cart"] .hero::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    135deg,
-    rgba(255, 215, 0, 0.18),
-    rgba(0, 17, 25, 0.88)
-  );
-  backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
+  background: rgba(0, 0, 0, 0.18);
   z-index: -1;
 }
 
 body[data-page="payment"] .hero {
-  background-color: rgba(18, 35, 74, 0.88);
-  filter: brightness(0.94);
+  background: linear-gradient(
+      135deg,
+      rgba(0, 0, 0, 0.28),
+      rgba(0, 0, 0, 0.16)
+    ),
+    url("../img/payment-bg.jpg") center/cover fixed no-repeat;
+  filter: brightness(1);
 }
 
 body[data-page="payment"] .hero::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    135deg,
-    rgba(255, 215, 0, 0.2),
-    rgba(18, 35, 74, 0.88)
-  );
-  backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
+  background: rgba(0, 0, 0, 0.18);
   z-index: -1;
 }
 
 body[data-page="order"] .hero {
-  background-color: rgba(6, 12, 33, 0.88);
-  filter: brightness(0.92);
+  background: linear-gradient(
+      135deg,
+      rgba(0, 0, 0, 0.28),
+      rgba(0, 0, 0, 0.16)
+    ),
+    url("../img/order-bg.jpg") center/cover fixed no-repeat;
+  filter: brightness(1);
 }
 
 body[data-page="order"] .hero::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    135deg,
-    rgba(212, 175, 55, 0.2),
-    rgba(6, 12, 33, 0.88)
-  );
-  backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
+  background: rgba(0, 0, 0, 0.18);
   z-index: -1;
 }
 
 body[data-page="contact"] .hero {
-  background-color: rgba(7, 10, 30, 0.88);
-  filter: brightness(0.91);
+  background: linear-gradient(
+      135deg,
+      rgba(0, 0, 0, 0.28),
+      rgba(0, 0, 0, 0.16)
+    ),
+    url("../img/contact-bg.jpg") center/cover fixed no-repeat;
+  filter: brightness(1);
 }
 
 body[data-page="contact"] .hero::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    135deg,
-    rgba(37, 214, 255, 0.18),
-    rgba(7, 10, 30, 0.88)
-  );
-  backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
+  background: rgba(0, 0, 0, 0.18);
   z-index: -1;
 }
 
 body[data-page="chat"] .hero {
-  background-color: rgba(6, 15, 35, 0.88);
-  filter: brightness(0.9);
+  background: linear-gradient(
+      135deg,
+      rgba(0, 0, 0, 0.28),
+      rgba(0, 0, 0, 0.16)
+    ),
+    url("../img/chat-bg.jpg") center/cover fixed no-repeat;
+  filter: brightness(1);
 }
 
 body[data-page="chat"] .hero::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    135deg,
-    rgba(145, 232, 255, 0.16),
-    rgba(6, 15, 35, 0.88)
-  );
-  backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
+  background: rgba(0, 0, 0, 0.18);
   z-index: -1;
 }
 
 body[data-page="reviews"] .hero {
-  background-color: rgba(25, 12, 30, 0.88);
-  filter: brightness(0.92);
+  background: linear-gradient(
+      135deg,
+      rgba(0, 0, 0, 0.28),
+      rgba(0, 0, 0, 0.16)
+    ),
+    url("../img/reviews-bg.jpg") center/cover fixed no-repeat;
+  filter: brightness(1);
 }
 
 body[data-page="reviews"] .hero::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    135deg,
-    rgba(255, 215, 0, 0.15),
-    rgba(25, 12, 30, 0.88)
-  );
-  backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
+  background: rgba(0, 0, 0, 0.18);
   z-index: -1;
 }
 
 body[data-page="admin"] .hero {
-  background-color: rgba(16, 8, 24, 0.88);
-  filter: brightness(0.93);
+  background: linear-gradient(
+      135deg,
+      rgba(0, 0, 0, 0.28),
+      rgba(0, 0, 0, 0.16)
+    ),
+    url("../img/admin-bg.jpg") center/cover fixed no-repeat;
+  filter: brightness(1);
 }
 
 body[data-page="admin"] .hero::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    135deg,
-    rgba(255, 215, 0, 0.16),
-    rgba(16, 8, 24, 0.88)
-  );
-  backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
+  background: rgba(0, 0, 0, 0.18);
   z-index: -1;
 }
 
 body[data-page="admin-login"] .hero {
-  background-color: rgba(12, 12, 25, 0.88);
-  filter: brightness(0.89);
+  background: linear-gradient(
+      135deg,
+      rgba(0, 0, 0, 0.28),
+      rgba(0, 0, 0, 0.16)
+    ),
+    url("../img/admin-login-bg.jpg") center/cover fixed no-repeat;
+  filter: brightness(1);
 }
 
 body[data-page="admin-login"] .hero::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 0.18),
-    rgba(12, 12, 25, 0.88)
-  );
-  backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
+  background: rgba(0, 0, 0, 0.18);
   z-index: -1;
 }
 
