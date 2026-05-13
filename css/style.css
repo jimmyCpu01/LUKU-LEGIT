@@ -67,51 +67,51 @@ body::after {
 
 /* Page-specific background images */
 body[data-page="index"] {
-  background-image: url("../img/index-bg.jpg");
+  background: url("../img/index-bg.jpg") center/cover fixed no-repeat;
 }
 
 body[data-page="shop"] {
-  background-image: url("../img/shop-bg.jpg");
+  background: url("../img/shop-bg.jpg") center/cover fixed no-repeat;
 }
 
 body[data-page="ladies"] {
-  background-image: url("../img/ladies-bg.jpg");
+  background: url("../img/ladies-bg.jpg") center/cover fixed no-repeat;
 }
 
 body[data-page="kids"] {
-  background-image: url("../img/kids-bg.jpg");
+  background: url("../img/kids-bg.jpg") center/cover fixed no-repeat;
 }
 
 body[data-page="payment"] {
-  background-image: url("../img/payment-bg.jpg");
+  background: url("../img/payment-bg.jpg") center/cover fixed no-repeat;
 }
 
 body[data-page="order"] {
-  background-image: url("../img/order-bg.jpg");
+  background: url("../img/order-bg.jpg") center/cover fixed no-repeat;
 }
 
 body[data-page="reviews"] {
-  background-image: url("../img/reviews-bg.jpg");
+  background: url("../img/reviews-bg.jpg") center/cover fixed no-repeat;
 }
 
 body[data-page="chat"] {
-  background-image: url("../img/chat-bg.jpg");
+  background: url("../img/chat-bg.jpg") center/cover fixed no-repeat;
 }
 
 body[data-page="contact"] {
-  background-image: url("../img/contact-bg.jpg");
+  background: url("../img/contact-bg.jpg") center/cover fixed no-repeat;
 }
 
 body[data-page="cart"] {
-  background-image: url("../img/cart-bg.jpg");
+  background: url("../img/cart-bg.jpg") center/cover fixed no-repeat;
 }
 
 body[data-page="admin"] {
-  background-image: url("../img/admin-bg.jpg");
+  background: url("../img/admin-bg.jpg") center/cover fixed no-repeat;
 }
 
 body[data-page="admin-login"] {
-  background-image: url("../img/admin-login-bg.jpg");
+  background: url("../img/admin-login-bg.jpg") center/cover fixed no-repeat;
 }
 
 /* Navigation */
@@ -743,21 +743,20 @@ footer {
   padding: 5rem 2rem;
   background: linear-gradient(
     135deg,
-    rgba(26, 26, 26, 0.88) 0%,
-    rgba(0, 0, 0, 0.82) 100%
+    rgba(26, 26, 26, 0.65) 0%,
+    rgba(0, 0, 0, 0.55) 100%
   );
   background-size: cover;
   background-position: center;
-  background-attachment: fixed;
   margin: 2rem auto;
   border-radius: 20px;
-  border: 2px solid var(--accent);
+  border: 2px solid rgba(212, 175, 55, 0.45);
   position: relative;
   overflow: hidden;
   max-width: 1200px;
   box-shadow: var(--luxury-shadow);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   perspective: 1200px;
   transform-style: preserve-3d;
   transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
