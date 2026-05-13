@@ -32,7 +32,7 @@ html {
 
 body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  background-color: var(--background-solid);
+  background-color: #000000;
   background-attachment: fixed;
   background-size: cover;
   background-position: center;
@@ -52,7 +52,7 @@ body::before {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  filter: blur(10px) brightness(0.55);
+  filter: blur(18px) brightness(0.55);
   opacity: 0.95;
   z-index: -2;
 }
@@ -61,7 +61,7 @@ body::after {
   content: "";
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.18);
+  background: rgba(0, 0, 0, 0.22);
   z-index: -1;
 }
 
@@ -358,6 +358,7 @@ body[data-page="admin-login"] {
   display: grid;
   gap: 2rem;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  perspective: 1800px;
 }
 
 .product-grid.two-grid {
@@ -389,9 +390,9 @@ body[data-page="admin-login"] {
 .contact-card:hover,
 .data-item:hover,
 .recommendation-item:hover {
-  transform: translateY(-10px) rotateX(3deg) rotateY(-2deg) !important;
-  border-color: rgba(255, 255, 255, 0.18) !important;
-  box-shadow: 0 50px 140px rgba(0, 0, 0, 0.55) !important;
+  transform: translateY(-14px) rotateX(4deg) rotateY(-2deg) !important;
+  border-color: rgba(255, 255, 255, 0.22) !important;
+  box-shadow: 0 55px 160px rgba(0, 0, 0, 0.6) !important;
 }
 
 .shoe-card {
@@ -420,7 +421,7 @@ body[data-page="admin-login"] {
 }
 
 .shoe-card:hover img {
-  transform: scale(1.03);
+  transform: scale(1.05) rotateZ(0.5deg);
 }
 
 .shoe-card h3,
@@ -850,11 +851,8 @@ footer {
 }
 
 body[data-page="index"] .hero {
-  background: linear-gradient(
-      135deg,
-      rgba(0, 0, 0, 0.28),
-      rgba(0, 0, 0, 0.16)
-    ),
+  background:
+    linear-gradient(135deg, rgba(0, 0, 0, 0.28), rgba(0, 0, 0, 0.16)),
     url("../img/index-bg.jpg") center/cover fixed no-repeat;
   filter: brightness(1);
 }
@@ -868,11 +866,8 @@ body[data-page="index"] .hero::after {
 }
 
 body[data-page="shop"] .hero {
-  background: linear-gradient(
-      135deg,
-      rgba(0, 0, 0, 0.28),
-      rgba(0, 0, 0, 0.16)
-    ),
+  background:
+    linear-gradient(135deg, rgba(0, 0, 0, 0.28), rgba(0, 0, 0, 0.16)),
     url("../img/shop-bg.jpg") center/cover fixed no-repeat;
   filter: brightness(1);
 }
@@ -886,11 +881,8 @@ body[data-page="shop"] .hero::after {
 }
 
 body[data-page="kids"] .hero {
-  background: linear-gradient(
-      135deg,
-      rgba(0, 0, 0, 0.28),
-      rgba(0, 0, 0, 0.16)
-    ),
+  background:
+    linear-gradient(135deg, rgba(0, 0, 0, 0.28), rgba(0, 0, 0, 0.16)),
     url("../img/kids-bg.jpg") center/cover fixed no-repeat;
   filter: brightness(1);
 }
@@ -904,11 +896,8 @@ body[data-page="kids"] .hero::after {
 }
 
 body[data-page="ladies"] .hero {
-  background: linear-gradient(
-      135deg,
-      rgba(0, 0, 0, 0.28),
-      rgba(0, 0, 0, 0.16)
-    ),
+  background:
+    linear-gradient(135deg, rgba(0, 0, 0, 0.28), rgba(0, 0, 0, 0.16)),
     url("../img/ladies-bg.jpg") center/cover fixed no-repeat;
   filter: brightness(1);
 }
@@ -922,11 +911,8 @@ body[data-page="ladies"] .hero::after {
 }
 
 body[data-page="cart"] .hero {
-  background: linear-gradient(
-      135deg,
-      rgba(0, 0, 0, 0.28),
-      rgba(0, 0, 0, 0.16)
-    ),
+  background:
+    linear-gradient(135deg, rgba(0, 0, 0, 0.28), rgba(0, 0, 0, 0.16)),
     url("../img/cart-bg.jpg") center/cover fixed no-repeat;
   filter: brightness(1);
 }
@@ -940,11 +926,8 @@ body[data-page="cart"] .hero::after {
 }
 
 body[data-page="payment"] .hero {
-  background: linear-gradient(
-      135deg,
-      rgba(0, 0, 0, 0.28),
-      rgba(0, 0, 0, 0.16)
-    ),
+  background:
+    linear-gradient(135deg, rgba(0, 0, 0, 0.28), rgba(0, 0, 0, 0.16)),
     url("../img/payment-bg.jpg") center/cover fixed no-repeat;
   filter: brightness(1);
 }
@@ -958,11 +941,8 @@ body[data-page="payment"] .hero::after {
 }
 
 body[data-page="order"] .hero {
-  background: linear-gradient(
-      135deg,
-      rgba(0, 0, 0, 0.28),
-      rgba(0, 0, 0, 0.16)
-    ),
+  background:
+    linear-gradient(135deg, rgba(0, 0, 0, 0.28), rgba(0, 0, 0, 0.16)),
     url("../img/order-bg.jpg") center/cover fixed no-repeat;
   filter: brightness(1);
 }
@@ -976,11 +956,8 @@ body[data-page="order"] .hero::after {
 }
 
 body[data-page="contact"] .hero {
-  background: linear-gradient(
-      135deg,
-      rgba(0, 0, 0, 0.28),
-      rgba(0, 0, 0, 0.16)
-    ),
+  background:
+    linear-gradient(135deg, rgba(0, 0, 0, 0.28), rgba(0, 0, 0, 0.16)),
     url("../img/contact-bg.jpg") center/cover fixed no-repeat;
   filter: brightness(1);
 }
@@ -994,11 +971,8 @@ body[data-page="contact"] .hero::after {
 }
 
 body[data-page="chat"] .hero {
-  background: linear-gradient(
-      135deg,
-      rgba(0, 0, 0, 0.28),
-      rgba(0, 0, 0, 0.16)
-    ),
+  background:
+    linear-gradient(135deg, rgba(0, 0, 0, 0.28), rgba(0, 0, 0, 0.16)),
     url("../img/chat-bg.jpg") center/cover fixed no-repeat;
   filter: brightness(1);
 }
@@ -1012,11 +986,8 @@ body[data-page="chat"] .hero::after {
 }
 
 body[data-page="reviews"] .hero {
-  background: linear-gradient(
-      135deg,
-      rgba(0, 0, 0, 0.28),
-      rgba(0, 0, 0, 0.16)
-    ),
+  background:
+    linear-gradient(135deg, rgba(0, 0, 0, 0.28), rgba(0, 0, 0, 0.16)),
     url("../img/reviews-bg.jpg") center/cover fixed no-repeat;
   filter: brightness(1);
 }
@@ -1030,11 +1001,8 @@ body[data-page="reviews"] .hero::after {
 }
 
 body[data-page="admin"] .hero {
-  background: linear-gradient(
-      135deg,
-      rgba(0, 0, 0, 0.28),
-      rgba(0, 0, 0, 0.16)
-    ),
+  background:
+    linear-gradient(135deg, rgba(0, 0, 0, 0.28), rgba(0, 0, 0, 0.16)),
     url("../img/admin-bg.jpg") center/cover fixed no-repeat;
   filter: brightness(1);
 }
@@ -1048,11 +1016,8 @@ body[data-page="admin"] .hero::after {
 }
 
 body[data-page="admin-login"] .hero {
-  background: linear-gradient(
-      135deg,
-      rgba(0, 0, 0, 0.28),
-      rgba(0, 0, 0, 0.16)
-    ),
+  background:
+    linear-gradient(135deg, rgba(0, 0, 0, 0.28), rgba(0, 0, 0, 0.16)),
     url("../img/admin-login-bg.jpg") center/cover fixed no-repeat;
   filter: brightness(1);
 }
