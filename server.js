@@ -117,6 +117,9 @@ app.use("/css", express.static(path.join(__dirname, "css")));
 app.use("/js", express.static(path.join(__dirname, "js")));
 app.use("/img", express.static(path.join(__dirname, "img")));
 
+// Serve node_modules for client-side dependencies (like Speed Insights)
+app.use("/node_modules", express.static(path.join(__dirname, "node_modules")));
+
 // 404 handler
 app.use((req, res) => {
   res.status(404).sendFile(path.join(__dirname, "index.html"));
