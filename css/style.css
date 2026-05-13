@@ -67,51 +67,51 @@ body::after {
 
 /* Page-specific background images */
 body[data-page="index"] {
-  background-image: url("../img/flats.avif");
+  background-image: url("../img/index-bg.jpg");
 }
 
 body[data-page="shop"] {
-  background-image: url("../img/samba.avif");
+  background-image: url("../img/shop-bg.jpg");
 }
 
 body[data-page="ladies"] {
-  background-image: url("../img/flats.avif");
+  background-image: url("../img/ladies-bg.jpg");
 }
 
 body[data-page="kids"] {
-  background-image: url("../img/samba.avif");
+  background-image: url("../img/kids-bg.jpg");
 }
 
 body[data-page="payment"] {
-  background-image: url("../img/timber.avif");
+  background-image: url("../img/payment-bg.jpg");
 }
 
 body[data-page="order"] {
-  background-image: url("../img/timber.avif");
+  background-image: url("../img/order-bg.jpg");
 }
 
 body[data-page="reviews"] {
-  background-image: url("../img/timber.avif");
+  background-image: url("../img/reviews-bg.jpg");
 }
 
 body[data-page="chat"] {
-  background-image: url("../img/timber.avif");
+  background-image: url("../img/chat-bg.jpg");
 }
 
 body[data-page="contact"] {
-  background-image: url("../img/timber.avif");
+  background-image: url("../img/contact-bg.jpg");
 }
 
 body[data-page="cart"] {
-  background-image: url("../img/timber.avif");
+  background-image: url("../img/cart-bg.jpg");
 }
 
 body[data-page="admin"] {
-  background-image: url("../img/timber.avif");
+  background-image: url("../img/admin-bg.jpg");
 }
 
 body[data-page="admin-login"] {
-  background-image: url("../img/timber.avif");
+  background-image: url("../img/admin-login-bg.jpg");
 }
 
 /* Navigation */
