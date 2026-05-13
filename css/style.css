@@ -44,75 +44,9 @@ body {
   position: relative;
 }
 
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  background: inherit;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  filter: blur(18px) brightness(0.55);
-  opacity: 0.95;
-  z-index: -2;
-}
 
-body::after {
-  content: "";
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.22);
-  z-index: -1;
-}
 
-/* Page-specific background images */
-body[data-page="index"] {
-  background: url("../img/index-bg.jpg") center/cover fixed no-repeat;
-}
 
-body[data-page="shop"] {
-  background: url("../img/shop-bg.jpg") center/cover fixed no-repeat;
-}
-
-body[data-page="ladies"] {
-  background: url("../img/ladies-bg.jpg") center/cover fixed no-repeat;
-}
-
-body[data-page="kids"] {
-  background: url("../img/kids-bg.jpg") center/cover fixed no-repeat;
-}
-
-body[data-page="payment"] {
-  background: url("../img/payment-bg.jpg") center/cover fixed no-repeat;
-}
-
-body[data-page="order"] {
-  background: url("../img/order-bg.jpg") center/cover fixed no-repeat;
-}
-
-body[data-page="reviews"] {
-  background: url("../img/reviews-bg.jpg") center/cover fixed no-repeat;
-}
-
-body[data-page="chat"] {
-  background: url("../img/chat-bg.jpg") center/cover fixed no-repeat;
-}
-
-body[data-page="contact"] {
-  background: url("../img/contact-bg.jpg") center/cover fixed no-repeat;
-}
-
-body[data-page="cart"] {
-  background: url("../img/cart-bg.jpg") center/cover fixed no-repeat;
-}
-
-body[data-page="admin"] {
-  background: url("../img/admin-bg.jpg") center/cover fixed no-repeat;
-}
-
-body[data-page="admin-login"] {
-  background: url("../img/admin-login-bg.jpg") center/cover fixed no-repeat;
-}
 
 /* Navigation */
 .navbar {
@@ -289,6 +223,7 @@ body[data-page="admin-login"] {
 .hero {
   padding: 5.5rem 2rem 4rem;
   text-align: center;
+  position: relative;
 }
 
 .hero::before,
@@ -850,10 +785,20 @@ footer {
   box-shadow: 0 20px 60px rgba(212, 175, 55, 0.5);
 }
 
+.hero-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: blur(35px);
+  opacity: 0.6;
+  z-index: -1;
+}
+
 body[data-page="index"] .hero {
-  background:
-    linear-gradient(135deg, rgba(0, 0, 0, 0.28), rgba(0, 0, 0, 0.16)),
-    url("../img/index-bg.jpg") center/cover fixed no-repeat;
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.28), rgba(0, 0, 0, 0.16));
   filter: brightness(1);
 }
 
@@ -866,9 +811,7 @@ body[data-page="index"] .hero::after {
 }
 
 body[data-page="shop"] .hero {
-  background:
-    linear-gradient(135deg, rgba(0, 0, 0, 0.28), rgba(0, 0, 0, 0.16)),
-    url("../img/shop-bg.jpg") center/cover fixed no-repeat;
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.28), rgba(0, 0, 0, 0.16));
   filter: brightness(1);
 }
 
@@ -881,9 +824,7 @@ body[data-page="shop"] .hero::after {
 }
 
 body[data-page="kids"] .hero {
-  background:
-    linear-gradient(135deg, rgba(0, 0, 0, 0.28), rgba(0, 0, 0, 0.16)),
-    url("../img/kids-bg.jpg") center/cover fixed no-repeat;
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.28), rgba(0, 0, 0, 0.16));
   filter: brightness(1);
 }
 
@@ -896,9 +837,7 @@ body[data-page="kids"] .hero::after {
 }
 
 body[data-page="ladies"] .hero {
-  background:
-    linear-gradient(135deg, rgba(0, 0, 0, 0.28), rgba(0, 0, 0, 0.16)),
-    url("../img/ladies-bg.jpg") center/cover fixed no-repeat;
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.28), rgba(0, 0, 0, 0.16));
   filter: brightness(1);
 }
 
@@ -911,9 +850,7 @@ body[data-page="ladies"] .hero::after {
 }
 
 body[data-page="cart"] .hero {
-  background:
-    linear-gradient(135deg, rgba(0, 0, 0, 0.28), rgba(0, 0, 0, 0.16)),
-    url("../img/cart-bg.jpg") center/cover fixed no-repeat;
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.28), rgba(0, 0, 0, 0.16));
   filter: brightness(1);
 }
 
@@ -926,9 +863,7 @@ body[data-page="cart"] .hero::after {
 }
 
 body[data-page="payment"] .hero {
-  background:
-    linear-gradient(135deg, rgba(0, 0, 0, 0.28), rgba(0, 0, 0, 0.16)),
-    url("../img/payment-bg.jpg") center/cover fixed no-repeat;
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.28), rgba(0, 0, 0, 0.16));
   filter: brightness(1);
 }
 
@@ -941,9 +876,7 @@ body[data-page="payment"] .hero::after {
 }
 
 body[data-page="order"] .hero {
-  background:
-    linear-gradient(135deg, rgba(0, 0, 0, 0.28), rgba(0, 0, 0, 0.16)),
-    url("../img/order-bg.jpg") center/cover fixed no-repeat;
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.28), rgba(0, 0, 0, 0.16));
   filter: brightness(1);
 }
 
@@ -956,9 +889,7 @@ body[data-page="order"] .hero::after {
 }
 
 body[data-page="contact"] .hero {
-  background:
-    linear-gradient(135deg, rgba(0, 0, 0, 0.28), rgba(0, 0, 0, 0.16)),
-    url("../img/contact-bg.jpg") center/cover fixed no-repeat;
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.28), rgba(0, 0, 0, 0.16));
   filter: brightness(1);
 }
 
@@ -971,9 +902,7 @@ body[data-page="contact"] .hero::after {
 }
 
 body[data-page="chat"] .hero {
-  background:
-    linear-gradient(135deg, rgba(0, 0, 0, 0.28), rgba(0, 0, 0, 0.16)),
-    url("../img/chat-bg.jpg") center/cover fixed no-repeat;
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.28), rgba(0, 0, 0, 0.16));
   filter: brightness(1);
 }
 
@@ -986,9 +915,7 @@ body[data-page="chat"] .hero::after {
 }
 
 body[data-page="reviews"] .hero {
-  background:
-    linear-gradient(135deg, rgba(0, 0, 0, 0.28), rgba(0, 0, 0, 0.16)),
-    url("../img/reviews-bg.jpg") center/cover fixed no-repeat;
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.28), rgba(0, 0, 0, 0.16));
   filter: brightness(1);
 }
 
