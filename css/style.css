@@ -106,6 +106,8 @@ body {
   gap: 1.5rem;
   flex-wrap: wrap;
   justify-content: center;
+  perspective: 1000px;
+  transform-style: preserve-3d;
 }
 
 .nav-links a,
@@ -227,6 +229,7 @@ body[data-page="admin-login"] {
   line-height: 1;
   letter-spacing: 0.13em;
   max-width: 900px;
+  animation: float 3s ease-in-out infinite;
 }
 
 .hero p {
@@ -524,7 +527,7 @@ footer {
 
 @media (max-width: 768px) {
   .navbar {
-    padding: 1rem 1.25rem;
+    padding: 0.5rem 1rem;
   }
 
   .nav-links {
@@ -760,8 +763,9 @@ body[data-page="index"] .hero::before {
   position: absolute;
   inset: 0;
   background: url("../img/index-bg.jpg") center/cover no-repeat;
-  filter: blur(8px);
+  filter: blur(6px);
   z-index: -2;
+  animation: heroPan 12s ease-in-out infinite;
 }
 
 body[data-page="index"] .hero::after {
@@ -782,8 +786,9 @@ body[data-page="shop"] .hero::before {
   position: absolute;
   inset: 0;
   background: url("../img/shop-bg.jpg") center/cover no-repeat;
-  filter: blur(8px);
+  filter: blur(6px);
   z-index: -2;
+  animation: heroZoom 14s ease-in-out infinite;
 }
 
 body[data-page="shop"] .hero::after {
@@ -804,8 +809,9 @@ body[data-page="kids"] .hero::before {
   position: absolute;
   inset: 0;
   background: url("../img/kids-bg.jpg") center/cover no-repeat;
-  filter: blur(8px);
+  filter: blur(6px);
   z-index: -2;
+  animation: heroSlide 10s ease-in-out infinite;
 }
 
 body[data-page="kids"] .hero::after {
@@ -826,8 +832,9 @@ body[data-page="ladies"] .hero::before {
   position: absolute;
   inset: 0;
   background: url("../img/ladies-bg.jpg") center/cover no-repeat;
-  filter: blur(8px);
+  filter: blur(6px);
   z-index: -2;
+  animation: heroPan 12s ease-in-out infinite;
 }
 
 body[data-page="ladies"] .hero::after {
@@ -848,8 +855,9 @@ body[data-page="cart"] .hero::before {
   position: absolute;
   inset: 0;
   background: url("../img/cart-bg.jpg") center/cover no-repeat;
-  filter: blur(8px);
+  filter: blur(6px);
   z-index: -2;
+  animation: heroZoom 14s ease-in-out infinite;
 }
 
 body[data-page="cart"] .hero::after {
@@ -872,6 +880,7 @@ body[data-page="payment"] .hero::before {
   background: url("../img/payment-bg.jpg") center/cover no-repeat;
   filter: blur(8px);
   z-index: -2;
+  animation: heroSlide 10s ease-in-out infinite;
 }
 
 body[data-page="payment"] .hero::after {
@@ -894,6 +903,7 @@ body[data-page="order"] .hero::before {
   background: url("../img/order-bg.jpg") center/cover no-repeat;
   filter: blur(8px);
   z-index: -2;
+  animation: heroPan 12s ease-in-out infinite;
 }
 
 body[data-page="order"] .hero::after {
@@ -916,6 +926,7 @@ body[data-page="contact"] .hero::before {
   background: url("../img/contact-bg.jpg") center/cover no-repeat;
   filter: blur(8px);
   z-index: -2;
+  animation: heroZoom 14s ease-in-out infinite;
 }
 
 body[data-page="contact"] .hero::after {
@@ -938,6 +949,7 @@ body[data-page="chat"] .hero::before {
   background: url("../img/chat-bg.jpg") center/cover no-repeat;
   filter: blur(8px);
   z-index: -2;
+  animation: heroSlide 10s ease-in-out infinite;
 }
 
 body[data-page="chat"] .hero::after {
@@ -960,6 +972,7 @@ body[data-page="reviews"] .hero::before {
   background: url("../img/reviews-bg.jpg") center/cover no-repeat;
   filter: blur(8px);
   z-index: -2;
+  animation: heroPan 12s ease-in-out infinite;
 }
 
 body[data-page="reviews"] .hero::after {
@@ -2266,6 +2279,56 @@ select:focus {
 .recommendation-item span {
   color: rgba(255, 255, 255, 0.7);
   font-size: 0.95rem;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes heroPan {
+  0% {
+    transform: translateX(-8px) translateY(-8px) scale(1.05);
+  }
+  25% {
+    transform: translateX(8px) translateY(-8px) scale(1.05);
+  }
+  50% {
+    transform: translateX(8px) translateY(8px) scale(1.05);
+  }
+  75% {
+    transform: translateX(-8px) translateY(8px) scale(1.05);
+  }
+  100% {
+    transform: translateX(-8px) translateY(-8px) scale(1.05);
+  }
+}
+
+@keyframes heroZoom {
+  0%,
+  100% {
+    transform: scale(1.02);
+  }
+  50% {
+    transform: scale(1.08);
+  }
+}
+
+@keyframes heroSlide {
+  0% {
+    transform: translateX(-15px);
+  }
+  50% {
+    transform: translateX(15px);
+  }
+  100% {
+    transform: translateX(-15px);
+  }
 }
 
 .dialog-actions {
