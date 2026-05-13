@@ -213,7 +213,7 @@ body[data-page="contact"],
 body[data-page="cart"],
 body[data-page="admin"],
 body[data-page="admin-login"] {
-  background-image: none !important;
+  background-color: #000000;
 }
 
 .hero {
@@ -273,10 +273,10 @@ body[data-page="admin-login"] {
 .modal-size,
 .recommendation-item,
 #order-summary {
-  background: #1a1a1a !important;
-  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  background: transparent !important;
+  border: 2px solid rgba(212, 175, 55, 0.3) !important;
   border-radius: 28px !important;
-  box-shadow: 0 45px 120px rgba(0, 0, 0, 0.45) !important;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8) !important;
   transition:
     transform 0.35s ease,
     box-shadow 0.35s ease,
@@ -989,11 +989,6 @@ body[data-page="admin-login"] .hero {
   background:
     linear-gradient(135deg, rgba(0, 0, 0, 0.28), rgba(0, 0, 0, 0.16)),
     url("../img/admin-login-bg.jpg") center/cover fixed no-repeat;
-  filter: brightness(1);
-}
-
-body[data-page="admin-login"] .hero::after {
-  content: "";
   position: absolute;
   inset: 0;
   background: rgba(0, 0, 0, 0.18);
