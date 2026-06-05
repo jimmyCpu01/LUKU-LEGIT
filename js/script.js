@@ -97,10 +97,29 @@ function recordPageAccess() {
   pageAccessLog.push(entry);
   writeJSON(STORAGE_KEYS.pageAccessLog, pageAccessLog.slice(-250));
 
+  // If admin is viewing pages, record a visible admin notification
+  try {
+    notifyAdminOnAccess(entry);
+  } catch (e) {
+    console.warn("notifyAdminOnAccess failed", e);
+  }
+
   trackUserInteraction("page_view", {
     page: entry.page,
     pageName: entry.pageName,
   });
+}
+
+
+// Notify admin (stored notifications) when admin is logged in and a page is accessed
+function notifyAdminOnAccess(entry) {
+  try {
+    if (isAdminLoggedIn && isAdminLoggedIn()) {
+      pushAdminNotification("page_access_admin", `Admin viewed ${entry.pageName}`, entry);
+    }
+  } catch (e) {
+    console.warn("Admin access notify failed", e);
+  }
 }
 
 function pushAdminNotification(type, message, details = {}) {
@@ -1085,6 +1104,22 @@ function buildImageModal() {
     img.addEventListener("click", () => openProductModal(img));
   });
 
+  // Delegate clicks on product images so dynamically-added cards still open modal
+  document.addEventListener("click", function (e) {
+    try {
+      const target = e.target;
+      if (!target) return;
+      const img = target.closest && target.closest(".shoe-card img");
+      if (img) {
+        e.preventDefault();
+        e.stopPropagation();
+        openProductModal(img);
+      }
+    } catch (err) {
+      // non-fatal
+    }
+  });
+
   closeBtn?.addEventListener("click", closeModal);
   modalState.element.addEventListener("click", (event) => {
     if (event.target === modalState.element) closeModal();
@@ -1145,8 +1180,17 @@ function enhanceBuyNowButtons() {
   document.querySelectorAll("button, a").forEach((el) => {
     const text = (el.textContent || "").trim().toLowerCase();
     const onclick = el.getAttribute("onclick") || "";
-    if (text === "buy now" || onclick.includes("buyNow(")) {
+    const role = el.getAttribute("role") || "";
+    if (
+      text === "buy now" ||
+      onclick.includes("buyNow(") ||
+      el.classList.contains("buy-now") ||
+      el.dataset.buy !== undefined
+    ) {
       el.classList.add("buy-now-btn");
+      if (!role) el.setAttribute("role", "button");
+      el.style.cursor = "pointer";
+      el.setAttribute("aria-label", el.getAttribute("aria-label") || "Buy now");
     }
   });
 }
