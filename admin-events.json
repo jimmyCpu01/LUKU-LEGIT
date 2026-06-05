@@ -1,0 +1,11 @@
+[
+  {
+    "type": "deploy",
+    "message": "Applied premium UI updates: buy-now styling, image click fixes, admin notifications.",
+    "details": {
+      "commit": "4e04b3b",
+      "branch": "main"
+    },
+    "timestamp": "2026-06-05T00:00:00.000Z"
+  }
+]
