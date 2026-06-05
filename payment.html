@@ -23,324 +23,41 @@
     </nav>
 
     <section class="hero">
-      <h1>Payment Options <span>Choose Your Way</span></h1>
-      <p>Follow these simple steps to complete your purchase securely.</p>
+      <h1>Payment Options <span>Secure & Premium</span></h1>
+      <p>Choose your payment method, then confirm payment with a screenshot for admin verification.</p>
     </section>
 
     <section class="products">
       <h2>Choose Payment Method</h2>
-      <p
-        style="text-align: center; margin-bottom: 2rem; color: var(--text-dim)"
-      >
-        Select your preferred payment method. After payment, proceed to the
-        order form and attach your payment proof screenshot for admin approval.
-      </p>
+      <p style="text-align:center; color:var(--text-dim);">After making your payment, use the confirmation page to upload your screenshot and complete verification.</p>
 
-      <div
-        style="
-          max-width: 1200px;
-          margin: 0 auto;
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-          gap: 2.5rem;
-        "
-      >
-        <div
-          class="panel-card"
-          style="padding: 2rem; transition: var(--transition)"
-          onmouseover="this.style.borderColor = 'var(--accent)'"
-          onmouseout="this.style.borderColor = 'var(--border)'"
-        >
-          <h3 style="color: var(--accent); margin-bottom: 1rem">
-            Pay with M-Pesa
-          </h3>
-          <div
-            id="mpesa-product-details"
-            style="
-              margin: 1rem 0;
-              padding: 1rem;
-              background: rgba(57, 255, 20, 0.1);
-              border-radius: 8px;
-              border-left: 3px solid var(--accent);
-            "
-          ></div>
-          <button
-            class="btn"
-            style="
-              width: 100%;
-              margin-bottom: 0.75rem;
-              font-weight: 700;
-              font-size: 1.05rem;
-              padding: 1.1rem;
-              border: 2px solid var(--accent);
-              box-shadow: 0 6px 20px rgba(57, 255, 20, 0.25);
-              transition: all 0.3s ease;
-            "
-            onmouseover="
-              this.style.boxShadow = '0 8px 30px rgba(57, 255, 20, 0.4)';
-              this.style.transform = 'translateY(-2px)';
-            "
-            onmouseout="
-              this.style.boxShadow = '0 6px 20px rgba(57, 255, 20, 0.25)';
-              this.style.transform = 'translateY(0)';
-            "
-            onclick="handleMpesa('send')"
-          >
-            Send Money
-          </button>
-          <button
-            class="btn"
-            style="
-              width: 100%;
-              margin-bottom: 0;
-              font-weight: 700;
-              font-size: 1.05rem;
-              padding: 1.1rem;
-              border: 2px solid rgba(57, 255, 20, 0.7);
-              box-shadow: 0 6px 20px rgba(57, 255, 20, 0.15);
-              transition: all 0.3s ease;
-            "
-            onmouseover="
-              this.style.boxShadow = '0 8px 30px rgba(57, 255, 20, 0.3)';
-              this.style.transform = 'translateY(-2px)';
-            "
-            onmouseout="
-              this.style.boxShadow = '0 6px 20px rgba(57, 255, 20, 0.15)';
-              this.style.transform = 'translateY(0)';
-            "
-            onclick="handleMpesa('till')"
-          >
-            Pay to Till 6699212
-          </button>
-          <p
-            style="
-              font-size: 0.85rem;
-              margin-top: 1rem;
-              color: var(--text-dim);
-              line-height: 1.6;
-            "
-          >
-            Click a payment option above to see detailed step-by-step
-            instructions.
-          </p>
+      <div style="max-width:1200px; margin:0 auto; display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:1.8rem;">
+        <div class="panel-card" style="padding:1.6rem; border-color:rgba(255,215,0,0.12);">
+          <h3 style="color:var(--primary);">M-Pesa</h3>
+          <div id="mpesa-product-details" style="margin:1rem 0; padding:1rem; background:rgba(255,215,0,0.04); border-left:4px solid rgba(255,215,0,0.12); border-radius:12px;"></div>
+          <button class="btn" style="width:100%; margin-top:0.5rem;" onclick="handleMpesa('send')">Send Money</button>
+          <button class="btn" style="width:100%; margin-top:0.5rem;" onclick="handleMpesa('till')">Pay to Till 6699212</button>
         </div>
 
-        <div
-          class="panel-card"
-          style="padding: 2rem; transition: var(--transition)"
-          onmouseover="this.style.borderColor = 'var(--accent)'"
-          onmouseout="this.style.borderColor = 'var(--border)'"
-        >
-          <h3 style="color: var(--accent); margin-bottom: 1rem">
-            Pay with PayPal
-          </h3>
-          <div
-            id="paypal-product-details"
-            style="
-              margin: 1rem 0;
-              padding: 1rem;
-              background: rgba(57, 255, 20, 0.1);
-              border-radius: 8px;
-              border-left: 3px solid var(--accent);
-            "
-          ></div>
-          <button
-            class="btn"
-            style="width: 100%; margin-bottom: 1rem"
-            onclick="checkRate()"
-          >
-            Check USD Rate
-          </button>
-          <input
-            type="number"
-            id="paypal-amount"
-            placeholder="Amount in USD"
-            style="
-              background: rgba(0, 0, 0, 0.3);
-              border: 1px solid var(--border);
-              border-radius: 8px;
-              padding: 0.75rem;
-              color: var(--text-main);
-              width: 100%;
-              margin-bottom: 1rem;
-            "
-          />
-          <a
-            href="https://www.paypal.com/ncp/payment/WGMVTTAF6NLAE"
-            class="btn"
-            style="text-decoration: none; display: block; text-align: center"
-            >Pay with PayPal</a
-          >
-          <p
-            style="
-              font-size: 0.85rem;
-              margin-top: 1rem;
-              color: var(--text-dim);
-              line-height: 1.6;
-            "
-          >
-            <strong>Note:</strong> Rates change daily. Check current USD rate to
-            pay the correct amount.
-          </p>
+        <div class="panel-card" style="padding:1.6rem; border-color:rgba(255,215,0,0.12);">
+          <h3 style="color:var(--primary);">PayPal</h3>
+          <div id="paypal-product-details" style="margin:1rem 0; padding:1rem; background:rgba(255,215,0,0.04); border-left:4px solid rgba(255,215,0,0.12); border-radius:12px;"></div>
+          <button class="btn" style="width:100%; margin-top:0.5rem;" onclick="checkRate()">Check Rate</button>
+          <a class="btn" style="display:block; text-align:center; margin-top:0.6rem;" href="https://www.paypal.com/ncp/payment/WGMVTTAF6NLAE">Pay with PayPal</a>
         </div>
 
-        <div
-          class="panel-card"
-          style="
-            padding: 2rem;
-            border: 2px solid var(--accent);
-            transition: var(--transition);
-          "
-          onmouseover="
-            this.style.boxShadow = '0 12px 30px rgba(57, 255, 20, 0.2)'
-          "
-          onmouseout="
-            this.style.boxShadow = '0 8px 20px rgba(57, 255, 20, 0.1)'
-          "
-        >
-          <h3
-            style="
-              color: var(--accent);
-              margin-bottom: 1.5rem;
-              font-size: 1.3rem;
-            "
-          >
-            Bank Transfer
-          </h3>
-          <p
-            style="
-              margin: 1rem 0 1.5rem 0;
-              color: var(--text-main);
-              line-height: 1.6;
-            "
-          >
-            Copy the details below to complete your payment securely.
-          </p>
-          <button
-            class="btn"
-            style="width: 100%; margin-bottom: 1.5rem; font-weight: 700"
-            onclick="copyPaybillDetails()"
-          >
-            Copy Bank Details
-          </button>
-          <div
-            style="
-              margin-top: 1.5rem;
-              padding: 1.5rem;
-              background: linear-gradient(
-                135deg,
-                rgba(0, 0, 0, 0.4),
-                rgba(57, 255, 20, 0.08)
-              );
-              border-radius: 12px;
-              border: 1px solid rgba(57, 255, 20, 0.3);
-              font-size: 1rem;
-              color: var(--text-main);
-            "
-          >
-            <div
-              style="
-                margin-bottom: 1rem;
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                flex-wrap: wrap;
-              "
-            >
-              <div>
-                <p
-                  style="
-                    margin: 0.5rem 0;
-                    font-size: 0.9rem;
-                    color: var(--text-dim);
-                  "
-                >
-                  <strong>Paybill Number</strong>
-                </p>
-                <p
-                  style="
-                    margin: 0;
-                    font-size: 1.2rem;
-                    font-weight: 700;
-                    color: var(--accent);
-                  "
-                >
-                  400200
-                </p>
-              </div>
-              <div
-                style="
-                  width: 1px;
-                  height: 40px;
-                  background: rgba(57, 255, 20, 0.2);
-                  display: none;
-                "
-              ></div>
-            </div>
-            <div
-              style="
-                border-top: 1px solid rgba(57, 255, 20, 0.2);
-                padding-top: 1rem;
-              "
-            >
-              <p
-                style="
-                  margin: 0.5rem 0;
-                  font-size: 0.9rem;
-                  color: var(--text-dim);
-                "
-              >
-                <strong>Account Number</strong>
-              </p>
-              <p
-                style="
-                  margin: 0;
-                  font-size: 1.2rem;
-                  font-weight: 700;
-                  color: var(--accent);
-                  word-break: break-all;
-                "
-              >
-                01109146916001
-              </p>
-            </div>
+        <div class="panel-card" style="padding:1.6rem; border-color:rgba(255,215,0,0.12);">
+          <h3 style="color:var(--primary);">Bank Transfer</h3>
+          <div style="margin-top:1rem; padding:1rem; background:rgba(255,215,0,0.04); border-radius:12px; border:1px solid rgba(255,215,0,0.06);">
+            <p style="margin:0; color:var(--text-dim);">Paybill: <strong>400200</strong></p>
+            <p style="margin:0; color:var(--text-dim);">Account: <strong>01109146916001</strong></p>
           </div>
-          <p
-            style="
-              margin-top: 1rem;
-              font-size: 0.85rem;
-              color: var(--text-dim);
-              line-height: 1.6;
-            "
-          >
-            <strong>Tip:</strong> After payment, proceed to the Order Form and
-            upload your payment proof for verification.
-          </p>
+          <button class="btn" style="width:100%; margin-top:0.75rem;" onclick="copyPaybillDetails()">Copy Bank Details</button>
         </div>
       </div>
 
-      <p
-        style="
-          margin-top: 3rem;
-          text-align: center;
-          color: var(--text-dim);
-          padding: 1.5rem;
-          background: rgba(57, 255, 20, 0.05);
-          border-radius: 12px;
-          border: 1px solid var(--border);
-        "
-      >
-        Keep your details safe. We never ask for passwords or PINs. Beware of
-        scams.
-      </p>
-
-      <div style="text-align: center; margin-top: 2rem">
-        <a
-          href="order.html"
-          class="btn"
-          style="padding: 1rem 2.5rem; font-size: 1.05rem"
-          >Proceed to Order Form</a
-        >
+      <div style="text-align:center; margin-top:2rem;">
+        <a href="payment-confirmation.html" class="btn" style="padding:1rem 2.5rem;">Confirm Payment</a>
       </div>
     </section>
 
@@ -350,228 +67,19 @@
 
     <script src="js/script.js"></script>
     <script>
-      window.addEventListener("DOMContentLoaded", function () {
-        const cart = JSON.parse(localStorage.getItem("cart") || "[]");
-        const product = JSON.parse(
-          localStorage.getItem("selectedProduct") || "{}",
-        );
+      document.addEventListener('DOMContentLoaded', function(){
+        const cart = JSON.parse(localStorage.getItem('cart')||'[]');
+        const selectedProduct = JSON.parse(localStorage.getItem('selectedProduct')||'{}');
+        const items = cart.length ? cart : (selectedProduct.name? [selectedProduct]: []);
+        const total = items.reduce((s,i)=> s + (i.price||0), 0);
 
-        let items = [];
-        let total = 0;
-
-        if (cart.length > 0) {
-          items = cart;
-          total = cart.reduce((sum, item) => sum + item.price, 0);
-        } else if (product.name) {
-          items = [product];
-          total = product.price || 0;
-        }
-
-        if (items.length === 0) {
-          document.getElementById("mpesa-product-details").innerHTML =
-            "<p>No items selected.</p>";
-          document.getElementById("paypal-product-details").innerHTML =
-            "<p>No items selected.</p>";
-          return;
-        }
-
-        let details = "";
-        items.forEach((item) => {
-          details += `<strong>${item.name}</strong>`;
-          if (item.size) details += ` - Size: ${item.size}`;
-          if (item.condition) details += ` - ${item.condition}`;
-          details += ` - Ksh ${item.price}<br>`;
-        });
-        details += `<strong>Total: Ksh ${total}</strong>`;
-
-        document.getElementById("mpesa-product-details").innerHTML = details;
-        document.getElementById("paypal-product-details").innerHTML = details;
-        document.getElementById("paypal-amount").placeholder = Math.round(
-          total / 130,
-        );
-
+        const mpesa = document.getElementById('mpesa-product-details');
+        const paypal = document.getElementById('paypal-product-details');
+        if(!items.length){ mpesa.innerHTML = '<p>No items selected.</p>'; paypal.innerHTML = '<p>No items selected.</p>'; return; }
+        mpesa.innerHTML = items.map(it=> `<p style="margin:0.4rem 0"><strong>${it.name}</strong> ${it.size? '· '+it.size: ''}<br><span style="color:var(--text-dim)">Ksh ${it.price||0}</span></p>`).join('') + `<hr style="border-color:rgba(255,215,0,0.12)"/><p style="font-weight:700">Total: Ksh ${total}</p>`;
+        paypal.innerHTML = mpesa.innerHTML;
         notifyAdminPaymentPageVisit(items, total);
       });
-
-      function notifyAdminPaymentPageVisit(items, total) {
-        const visits = JSON.parse(
-          localStorage.getItem("paymentNotifications") || "[]",
-        );
-        visits.push({
-          type: "payment_page_visit",
-          product: product.name || "Unknown",
-          amount: product.price || 0,
-          size: product.size || "",
-          timestamp: new Date().toISOString(),
-        });
-        localStorage.setItem("paymentNotifications", JSON.stringify(visits));
-        trackUserInteraction("payment_page_visit", {
-          product: product.name || "Unknown",
-          amount: product.price || 0,
-        });
-      }
-
-      function handleMpesa(type) {
-        const cart = JSON.parse(localStorage.getItem("cart") || "[]");
-        const product = JSON.parse(
-          localStorage.getItem("selectedProduct") || "{}",
-        );
-
-        let items = [];
-        let total = 0;
-
-        if (cart.length > 0) {
-          items = cart;
-          total = cart.reduce((sum, item) => sum + item.price, 0);
-        } else if (product.name) {
-          items = [product];
-          total = product.price || 0;
-        }
-
-        if (items.length === 0) {
-          alert("No items selected for payment.");
-          return;
-        }
-
-        let productNames = items.map((item) => item.name).join(", ");
-
-        let instructions = "";
-        if (type === "send") {
-          instructions = `
-          <div style="text-align: left; line-height: 1.8; font-family: Arial, sans-serif;">
-            <h3 style="color: #00897b; margin-bottom: 1rem;">📤 M-Pesa Send Money Instructions</h3>
-            <p style="margin-bottom: 1rem;"><strong>Products:</strong> ${productNames}</p>
-            <p style="margin-bottom: 1rem;"><strong>Total Amount to Send:</strong> Ksh ${total}</p>
-            <p style="margin-bottom: 1rem;"><strong>Recipient Number:</strong> 0700408174</p>
-
-            <h4 style="color: #00897b; margin: 1.5rem 0 1rem 0;">Step-by-Step Guide:</h4>
-            <ol style="padding-left: 1.5rem;">
-              <li>Open your M-Pesa menu on your phone</li>
-              <li>Select "Send Money"</li>
-              <li>Enter recipient number: <strong>0700408174</strong></li>
-              <li>Enter amount: <strong>Ksh ${total}</strong></li>
-              <li>Enter your M-Pesa PIN</li>
-              <li>Confirm the transaction</li>
-            </ol>
-
-            <p style="margin-top: 1.5rem; color: #ff6b6b;"><strong>Final Step:</strong> Take a screenshot of the confirmation and proceed to the Order Page.</p>
-          </div>
-        `;
-        } else if (type === "till") {
-          instructions = `
-          <div style="text-align: left; line-height: 1.8; font-family: Arial, sans-serif;">
-            <h3 style="color: #00897b; margin-bottom: 1rem;">M-Pesa Pay to Till Instructions</h3>
-            <p style="margin-bottom: 1rem;"><strong>Products:</strong> ${productNames}</p>
-            <p style="margin-bottom: 1rem;"><strong>Total Amount to Pay:</strong> Ksh ${total}</p>
-            <p style="margin-bottom: 1rem;"><strong>Till Number:</strong> 6699212</p>
-
-            <h4 style="color: #00897b; margin: 1.5rem 0 1rem 0;">Step-by-Step Guide:</h4>
-            <ol style="padding-left: 1.5rem;">
-              <li>Open your M-Pesa menu on your phone</li>
-              <li>Select "Lipa Na M-Pesa"</li>
-              <li>Choose "Buy Goods & Services"</li>
-              <li>Enter Till Number: <strong>6699212</strong></li>
-              <li>Enter amount: <strong>Ksh ${total}</strong></li>
-              <li>Input your M-Pesa PIN to validate</li>
-              <li>Confirm the transaction</li>
-            </ol>
-
-            <p style="margin-top: 1.5rem; color: #ff6b6b;"><strong>Final Step:</strong> Take a screenshot of the confirmation and proceed to the Order Page.</p>
-          </div>
-        `;
-        }
-
-        // Create and show popup
-        const popup = document.createElement("div");
-        popup.style.cssText = `
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.82);
-        backdrop-filter: blur(4px);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        z-index: 10000;
-        padding: 1.5rem;
-        box-sizing: border-box;
-      `;
-
-        const content = document.createElement("div");
-        content.style.cssText = `
-        background: linear-gradient(180deg, #ffffff, #f4f7f4);
-        color: #111;
-        padding: 2rem;
-        border-radius: 20px;
-        max-width: 520px;
-        width: 100%;
-        max-height: 85vh;
-        overflow-y: auto;
-        position: relative;
-        border: 1px solid rgba(0, 136, 123, 0.15);
-        box-shadow: 0 18px 40px rgba(0, 0, 0, 0.18);
-        transition: transform 0.2s ease;
-        transform: translateY(0);
-      `;
-
-        content.innerHTML = instructions;
-
-        const closeBtn = document.createElement("button");
-        closeBtn.innerHTML = "✕";
-        closeBtn.style.cssText = `
-        position: absolute;
-        top: 1rem;
-        right: 1rem;
-        background: #00897b;
-        color: white;
-        border: none;
-        border-radius: 50%;
-        width: 32px;
-        height: 32px;
-        cursor: pointer;
-        font-size: 16px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        box-shadow: 0 6px 18px rgba(0, 136, 123, 0.3);
-        transition: transform 0.2s ease, background 0.2s ease;
-      `;
-        closeBtn.onmouseover = () => {
-          closeBtn.style.transform = "scale(1.05)";
-          closeBtn.style.background = "#00b09b";
-        };
-        closeBtn.onmouseout = () => {
-          closeBtn.style.transform = "scale(1)";
-          closeBtn.style.background = "#00897b";
-        };
-
-        closeBtn.onclick = () => document.body.removeChild(popup);
-
-        content.appendChild(closeBtn);
-        popup.appendChild(content);
-        document.body.appendChild(popup);
-
-        // Close on outside click
-        popup.onclick = (e) => {
-          if (e.target === popup) {
-            document.body.removeChild(popup);
-          }
-        };
-      }
-
-      function checkRate() {
-        window.open("https://www.google.com/search?q=usd+to+ksh");
-      }
-
-      function copyPaybillDetails() {
-        const bankDetails = "Paybill: 400200\nAccount: 01109146916001";
-        navigator.clipboard.writeText(bankDetails);
-        alert(
-          "Bank details copied successfully!\n\nPaybill: 400200\nAccount: 01109146916001\n\nProceed to your banking app to complete the transfer. After payment, upload your proof in the Order Form.",
-        );
-      }
     </script>
   </body>
 </html>

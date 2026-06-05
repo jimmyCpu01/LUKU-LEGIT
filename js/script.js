@@ -133,6 +133,18 @@ function pushAdminNotification(type, message, details = {}) {
   writeJSON(STORAGE_KEYS.adminNotifications, notifications.slice(-250));
 }
 
+function notifyAdminPaymentPageVisit(items = [], total = 0) {
+  try {
+    const visits = readJSON('paymentNotifications', []);
+    const entry = { items, total, timestamp: new Date().toISOString(), page: window.location.pathname };
+    visits.push(entry);
+    writeJSON('paymentNotifications', visits.slice(-200));
+    pushAdminNotification('payment_page_visit', 'User visited payment page', entry);
+  } catch (e) {
+    console.warn('notifyAdminPaymentPageVisit failed', e);
+  }
+}
+
 function initAdminPage() {
   if (document.body.dataset.page !== "admin") return;
   if (!isAdminLoggedIn()) {

@@ -558,76 +558,95 @@ footer {
 }
 
 /* Buttons */
-.btn {
+button,
+input[type="button"],
+input[type="submit"],
+.btn,
+.cta-button {
   padding: 1rem 2.5rem;
-  border: 2px solid var(--accent);
+  border: 1px solid rgba(212, 175, 55, 0.95);
   background: var(--gold-gradient);
-  color: #000;
-  border-radius: 12px;
+  color: #111;
+  border-radius: 999px;
   cursor: pointer;
-  font-weight: 700;
-  transition: var(--transition);
+  font-weight: 800;
+  transition: all 0.35s ease;
   font-size: 1rem;
   text-transform: uppercase;
   letter-spacing: 1px;
-  box-shadow: var(--luxury-shadow);
+  box-shadow: 0 18px 50px rgba(212, 175, 55, 0.2);
   position: relative;
   display: inline-block;
   overflow: hidden;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
   z-index: 1;
 }
 
-.btn::before {
+button::before,
+input[type="button"]::before,
+input[type="submit"]::before,
+.btn::before,
+.cta-button::before,
+.buy-now-btn::before {
   content: "";
   position: absolute;
   top: 0;
-  left: -100%;
-  width: 100%;
+  left: -120%;
+  width: 40%;
   height: 100%;
-
   background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(255, 255, 255, 0.4),
-    transparent
+    120deg,
+    rgba(255, 255, 255, 0.95),
+    rgba(255, 255, 255, 0.12),
+    rgba(255, 255, 255, 0)
   );
-
-  transition: all 0.6s ease;
+  transform: skewX(-20deg);
+  transition: transform 0.7s ease;
+  pointer-events: none;
 }
 
-.btn:hover::before {
-  left: 100%;
+.btn:hover::before,
+.cta-button:hover::before,
+.buy-now-btn:hover::before,
+button:hover::before,
+input[type="button"]:hover::before,
+input[type="submit"]:hover::before {
+  transform: translateX(250%) skewX(-20deg);
 }
 
-.btn:hover {
-  background: var(--gold-gradient);
-  box-shadow: var(--shadow-hover);
+.btn:hover,
+.cta-button:hover,
+.buy-now-btn:hover,
+button:hover,
+input[type="button"]:hover,
+input[type="submit"]:hover {
   transform: translateY(-3px) scale(1.02);
-  border-color: var(--primary);
+  box-shadow: 0 28px 80px rgba(212, 175, 55, 0.28);
+  border-color: rgba(255, 215, 0, 0.9);
 }
 
-.btn:active {
+.btn:active,
+.cta-button:active,
+.buy-now-btn:active,
+button:active,
+input[type="button"]:active,
+input[type="submit"]:active {
   transform: translateY(-1px) scale(1.01);
 }
 
-.btn.secondary {
-  background: transparent;
-  color: var(--accent);
-  border: 2px solid var(--accent);
-  box-shadow: none;
+.btn.secondary,
+.btn-primary,
+.btn-danger {
+  background: var(--gold-gradient);
+  color: #111;
+  border-color: rgba(212, 175, 55, 0.95);
+  box-shadow: 0 18px 50px rgba(212, 175, 55, 0.2);
 }
 
-.btn.secondary:hover {
-  background: var(--gold-gradient);
-  color: #000;
-  border-color: var(--primary);
-}
-
-.btn-primary {
-  background: var(--gold-gradient);
-  color: #000;
-  border-color: var(--accent);
+.btn.secondary:hover,
+.btn-primary:hover,
+.btn-danger:hover {
+  color: #111;
 }
 .buy-now-btn {
   --btn-padding: 12px 28px;
@@ -1600,15 +1619,10 @@ footer {
   display: block;
   width: fit-content;
   margin: 2rem auto;
-}
-
-/* CTA Button */
-.cta-button {
-  display: inline-block;
   padding: 1.2rem 3rem;
-  background: linear-gradient(135deg, var(--accent), #c8cf667c);
-  color: #000;
-  border: none;
+  background: var(--gold-gradient);
+  color: #111;
+  border: 1px solid rgba(212, 175, 55, 0.95);
   border-radius: 50px;
   cursor: pointer;
   font-weight: 800;
@@ -1616,19 +1630,16 @@ footer {
   text-decoration: none;
   text-transform: uppercase;
   letter-spacing: 2px;
-  box-shadow: var(--shadow-hover);
+  box-shadow: 0 18px 50px rgba(212, 175, 55, 0.2);
   transition: var(--transition);
-  margin: 3rem auto;
-  display: block;
-  width: fit-content;
   position: relative;
   overflow: hidden;
   animation: bounce 2s ease-in-out infinite;
 }
 
 .cta-button:hover {
-  transform: scale(1.1);
-  box-shadow: 0 20px 60px rgba(212, 171, 37, 0.4);
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 24px 70px rgba(212, 175, 55, 0.3);
 }
 
 .cta-button::after {
@@ -1639,7 +1650,7 @@ footer {
 }
 
 .cta-button:hover::after {
-  transform: translateX(5px);
+  transform: translateX(6px);
 }
 
 /* Animations */

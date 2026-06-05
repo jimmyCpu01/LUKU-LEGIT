@@ -8,280 +8,123 @@
   </head>
   <body data-page="order">
     <nav class="navbar">
-        <div class="nav-container">
-          <div class="nav-logo">
-            <img src="img/luku gold-01.png" alt="Luku Legit Logo" />
-            <span>LUKU LEGIT</span>
-          </div>
-          <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="shop.html">Shop</a></li>
-            <li><a href="order.html">Order</a></li>
-            <li><a href="reviews.html">Reviews</a></li>
-          </ul>
+      <div class="nav-container">
+        <div class="nav-logo">
+          <img src="img/luku gold-01.png" alt="Luku Legit Logo" />
+          <span>LUKU LEGIT</span>
         </div>
-      </nav>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="shop.html">Shop</a></li>
+          <li><a href="order.html">Order</a></li>
+          <li><a href="reviews.html">Reviews</a></li>
+        </ul>
+      </div>
+    </nav>
 
-      <section class="hero">
-        <h1>Place Your Order <span>Secure Checkout</span></h1>
-        <p>Select your shoes and proceed to checkout with ease.</p>
-      </section>
+    <section class="hero">
+      <h1>Confirm Your Order <span>Premium Accuracy</span></h1>
+      <p>Send order details instantly with optional sample uploads and fast admin review.</p>
+    </section>
 
-      <section class="products">
-        <h2>Order Summary & Checkout</h2>
-        <div class="panel-card"
-          style="
-            max-width: 700px;
-            margin: 0 auto;
-            padding: 2.5rem;
-          "
-        >
-          <h3
-            style="
-              color: var(--accent);
-              margin-bottom: 1.5rem;
-              font-size: 1.3rem;
-            "
-          >
-            Order Summary
-          </h3>
-          <div
-            id="order-summary"
-            style="
-              margin-bottom: 2rem;
-              padding: 1.5rem;
-              border: 2px solid var(--border);
-              border-radius: 12px;
-              background: rgba(57, 255, 20, 0.05);
-            "
-          ></div>
+    <section class="products">
+      <h2>Order Details</h2>
+      <div class="panel-card" style="max-width:1120px; margin:0 auto; padding:2.2rem;">
+        <div style="display:grid; gap:2rem; grid-template-columns: minmax(320px,1fr) 1.4fr; align-items:start;">
+          <div>
+            <div id="order-summary" style="padding:1.6rem; min-height:260px; background:rgba(255,215,0,0.06); border-radius:18px; border:1px solid rgba(255,215,0,0.12);"></div>
+            <div style="margin-top:1rem; padding:1rem; border-radius:14px; background:rgba(255,215,0,0.04); display:flex; justify-content:space-between; align-items:center; gap:1rem;">
+              <p style="margin:0; color:var(--text-dim);">Unsure about size? Chat with our fit experts.</p>
+              <button id="order-chat-btn" class="btn btn-secondary">Size Chat</button>
+            </div>
+          </div>
 
-          <h3
-            style="
-              color: var(--accent);
-              margin-bottom: 1.5rem;
-              font-size: 1.3rem;
-            "
-          >
-            📝 Your Details
-          </h3>
-          <form id="order-form" class="login-form">
-            <input
-              type="text"
-              id="shoe-model"
-              placeholder="Shoe Model"
-              readonly
-              style="
-                background: rgba(0, 0, 0, 0.3);
-                border: 1px solid var(--border);
-                border-radius: 8px;
-                padding: 0.75rem;
-                color: var(--text-dim);
-              "
-            />
-            <input
-              type="text"
-              id="size"
-              placeholder="Size"
-              required
-              style="
-                background: rgba(0, 0, 0, 0.3);
-                border: 1px solid var(--border);
-                border-radius: 8px;
-                padding: 0.75rem;
-                color: var(--text-main);
-              "
-            />
-            <input
-              type="text"
-              id="name"
-              placeholder="Your Name"
-              required
-              style="
-                background: rgba(0, 0, 0, 0.3);
-                border: 1px solid var(--border);
-                border-radius: 8px;
-                padding: 0.75rem;
-                color: var(--text-main);
-              "
-            />
-            <input
-              type="email"
-              id="email"
-              placeholder="Your Email"
-              style="
-                background: rgba(0, 0, 0, 0.3);
-                border: 1px solid var(--border);
-                border-radius: 8px;
-                padding: 0.75rem;
-                color: var(--text-main);
-              "
-            />
-            <input
-              type="tel"
-              id="phone"
-              placeholder="Phone Number"
-              required
-              style="
-                background: rgba(0, 0, 0, 0.3);
-                border: 1px solid var(--border);
-                border-radius: 8px;
-                padding: 0.75rem;
-                color: var(--text-main);
-              "
-            />
-            <input
-              type="text"
-              id="address"
-              placeholder="Delivery Address"
-              required
-              style="
-                background: rgba(0, 0, 0, 0.3);
-                border: 1px solid var(--border);
-                border-radius: 8px;
-                padding: 0.75rem;
-                color: var(--text-main);
-              "
-            />
-            <label
-              for="payment-proof"
-              style="margin: 0.75rem 0 0.25rem 0; color: var(--text-dim); display: block; font-size: 0.95rem;"
-            >
-              Upload payment screenshot (JPG/PNG)
-            </label>
-            <input
-              type="file"
-              id="payment-proof"
-              accept="image/*"
-              required
-              style="
-                background: rgba(0, 0, 0, 0.3);
-                border: 1px solid var(--border);
-                border-radius: 8px;
-                padding: 0.75rem;
-                color: var(--text-main);
-                width: 100%;
-              "
-            />
-            <p
-              style="
-                margin: 1rem 0 0 0;
-                color: var(--text-dim);
-                font-size: 0.9rem;
-                line-height: 1.5;
-              "
-            >
-              Attach your payment screenshot and await admin approval before your order is confirmed.
-            </p>
-            <button
-              type="submit"
-              class="btn btn-primary"
-              style="width: 100%; margin-top: 1rem; font-size: 1.05rem"
-            >
-              Submit Order
-            </button>
+          <form id="order-form" class="login-form" style="padding:1rem; background:rgba(0,0,0,0.04); border-radius:14px;">
+            <div style="display:grid; gap:0.9rem;">
+              <label for="shoe-model">Shoe model</label>
+              <input id="shoe-model" type="text" placeholder="Auto-filled from selection or describe" required />
+
+              <label for="size">Size (optional)</label>
+              <input id="size" type="text" placeholder="EUR 40 / UK 7 / e.g. unsure" />
+
+              <label for="name">Name</label>
+              <input id="name" type="text" placeholder="Your full name" required />
+
+              <label for="phone">Phone</label>
+              <input id="phone" type="tel" placeholder="Phone number" required />
+
+              <label for="email">Email (optional)</label>
+              <input id="email" type="email" placeholder="Email for updates" />
+
+              <label for="sample-image">Sample image (optional)</label>
+              <input id="sample-image" type="file" accept="image/*" />
+
+              <label for="notes">Notes (optional)</label>
+              <textarea id="notes" rows="4" placeholder="Any additional preferences"></textarea>
+
+              <button class="btn" type="submit">Submit Order</button>
+            </div>
           </form>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <a href="https://wa.me/254700408174" class="cta-button"
-        >Chat on WhatsApp</a
-      >
+    <footer>
+      <p>Keep it authentic. © 2026 Luku Legit.</p>
+    </footer>
 
-      <footer>
-        <p>Keep it authentic. © 2026 Luku Legit.</p>
-      </footer>
+    <script src="js/script.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function(){
+        const selectedProduct = JSON.parse(localStorage.getItem('selectedProduct')|| '{}');
+        const cart = JSON.parse(localStorage.getItem('cart')|| '[]');
+        const items = cart.length ? cart : (selectedProduct.name ? [selectedProduct] : []);
+        const total = items.reduce((s,i)=> s + (i.price||0), 0);
+        const summary = document.getElementById('order-summary');
+        const shoeModelInput = document.getElementById('shoe-model');
+        const sizeInput = document.getElementById('size');
+        const nameInput = document.getElementById('name');
+        const phoneInput = document.getElementById('phone');
+        const emailInput = document.getElementById('email');
+        const notesInput = document.getElementById('notes');
+        const sampleInput = document.getElementById('sample-image');
+        const chatBtn = document.getElementById('order-chat-btn');
 
-      <script src="js/script.js"></script>
-      <script>
-        window.addEventListener("DOMContentLoaded", function () {
-          const product = JSON.parse(
-            localStorage.getItem("selectedProduct") || "{}",
-          );
-          const summary = document.getElementById("order-summary");
-          const form = document.getElementById("order-form");
-          const shoeModelInput = document.getElementById("shoe-model");
+        if(items.length){
+          summary.innerHTML = items.map(it=> `<p style="margin:.3rem 0"><strong>${it.name}</strong>${it.size? ' · '+it.size : ''}<br><span style="color:var(--text-dim)">Ksh ${it.price||0}</span></p>`).join('') + `<hr style="border-color:rgba(255,215,0,0.12)"/><p style="font-weight:700">Estimated total: Ksh ${total}</p>`;
+          if(selectedProduct.name && !cart.length){ shoeModelInput.value = selectedProduct.name; shoeModelInput.readOnly = true; }
+        } else {
+          summary.innerHTML = `<p style="color:var(--text-dim)">No product selected. Describe the pair you want and our admin will advise.</p>`;
+        }
 
-          if (product.name) {
-            // Auto-fill from selected product
-            shoeModelInput.value = product.name;
-            document.getElementById("size").value = product.size || "";
-            summary.innerHTML = `
-          <strong>Product:</strong> ${product.name}<br>
-          ${product.size ? `<strong>Size:</strong> ${product.size}<br>` : ""}
-          <strong>Condition:</strong> ${product.condition || 'Not specified'}<br>
-          <strong>Price:</strong> Ksh ${product.price || 'Contact for pricing'}<br>
-          <hr>
-          <strong>Total Amount:</strong> Ksh ${product.price || 'Contact for pricing'}
-        `;
-          } else {
-            // Allow manual entry
-            shoeModelInput.readOnly = false;
-            shoeModelInput.placeholder = "Enter shoe model or describe your desired shoes";
-            summary.innerHTML = `
-          <strong>Custom Order</strong><br>
-          Please fill in the details below for your custom shoe order.<br>
-          <em>Price will be confirmed after submission.</em>
-        `;
+        chatBtn.addEventListener('click', ()=> window.location.href = 'chat.html#chat-form');
+
+        document.getElementById('order-form').addEventListener('submit', function(e){
+          e.preventDefault();
+          const product = shoeModelInput.value.trim();
+          const size = sizeInput.value.trim() || 'Not specified';
+          const name = nameInput.value.trim();
+          const phone = phoneInput.value.trim();
+          const email = emailInput.value.trim();
+          const notes = notesInput.value.trim();
+
+          if(!product || !name || !phone){ alert('Complete name, phone and product details'); return; }
+
+          function save(sample){
+            const order = { product, size, name, phone, email, notes, sample, items, total, status:'pending', timestamp: new Date().toISOString() };
+            const orders = readJSON('orders', []);
+            orders.push(order); writeJSON('orders', orders); writeJSON('latestOrder', order);
+            pushAdminNotification('order_submitted','New order submitted', order);
+            trackUserInteraction('order_submitted', order);
+            alert('Order sent. Admin will contact you shortly.');
+            this.reset();
           }
 
-          form.addEventListener("submit", function (e) {
-            e.preventDefault();
-            const proofInput = document.getElementById("payment-proof");
-            const sizeValue = document.getElementById("size").value.trim();
-            const shoeModelValue = document.getElementById("shoe-model").value.trim();
-
-            if (!proofInput || !proofInput.files.length) {
-              alert("Please upload your payment screenshot before submitting.");
-              return;
-            }
-
-            if (!shoeModelValue) {
-              alert("Please specify the shoe model or description.");
-              return;
-            }
-
-            const reader = new FileReader();
-            reader.onload = function () {
-              const proofImage = reader.result;
-              const orderData = {
-                product: shoeModelValue,
-                size: sizeValue || "Not specified",
-                name: document.getElementById("name").value.trim(),
-                email: document.getElementById("email").value.trim(),
-                phone: document.getElementById("phone").value.trim(),
-                address: document.getElementById("address").value.trim(),
-                amount: product.price || 0,
-                status: "pending",
-                proofImage,
-                timestamp: new Date().toISOString(),
-                isCustomOrder: !product.name
-              };
-              const payments = JSON.parse(localStorage.getItem("payments") || "[]");
-              payments.push(orderData);
-              localStorage.setItem("payments", JSON.stringify(payments));
-              localStorage.setItem(
-                "orders",
-                JSON.stringify([
-                  ...JSON.parse(localStorage.getItem("orders") || "[]"),
-                  {
-                    product: orderData.product,
-                    size: orderData.size,
-                    name: orderData.name,
-                    timestamp: orderData.timestamp,
-                  },
-                ]),
-              );
-              alert("Order submitted! Your payment proof was uploaded. Await admin approval.");
-              form.reset();
-              document.getElementById("shoe-model").value = orderData.product;
-              document.getElementById("size").value = orderData.size;
-            };
-            reader.readAsDataURL(proofInput.files[0]);
-          });
+          if(sampleInput.files && sampleInput.files.length){
+            const r = new FileReader(); r.onload = ()=> save(r.result); r.readAsDataURL(sampleInput.files[0]);
+          } else { save(null); }
         });
-      </script>
-    </div>
-    `r`n
+      });
+    </script>
   </body>
 </html>

@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Confirm Payment</title>
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body data-page="payment-confirmation">
+    <nav class="navbar">
+      <div class="nav-container">
+        <div class="nav-logo">
+          <img src="img/luku gold-01.png" alt="logo"/>
+          <span>LUKU LEGIT</span>
+        </div>
+      </div>
+    </nav>
+
+    <main style="max-width:900px; margin:2.6rem auto; padding:1.6rem;">
+      <h1>Confirm Payment</h1>
+      <p style="color:var(--text-dim)">Upload your payment screenshot and provide the name/phone used for payment. Admin will verify and update your order.</p>
+
+      <form id="confirm-payment-form" class="login-form" style="margin-top:1.4rem;">
+        <label for="payer-name">Payer name</label>
+        <input id="payer-name" required />
+
+        <label for="payer-phone">Payer phone</label>
+        <input id="payer-phone" required />
+
+        <label for="txn-ref">Transaction reference (if any)</label>
+        <input id="txn-ref" />
+
+        <label for="screenshot">Payment screenshot</label>
+        <input id="screenshot" type="file" accept="image/*" required />
+
+        <label for="note">Optional note</label>
+        <textarea id="note" rows="3"></textarea>
+
+        <div style="display:flex; gap:1rem; margin-top:1rem; align-items:center;">
+          <button class="btn" type="submit">Submit Confirmation</button>
+          <a href="index.html" class="btn btn-secondary">Back to Shop</a>
+        </div>
+      </form>
+    </main>
+
+    <script src="js/script.js"></script>
+    <script>
+      document.getElementById('confirm-payment-form').addEventListener('submit', function(e){
+        e.preventDefault();
+        const name = document.getElementById('payer-name').value.trim();
+        const phone = document.getElementById('payer-phone').value.trim();
+        const ref = document.getElementById('txn-ref').value.trim();
+        const note = document.getElementById('note').value.trim();
+        const file = document.getElementById('screenshot').files[0];
+        if(!name || !phone || !file){ alert('Please provide payer name, phone and screenshot'); return; }
+
+        const r = new FileReader(); r.onload = ()=>{
+          const confirmations = readJSON('paymentConfirmations', []);
+          const record = { name, phone, ref, note, screenshot: r.result, timestamp: new Date().toISOString() };
+          confirmations.push(record); writeJSON('paymentConfirmations', confirmations); writeJSON('latestPaymentConfirmation', record);
+          pushAdminNotification('payment_confirmation','Payment confirmation submitted', record);
+          alert('Payment confirmation submitted — admin will verify shortly.');
+          location.href = 'index.html';
+        }; r.readAsDataURL(file);
+      });
+    </script>
+  </body>
+</html>
