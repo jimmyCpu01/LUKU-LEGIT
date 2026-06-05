@@ -362,6 +362,25 @@ function initAdminPage() {
     page: window.location.pathname,
   });
 
+  // Load any server-side admin events (e.g., deploy/updates) and surface them
+  try {
+    fetch("/admin-events.json")
+      .then((r) => r.json())
+      .then((events) => {
+        if (!Array.isArray(events)) return;
+        events.forEach((ev) => {
+          try {
+            pushAdminNotification(ev.type || "notice", ev.message || "Update", ev.details || {});
+          } catch (e) {
+            /* ignore per-event errors */
+          }
+        });
+      })
+      .catch(() => {});
+  } catch (e) {
+    /* ignore fetch errors */
+  }
+
   const adminPanel = document.getElementById("admin-panel");
   const logoutBtn = document.getElementById("logout-btn");
   const tabs = document.querySelectorAll(".tab-btn");
@@ -958,6 +977,7 @@ function buildImageModal() {
         <div class="size-help">
           <p>Need help finding your perfect fit? Start a quick size chat before choosing.</p>
           <button type="button" class="btn btn-secondary" id="sizeHelpBtn">Shoe Size Chat</button>
+          <button type="button" class="btn btn-secondary" id="openChatBtn">Live Chat</button>
         </div>
       </div>
     </div>
@@ -997,6 +1017,7 @@ function buildImageModal() {
   const moreLikeClose = document.getElementById("moreLikeClose");
   const backToProductBtn = document.getElementById("backToProductBtn");
   const sizeHelpBtn = document.getElementById("sizeHelpBtn");
+  const openChatBtn = document.getElementById("openChatBtn");
   const whatsappMoreBtn = document.getElementById("whatsappMoreBtn");
   const googleMoreBtn = document.getElementById("googleMoreBtn");
   const moreLikeTitle = document.getElementById("moreLikeTitle");
@@ -1157,6 +1178,10 @@ function buildImageModal() {
     window.location.href = "chat.html#chat-form";
   });
 
+  openChatBtn?.addEventListener("click", () => {
+    window.location.href = "chat.html#chat-form";
+  });
+
   whatsappMoreBtn?.addEventListener("click", function () {
     const query = this.dataset.query || encodeURIComponent("premium shoes");
     window.open(
@@ -1195,6 +1220,26 @@ function enhanceBuyNowButtons() {
   });
 }
 
+function initNavbarScroll() {
+  const navbar = document.querySelector(".navbar");
+  if (!navbar) return;
+
+  let lastScrollTop = window.pageYOffset || document.documentElement.scrollTop;
+  window.addEventListener(
+    "scroll",
+    () => {
+      const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+      if (currentScroll > lastScrollTop + 20 && currentScroll > 120) {
+        navbar.classList.add("navbar-hidden");
+      } else if (currentScroll < lastScrollTop - 20 || currentScroll <= 120) {
+        navbar.classList.remove("navbar-hidden");
+      }
+      lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+    },
+    { passive: true },
+  );
+}
+
 function initAdminAccessNotifications() {
   if (document.body.dataset.page === "admin") {
     pushAdminNotification("admin_open", "Admin opened the dashboard.");
@@ -1210,6 +1255,7 @@ function initPageUtilities() {
   buildImageModal();
   enhanceBuyNowButtons();
   initInteractive3DEffects();
+  initNavbarScroll();
   initAdminAccessNotifications();
 }
 

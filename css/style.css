@@ -59,6 +59,12 @@ body {
   box-shadow: var(--luxury-shadow);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
+  transition: transform 0.35s ease, opacity 0.35s ease;
+}
+
+.navbar-hidden {
+  transform: translateY(-120%);
+  opacity: 0;
 }
 
 .nav-container {
@@ -540,7 +546,8 @@ footer {
 
   .product-grid,
   .product-grid.two-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, minmax(220px, 1fr));
+    gap: 1.5rem;
   }
 }
 
@@ -1182,13 +1189,13 @@ body[data-page="admin-login"] .hero {
 
 @media (max-width: 768px) {
   .product-grid {
-    grid-template-columns: 1fr;
-    gap: 2rem;
+    grid-template-columns: repeat(2, minmax(220px, 1fr));
+    gap: 1.5rem;
   }
 
   .product-grid.two-grid {
-    grid-template-columns: 1fr;
-    gap: 2rem;
+    grid-template-columns: repeat(2, minmax(220px, 1fr));
+    gap: 1.5rem;
   }
 }
 
@@ -1897,8 +1904,10 @@ select:focus {
     font-size: 2rem;
   }
 
-  .product-grid {
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  .product-grid,
+  .product-grid.two-grid {
+    grid-template-columns: repeat(2, minmax(220px, 1fr));
+    gap: 1.5rem;
   }
 
   .admin-tabs {
