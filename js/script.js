@@ -943,7 +943,7 @@ function loadCompleteReport() {
 function initInteractive3DEffects() {
   document
     .querySelectorAll(
-      ".shoe-card, .panel-card, .contact-card, .data-item, .recommendation-item",
+      ".modal-content-grid, .shoe-card, .panel-card, .contact-card, .data-item, .recommendation-item",
     )
     .forEach((card) => {
       card.addEventListener("pointermove", function (event) {
@@ -979,6 +979,7 @@ function buildImageModal() {
         <img class="modal-image" id="modalImage" alt="" />
         <div class="modal-buttons">
           <button class="btn" id="addToCartBtn" type="button">Add to Cart</button>
+          <button class="btn btn-secondary" id="openChatBtn" type="button">Live Chat</button>
           <button class="btn btn-secondary" id="orderNowBtn" type="button">Order Now</button>
           <button class="btn btn-primary" id="moreLikeBtn" type="button">More Like These</button>
         </div>
@@ -987,9 +988,7 @@ function buildImageModal() {
         <label for="sizeSelect">Select Size (EUR):</label>
         <select id="sizeSelect">${sizeOptions}</select>
         <div class="size-help">
-          <p>Need help finding your perfect fit? Start a quick size chat before choosing.</p>
-          <button type="button" class="btn btn-secondary" id="sizeHelpBtn">Shoe Size Chat</button>
-          <button type="button" class="btn btn-secondary" id="openChatBtn">Live Chat</button>
+          <p>Choose your fit and tap live chat for expert sizing support before checkout.</p>
         </div>
       </div>
     </div>
@@ -1028,7 +1027,6 @@ function buildImageModal() {
   const moreLikeBtn = document.getElementById("moreLikeBtn");
   const moreLikeClose = document.getElementById("moreLikeClose");
   const backToProductBtn = document.getElementById("backToProductBtn");
-  const sizeHelpBtn = document.getElementById("sizeHelpBtn");
   const openChatBtn = document.getElementById("openChatBtn");
   const whatsappMoreBtn = document.getElementById("whatsappMoreBtn");
   const googleMoreBtn = document.getElementById("googleMoreBtn");
@@ -1185,10 +1183,6 @@ function buildImageModal() {
 
   moreLikeClose?.addEventListener("click", closeModal);
   backToProductBtn?.addEventListener("click", closeModal);
-
-  sizeHelpBtn?.addEventListener("click", () => {
-    window.location.href = "chat.html#chat-form";
-  });
 
   openChatBtn?.addEventListener("click", () => {
     window.location.href = "chat.html#chat-form";

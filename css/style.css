@@ -2192,9 +2192,9 @@ select:focus {
   top: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.9);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  background-color: rgba(8, 8, 8, 0.96);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
 }
 
 .modal-content-grid {
@@ -2275,18 +2275,25 @@ select:focus {
 
 .modal-buttons .btn {
   min-width: 180px;
-  padding: 1.3rem 2.5rem;
-  font-size: 1.1rem;
+  padding: 1.25rem 2.4rem;
+  font-size: 1.05rem;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
-  box-shadow: 0 8px 25px rgba(212, 175, 55, 0.3);
-  transition: all 0.3s ease;
+  letter-spacing: 0.08em;
+  border-radius: 22px;
+  box-shadow: 0 18px 42px rgba(212, 175, 55, 0.28);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+  transform-style: preserve-3d;
+  perspective: 1200px;
 }
 
 .modal-buttons .btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 12px 35px rgba(212, 175, 55, 0.4);
+  transform: translateY(-4px) scale(1.01);
+  box-shadow: 0 22px 54px rgba(212, 175, 55, 0.42);
+}
+
+.modal-buttons .btn:active {
+  transform: translateY(-1px) scale(0.98);
 }
 
 .more-like-modal {
