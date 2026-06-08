@@ -59,7 +59,9 @@ body {
   box-shadow: var(--luxury-shadow);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  transition: transform 0.35s ease, opacity 0.35s ease;
+  transition:
+    transform 0.35s ease,
+    opacity 0.35s ease;
 }
 
 .navbar-hidden {
@@ -225,7 +227,7 @@ body[data-page="admin-login"] {
 }
 
 .hero {
-  padding: 5.5rem 2rem 4rem;
+  padding: 6rem 2rem 4.5rem;
   text-align: center;
   position: relative;
 }
@@ -233,29 +235,34 @@ body[data-page="admin-login"] {
 .hero h1 {
   font-size: clamp(3rem, 5vw, 5rem);
   line-height: 1;
-  letter-spacing: 0.13em;
+  letter-spacing: 0.18em;
   max-width: 900px;
+  text-transform: uppercase;
+  text-shadow: 0 12px 45px rgba(0, 0, 0, 0.28);
   animation: float 3s ease-in-out infinite;
 }
 
 .hero p {
   color: var(--text-dim);
   max-width: 760px;
-  margin: 1.4rem auto 2.4rem;
+  margin: 1.6rem auto 2.6rem;
+  font-size: 1.05rem;
 }
 
 .section-title {
   display: inline-flex;
   align-items: center;
   gap: 1rem;
-  font-size: clamp(2rem, 2.5vw, 2.7rem);
-  margin-bottom: 1.5rem;
+  font-size: clamp(1.9rem, 2.5vw, 2.65rem);
+  margin-bottom: 1.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
 }
 
 .section-title::before {
   content: "";
-  width: 40px;
-  height: 40px;
+  width: 42px;
+  height: 42px;
   border-radius: 16px;
   background: linear-gradient(
     135deg,
@@ -282,10 +289,10 @@ body[data-page="admin-login"] {
 .modal-size,
 .recommendation-item,
 #order-summary {
-  background: transparent !important;
-  border: 2px solid rgba(212, 175, 55, 0.3) !important;
+  background: rgba(12, 12, 12, 0.9) !important;
+  border: 1px solid rgba(255, 215, 0, 0.18) !important;
   border-radius: 28px !important;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8) !important;
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.55) !important;
   transition:
     transform 0.35s ease,
     box-shadow 0.35s ease,
@@ -299,44 +306,50 @@ body[data-page="admin-login"] {
 .contact-card:hover,
 .data-item:hover,
 .recommendation-item:hover {
-  transform: translateY(-14px) rotateX(4deg) rotateY(-2deg) !important;
+  transform: translateY(-16px) rotateX(4deg) rotateY(-2deg) !important;
   border-color: rgba(255, 255, 255, 0.22) !important;
-  box-shadow: 0 55px 160px rgba(0, 0, 0, 0.6) !important;
+  box-shadow: 0 60px 170px rgba(0, 0, 0, 0.55) !important;
 }
 
 .shoe-card {
-  padding: 1.5rem;
+  padding: 1.7rem;
   transform-style: preserve-3d;
 }
 
 .shoe-card::before {
   content: "";
   position: absolute;
-  top: -25px;
-  right: -30px;
-  width: 210px;
-  height: 210px;
+  top: -20px;
+  right: -35px;
+  width: 230px;
+  height: 230px;
   background: radial-gradient(circle, rgba(255, 215, 0, 0.22), transparent 55%);
   filter: blur(20px);
+  pointer-events: none;
 }
 
 .shoe-card img {
   width: 100%;
   height: min(320px, 28vw);
   object-fit: cover;
-  border-radius: 22px;
+  border-radius: 26px;
   margin-bottom: 1.5rem;
-  transition: transform 0.55s ease;
+  transition:
+    transform 0.55s ease,
+    filter 0.55s ease;
+  transform: translateZ(0);
 }
 
 .shoe-card:hover img {
-  transform: scale(1.05) rotateZ(0.5deg);
+  transform: scale(1.08) rotateZ(0.4deg);
+  filter: brightness(1.05) saturate(1.08);
 }
 
 .shoe-card h3,
 .panel-card h3 {
   margin: 0 0 0.85rem;
-  font-size: 1.38rem;
+  font-size: 1.5rem;
+  letter-spacing: 0.01em;
 }
 
 .shoe-card p,
@@ -345,38 +358,78 @@ body[data-page="admin-login"] {
 .contact-card p,
 .modal-size p {
   color: var(--text-dim);
-  margin: 0.7rem 0;
+  margin: 0.75rem 0;
 }
 
 .shoe-card .price {
   color: var(--primary);
   font-weight: 900;
-  font-size: 1.35rem;
+  font-size: 1.45rem;
 }
 
 .card-buttons {
-  display: grid;
+  display: flex;
+  flex-wrap: wrap;
   gap: 1rem;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
   margin-top: 1.5rem;
 }
 
 .btn {
+  position: relative;
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   background: linear-gradient(
     135deg,
-    rgba(255, 215, 0, 0.95),
-    rgba(212, 175, 55, 0.92)
+    rgba(255, 215, 0, 0.98),
+    rgba(212, 175, 55, 0.95)
   ) !important;
   color: #111 !important;
   box-shadow: 0 18px 40px rgba(0, 0, 0, 0.28) !important;
-  border: 1px solid transparent !important;
-  padding: 0.95rem 1.7rem !important;
+  border: 1px solid rgba(255, 215, 0, 0.2) !important;
+  padding: 1rem 1.8rem !important;
   border-radius: 999px !important;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-weight: 700;
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease,
+    background 0.35s ease;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+}
+
+.btn::before {
+  content: "";
+  position: absolute;
+  left: -120%;
+  top: 0;
+  height: 100%;
+  width: 140%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.4) 45%,
+    rgba(255, 255, 255, 0.12) 52%,
+    transparent 100%
+  );
+  transform: skewX(-20deg);
+  transition: transform 0.8s ease;
+}
+
+.btn:hover::before {
+  transform: translateX(220%) skewX(-20deg);
 }
 
 .btn:hover {
-  transform: translateY(-2px) !important;
+  transform: translateY(-2px);
   box-shadow: 0 26px 52px rgba(0, 0, 0, 0.35) !important;
+}
+
+.btn:active {
+  transform: translateY(0);
 }
 
 .btn.secondary {
@@ -385,13 +438,19 @@ body[data-page="admin-login"] {
   border-color: rgba(255, 255, 255, 0.16) !important;
 }
 
+.btn.btn-tertiary {
+  background: rgba(255, 255, 255, 0.08) !important;
+  color: #fff !important;
+  border-color: rgba(255, 215, 0, 0.18) !important;
+}
+
 .btn.primary {
   background: linear-gradient(
     135deg,
-    rgba(37, 214, 255, 0.95),
-    rgba(132, 101, 255, 0.92)
+    rgba(255, 220, 130, 0.95),
+    rgba(252, 207, 48, 0.98)
   ) !important;
-  color: #fff !important;
+  color: #111 !important;
 }
 
 .btn.btn-small {
@@ -635,12 +694,37 @@ input[type="submit"]:active {
 }
 
 .btn.secondary,
-.btn-primary,
+.btn.btn-tertiary,
+.btn.primary,
 .btn-danger {
-  background: var(--gold-gradient);
   color: #111;
-  border-color: rgba(212, 175, 55, 0.95);
+  border-color: rgba(255, 215, 0, 0.42);
   box-shadow: 0 18px 50px rgba(212, 175, 55, 0.2);
+}
+
+.btn.secondary {
+  background: rgba(255, 209, 2, 0.918) !important;
+  color: #080000 !important;
+}
+
+.btn.btn-tertiary {
+  background: rgba(255, 255, 255, 0.08) !important;
+  color: #fff !important;
+}
+
+.btn.primary {
+  background: linear-gradient(
+    135deg,
+    rgba(236, 173, 12, 0.95),
+    rgba(252, 207, 48, 0.98)
+  ) !important;
+  color: #111 !important;
+}
+
+.btn-danger {
+  background: linear-gradient(135deg, #8b0000 0%, #dc143c 100%);
+  border-color: #dc143c;
+  color: white;
 }
 
 .btn.secondary:hover,
@@ -663,7 +747,9 @@ input[type="submit"]:active {
   box-shadow: 0 12px 40px rgba(212, 175, 55, 0.18);
   position: relative;
   overflow: hidden;
-  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease;
 }
 
 .buy-now-btn::before {
@@ -673,9 +759,14 @@ input[type="submit"]:active {
   left: -60%;
   width: 40%;
   height: 200%;
-  background: linear-gradient(120deg, rgba(255,255,255,0.85), rgba(255,255,255,0.15), rgba(255,255,255,0.0));
+  background: linear-gradient(
+    120deg,
+    rgba(255, 255, 255, 0.85),
+    rgba(248, 224, 4, 0.918),
+    rgba(255, 255, 255, 0)
+  );
   transform: rotate(25deg) translateX(0);
-  transition: transform 0.7s cubic-bezier(0.2,0.9,0.2,1);
+  transition: transform 0.7s cubic-bezier(0.2, 0.9, 0.2, 1);
   opacity: 0.95;
   pointer-events: none;
 }
@@ -691,7 +782,9 @@ input[type="submit"]:active {
 
 @media (prefers-reduced-motion: reduce) {
   .buy-now-btn,
-  .buy-now-btn::before { transition: none !important; }
+  .buy-now-btn::before {
+    transition: none !important;
+  }
 }
 
 .btn-small {
@@ -715,113 +808,82 @@ input[type="submit"]:active {
 /* Hero Section */
 .hero {
   text-align: center;
-  padding: 5rem 2rem;
+  padding: 4rem 2rem;
   background: linear-gradient(
     135deg,
-    rgba(0, 0, 0, 0.32) 0%,
-    rgba(0, 0, 0, 0.18) 100%
+    rgba(7, 7, 7, 0.96),
+    rgba(17, 17, 17, 0.96)
   );
-  background-size: cover;
-  background-position: center;
   margin: 2rem auto;
-  border-radius: 20px;
-  border: 2px solid rgba(212, 175, 55, 0.35);
+  border-radius: 24px;
+  border: 1px solid rgba(255, 215, 0, 0.18);
   position: relative;
   overflow: hidden;
   max-width: 1200px;
   box-shadow: var(--luxury-shadow);
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
-  perspective: 1200px;
-  transform-style: preserve-3d;
-  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .hero::before {
   content: "";
   position: absolute;
-  top: -50%;
-  right: -50%;
-  width: 200%;
-  height: 200%;
+  inset: 0;
   background: radial-gradient(
-    circle,
-    rgba(255, 215, 0, 0.1) 0%,
-    transparent 70%
+    circle at top center,
+    rgba(255, 215, 0, 0.12),
+    transparent 40%
   );
-  animation: pulse 20s ease-in-out infinite;
+  pointer-events: none;
 }
 
 .hero h1 {
-  font-size: 4rem;
+  font-size: clamp(3rem, 5vw, 5rem);
   margin: 0 auto 1.5rem;
   color: var(--text-main);
   font-weight: 900;
-  letter-spacing: 3px;
+  letter-spacing: 0.18em;
+  max-width: 900px;
   position: relative;
   z-index: 1;
   animation: fadeInDown 1s ease-out;
-  text-shadow: 0 0 30px rgba(255, 215, 0, 0.3);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  transform: translateZ(50px) rotateX(0deg);
-  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.hero:hover h1 {
-  transform: translateZ(80px) rotateX(8deg);
+  text-shadow: 0 18px 50px rgba(255, 215, 0, 0.2);
 }
 
 .hero h1 span {
   display: block;
   color: var(--primary);
-  font-size: 2.5rem;
+  font-size: 2.2rem;
   text-transform: uppercase;
-  letter-spacing: 4px;
+  letter-spacing: 0.24em;
   margin-top: 1rem;
-  text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
-  transform: translateZ(30px);
-  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.hero:hover h1 span {
-  transform: translateZ(60px) rotateY(-5deg);
 }
 
 .hero p {
-  font-size: 1.4rem;
+  font-size: 1.12rem;
   margin: 0 auto 3rem;
   color: var(--text-dim);
   position: relative;
   z-index: 1;
   font-weight: 500;
-  max-width: 600px;
-  line-height: 1.7;
-  transform: translateZ(40px);
-  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.hero:hover p {
-  transform: translateZ(70px) rotateX(-3deg);
+  max-width: 640px;
+  line-height: 1.75;
 }
 
 .hero .btn {
   position: relative;
   z-index: 1;
-  font-size: 1.2rem;
-  padding: 1.2rem 3rem;
-  box-shadow: 0 10px 40px rgba(212, 175, 55, 0.3);
-  transform: translateZ(50px);
-  transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
-  cursor: pointer;
+  font-size: 1.1rem;
+  padding: 1rem 2.6rem;
+  box-shadow: 0 12px 42px rgba(212, 175, 55, 0.28);
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease;
 }
 
 .hero .btn:hover {
-  transform: translateZ(80px) rotateY(8deg) translateY(-5px);
-  box-shadow: 0 20px 60px rgba(212, 175, 55, 0.5);
+  transform: translateY(-3px);
+  box-shadow: 0 20px 62px rgba(212, 175, 55, 0.45);
 }
 
 body[data-page="index"] .hero {
@@ -1082,83 +1144,74 @@ body[data-page="admin-login"] .hero {
 .hero::before {
   content: "";
   position: absolute;
-  top: -50%;
-  right: -50%;
-  width: 200%;
-  height: 200%;
+  inset: 0;
   background: radial-gradient(
-    circle,
-    rgba(255, 215, 0, 0.1) 0%,
-    transparent 70%
+    circle at top center,
+    rgba(255, 215, 0, 0.12),
+    transparent 42%
   );
-  animation: pulse 15s ease-in-out infinite;
+  pointer-events: none;
 }
 
 .hero h1 {
-  font-size: 3.5rem;
-  margin: 0 auto 1rem;
+  font-size: clamp(3rem, 5vw, 5rem);
+  margin: 0 auto 1.5rem;
   color: var(--text-main);
   font-weight: 900;
-  letter-spacing: 2px;
+  letter-spacing: 0.18em;
+  max-width: 900px;
   position: relative;
   z-index: 1;
-  animation: fadeInUp 0.8s ease-out;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  transform: translateZ(50px) rotateX(0deg);
-  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  animation: fadeInDown 1s ease-out;
+  text-shadow: 0 18px 50px rgba(255, 215, 0, 0.2);
 }
 
 .hero:hover h1 {
-  transform: translateZ(80px) rotateX(8deg);
+  transform: translateY(-2px);
 }
 
 .hero h1 span {
   display: block;
-  color: var(--accent);
-  font-size: 2rem;
+  color: var(--primary);
+  font-size: 2.2rem;
   text-transform: uppercase;
-  letter-spacing: 3px;
-  margin-top: 0.5rem;
-  transform: translateZ(30px);
-  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  letter-spacing: 0.24em;
+  margin-top: 1rem;
 }
 
 .hero:hover h1 span {
-  transform: translateZ(60px) rotateY(-5deg);
+  transform: translateY(-2px);
 }
 
 .hero p {
-  font-size: 1.3rem;
-  margin: 0 auto 2rem;
+  font-size: 1.12rem;
+  margin: 0 auto 3rem;
   color: var(--text-dim);
   position: relative;
   z-index: 1;
   font-weight: 500;
-  transform: translateZ(40px);
-  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  max-width: 640px;
+  line-height: 1.75;
 }
 
 .hero:hover p {
-  transform: translateZ(70px) rotateX(-3deg);
+  transform: translateY(-1px);
 }
 
 .hero .btn {
   position: relative;
   z-index: 1;
-  font-size: 1.05rem;
-  padding: 1rem 2.5rem;
-  transform: translateZ(50px);
-  transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
-  cursor: pointer;
+  font-size: 1.1rem;
+  padding: 1rem 2.6rem;
+  box-shadow: 0 12px 42px rgba(212, 175, 55, 0.28);
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease;
 }
 
 .hero:hover .btn {
-  transform: translateZ(80px) rotateY(8deg) translateY(-5px);
-  box-shadow: 0 20px 60px rgba(212, 175, 55, 0.5);
+  transform: translateY(-3px);
+  box-shadow: 0 20px 62px rgba(212, 175, 55, 0.45);
 }
 
 /* Products Section */
@@ -1327,15 +1380,17 @@ body[data-page="admin-login"] .hero {
 
 .card-buttons {
   display: flex;
+  flex-wrap: wrap;
   gap: 1rem;
   margin-top: auto;
   padding-top: 2rem;
 }
 
 .card-buttons .btn {
-  flex: 1;
+  flex: 1 1 160px;
+  min-width: 140px;
   padding: 1rem 1.5rem;
-  font-size: 0.9rem;
+  font-size: 0.95rem;
 }
 
 /* Admin Panel */
@@ -2202,52 +2257,61 @@ select:focus {
   margin: auto;
   display: flex;
   gap: 2rem;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   max-width: 90%;
   width: 100%;
   flex-wrap: wrap;
   animation: modalFadeIn 0.4s ease-out;
   padding: 2rem;
+  perspective: 1600px;
+  transform-style: preserve-3d;
 }
 
 .modal-image {
-  max-width: 400px;
-  max-height: 60vh;
+  max-width: 420px;
+  max-height: 65vh;
   width: auto;
   height: auto;
-  border-radius: 20px;
+  border-radius: 24px;
   box-shadow:
-    0 25px 80px rgba(0, 0, 0, 0.6),
-    0 0 40px rgba(255, 215, 0, 0.1);
-  border: 3px solid var(--accent);
-  background: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 0.1),
-    rgba(255, 215, 0, 0.05)
-  );
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+    0 28px 90px rgba(0, 0, 0, 0.65),
+    0 0 40px rgba(255, 215, 0, 0.12);
+  border: 2px solid rgba(255, 215, 0, 0.18);
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
+  transition:
+    transform 0.4s ease,
+    box-shadow 0.4s ease;
+  will-change: transform, box-shadow;
+}
+
+.modal-image:hover {
+  transform: translateZ(16px) scale(1.02);
+  box-shadow:
+    0 36px 110px rgba(255, 215, 0, 0.22),
+    0 0 48px rgba(255, 215, 0, 0.08);
 }
 
 .modal-buttons {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
   gap: 1rem;
   justify-content: center;
-  min-width: 200px;
+  min-width: 230px;
 }
 
 .modal-size {
   margin-top: 2rem;
   width: 100%;
-  max-width: 500px;
+  max-width: 520px;
   text-align: center;
 }
 
 .modal-size label {
   display: block;
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.8rem;
   font-size: 1.1rem;
   color: #fff;
   font-weight: 600;
@@ -2256,17 +2320,20 @@ select:focus {
 .modal-size select {
   width: 100%;
   padding: 1rem 1.2rem;
-  border-radius: 16px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  background: rgba(255, 255, 255, 0.08);
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.06);
   color: #fff;
   font-size: 1rem;
   outline: none;
-  transition: border-color 0.3s ease;
+  transition:
+    border-color 0.3s ease,
+    transform 0.3s ease;
 }
 
 .modal-size select:focus {
   border-color: var(--accent);
+  transform: scale(1.01);
 }
 
 .modal-size select option {
@@ -2282,7 +2349,10 @@ select:focus {
   letter-spacing: 0.08em;
   border-radius: 22px;
   box-shadow: 0 18px 42px rgba(212, 175, 55, 0.28);
-  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    background 0.3s ease;
   transform-style: preserve-3d;
   perspective: 1200px;
 }

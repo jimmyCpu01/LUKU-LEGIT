@@ -110,12 +110,15 @@ function recordPageAccess() {
   });
 }
 
-
 // Notify admin (stored notifications) when admin is logged in and a page is accessed
 function notifyAdminOnAccess(entry) {
   try {
     if (isAdminLoggedIn && isAdminLoggedIn()) {
-      pushAdminNotification("page_access_admin", `Admin viewed ${entry.pageName}`, entry);
+      pushAdminNotification(
+        "page_access_admin",
+        `Admin viewed ${entry.pageName}`,
+        entry,
+      );
     }
   } catch (e) {
     console.warn("Admin access notify failed", e);
@@ -135,13 +138,22 @@ function pushAdminNotification(type, message, details = {}) {
 
 function notifyAdminPaymentPageVisit(items = [], total = 0) {
   try {
-    const visits = readJSON('paymentNotifications', []);
-    const entry = { items, total, timestamp: new Date().toISOString(), page: window.location.pathname };
+    const visits = readJSON("paymentNotifications", []);
+    const entry = {
+      items,
+      total,
+      timestamp: new Date().toISOString(),
+      page: window.location.pathname,
+    };
     visits.push(entry);
-    writeJSON('paymentNotifications', visits.slice(-200));
-    pushAdminNotification('payment_page_visit', 'User visited payment page', entry);
+    writeJSON("paymentNotifications", visits.slice(-200));
+    pushAdminNotification(
+      "payment_page_visit",
+      "User visited payment page",
+      entry,
+    );
   } catch (e) {
-    console.warn('notifyAdminPaymentPageVisit failed', e);
+    console.warn("notifyAdminPaymentPageVisit failed", e);
   }
 }
 
@@ -382,7 +394,11 @@ function initAdminPage() {
         if (!Array.isArray(events)) return;
         events.forEach((ev) => {
           try {
-            pushAdminNotification(ev.type || "notice", ev.message || "Update", ev.details || {});
+            pushAdminNotification(
+              ev.type || "notice",
+              ev.message || "Update",
+              ev.details || {},
+            );
           } catch (e) {
             /* ignore per-event errors */
           }
@@ -1234,7 +1250,8 @@ function initNavbarScroll() {
   window.addEventListener(
     "scroll",
     () => {
-      const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+      const currentScroll =
+        window.pageYOffset || document.documentElement.scrollTop;
       if (currentScroll > lastScrollTop + 20 && currentScroll > 120) {
         navbar.classList.add("navbar-hidden");
       } else if (currentScroll < lastScrollTop - 20 || currentScroll <= 120) {

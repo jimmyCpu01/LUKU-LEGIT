@@ -1,0 +1,38 @@
+[
+  {
+    "id": "p1",
+    "name": "Chaco Open Shoes",
+    "price": 4500,
+    "condition": "9/10",
+    "category": "Men",
+    "description": "Premium comfort and durable build.",
+    "image": "img/chaco.jpg"
+  },
+  {
+    "id": "p2",
+    "name": "Clarks Wallabees OG",
+    "price": 8200,
+    "condition": "8.5/10",
+    "category": "Men",
+    "description": "Timeless classic wallabee silhouette.",
+    "image": "img/clarks.jpg"
+  },
+  {
+    "id": "p3",
+    "name": "Air-Force 1 Low",
+    "price": 4500,
+    "condition": "10/10",
+    "category": "Men",
+    "description": "Iconic customs with fresh styling.",
+    "image": "img/af1.webp"
+  },
+  {
+    "id": "p4",
+    "name": "Redwing Boots",
+    "price": 8800,
+    "condition": "9/10",
+    "category": "Men",
+    "description": "Premium craftsmanship and rugged build.",
+    "image": "img/redwing1.jpg"
+  }
+]
